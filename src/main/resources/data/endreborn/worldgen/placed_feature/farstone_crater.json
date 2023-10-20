@@ -1,0 +1,19 @@
+{
+  "feature": "endreborn:farstone_crater",
+  "placement": [
+      {
+      "type": "minecraft:rarity_filter",
+      "chance": 550
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

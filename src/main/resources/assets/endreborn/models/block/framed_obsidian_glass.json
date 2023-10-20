@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "render_type": "cutout",
+    "textures": {
+        "all": "endreborn:block/framed_obsidian_glass"
+    }
+}

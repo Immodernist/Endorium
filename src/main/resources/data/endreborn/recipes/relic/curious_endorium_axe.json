@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "endreborn:endorium_ingot"
+  },
+  "base": {
+    "item": "endreborn:endorium_axe"
+  },
+  "result": {
+    "item": "endreborn:curious_endorium_axe"
+  },
+  "template": {
+    "item": "endreborn:curious_relic"
+  }
+}

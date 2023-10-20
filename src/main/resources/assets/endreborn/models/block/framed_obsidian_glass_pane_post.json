@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "render_type": "cutout",
+  "textures": {
+    "pane": "endreborn:block/framed_obsidian_glass",
+    "edge": "endreborn:block/obsidian_glass_pane_top"
+  }
+}

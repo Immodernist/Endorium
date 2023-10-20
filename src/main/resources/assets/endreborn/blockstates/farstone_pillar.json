@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "endreborn:block/farstone_pillar" },
+        "axis=z":   { "model": "endreborn:block/farstone_pillar", "x": 90 },
+        "axis=x":   { "model": "endreborn:block/farstone_pillar", "x": 90, "y": 90 }
+    }
+} 

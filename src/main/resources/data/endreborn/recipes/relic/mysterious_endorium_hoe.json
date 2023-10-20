@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "endreborn:endorium_ingot"
+  },
+  "base": {
+    "item": "endreborn:endorium_hoe"
+  },
+  "result": {
+    "item": "endreborn:mysterious_endorium_hoe"
+  },
+  "template": {
+    "item": "endreborn:mysterious_relic"
+  }
+}

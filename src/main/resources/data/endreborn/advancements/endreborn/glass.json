@@ -1,0 +1,36 @@
+{
+  "parent":"endreborn:endreborn/iron_hammer",
+  "display":{
+    "icon":{
+      "item":"endreborn:obsidian_glass_pane"
+    },
+    "title":{
+      "translate":"advancements.endreborn.glass.title"
+    },
+    "description":{
+      "translate":"advancements.endreborn.glass.description"
+    },
+    "show_toast":true,
+    "announce_to_chat":false,
+    "hidden":true
+  },
+  "criteria":{
+    "obsidian_glass_pane":{
+      "conditions":{
+        "items":[
+          {
+            "items":[
+              "endreborn:obsidian_glass_pane"
+            ]
+          }
+        ]
+      },
+      "trigger":"minecraft:inventory_changed"
+    }
+  },
+  "requirements":[
+    [
+      "obsidian_glass_pane"
+    ]
+  ]
+}

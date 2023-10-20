@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "endreborn:block/farstone_brick_slab"
+    },
+    "type=double": {
+      "model": "endreborn:block/farstone_bricks"
+    },
+    "type=top": {
+      "model": "endreborn:block/farstone_brick_slab_top"
+    }
+  }
+}

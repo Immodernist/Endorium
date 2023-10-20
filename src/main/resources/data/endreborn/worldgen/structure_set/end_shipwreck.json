@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 70987131,
+    "separation": 18,
+    "spacing": 35,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "endreborn:end_shipwreck",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [ ],
+  "optional": [
+    "endreborn:purpur_wall",
+    "endreborn:farstone_brick_wall"
+  ]
+}
