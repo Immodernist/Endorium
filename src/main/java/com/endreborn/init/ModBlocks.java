@@ -35,6 +35,7 @@ public class ModBlocks {
     public static RegistryObject<Block> FRAMED_OBSIDIAN_GLASS_PANE;
     public static RegistryObject<Block> FRAMED_OBSIDIAN_GLASS;
     public static RegistryObject<Block> TUNGSTEN_ORE;
+    public static RegistryObject<Block> RAW_TUNGSTEN_BLOCK;
     public static RegistryObject<Block> ENDORIUM_BLOCK;
     public static RegistryObject<Block> TUNGSTEN_BLOCK;
     public static RegistryObject<Block> FARSTONE;
@@ -70,6 +71,7 @@ public class ModBlocks {
         TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "tungsten_ore");
         ENDORIUM_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(6.0F, 7.0F)), "endorium_block");
         TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.5F, 6.0F)), "tungsten_block");
+        RAW_TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())), "raw_tungsten_block");
 
         FARSTONE = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.55F, 9.0F)), "farstone");
         FARSTONE_DECORATIVE = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(FARSTONE.get())), "farstone_smooth");

@@ -26,7 +26,7 @@
  "item.endreborn.tungsten_nugget": "Вольфрамовый самородок",
  "item.endreborn.tungsten_ingot": "Вольфрамовый слиток",
  "item.endreborn.tungsten_dust": "Вольфрамовая пыль",
- "item.endreborn.raw_tungsten": "Необработанный вольфрам",
+ "item.endreborn.raw_tungsten": "Рудной вольфрам",
  "item.endreborn.tungsten_sword": "Вольфрамовый меч",
  "item.endreborn.tungsten_pickaxe": "Вольфрамовая кирка",
  "item.endreborn.tungsten_axe": "Вольфрамовый топор",
@@ -39,6 +39,7 @@
  "item.endreborn.tungsten_boots": "Вольфрамовые ботинки",
  "block.endreborn.tungsten_ore": "Вольфрамовая руда",
  "block.endreborn.tungsten_block": "Вольфрамовый блок",
+ "block.endreborn.raw_tungsten_block": "Блок рудного вольфрама",
 
  "item.endreborn.iron_hammer": "Железная кувалда",
  "item.endreborn.curious_relic": "Любопытная реликвия",

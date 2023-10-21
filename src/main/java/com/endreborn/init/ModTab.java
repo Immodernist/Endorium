@@ -31,7 +31,7 @@ public class ModTab {
                     output.accept(ModItems.TUNGSTEN_HOE.get());
                     output.accept(ModItems.MYSTERIOUS_RELIC.get());
                     output.accept(ModItems.CURIOUS_RELIC.get());
-                    if (isInstalled("immersiveengineering")) {
+                    if (isInstalled("immersiveengineering") || isInstalled("mekanism") || isInstalled("create")) {
                         output.accept(ModItems.TUNGSTEN_DUST.get());
                     }
                     output.accept(ModItems.TUNGSTEN_HELMET.get());
@@ -40,9 +40,10 @@ public class ModTab {
                     output.accept(ModItems.TUNGSTEN_BOOTS.get());
                     output.accept(ModItems.TUNGSTEN_RAW.get());
                     output.accept(ModBlocks.TUNGSTEN_BLOCK.get());
+                    output.accept(ModBlocks.RAW_TUNGSTEN_BLOCK.get());
 
                     output.accept(ModBlocks.END_CORAL.get());
-                    if (isInstalled("quark")) {
+                    if (isInstalled("quark") || isInstalled("supplementaries")) {
                         output.accept(ModBlocks.ENDSTONE_BUTTON.get());
                     }
                     output.accept(ModBlocks.SMOOTH_END_STONE.get());
