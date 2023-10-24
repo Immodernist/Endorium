@@ -36,7 +36,7 @@
               }
             }
           ],
-          "name": "minecraft:gold_ingot"
+          "name": "endreborn:obsidian_shard"
         },
         {
           "type": "minecraft:item",
@@ -46,7 +46,7 @@
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:golden_chestplate"
+          "name": "minecraft:iron_chestplate"
         },
         {
           "type": "minecraft:item",

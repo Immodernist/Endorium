@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "features": "endreborn:farstone_crater",
-  "biomes": "#endreborn:is_end_high",
+  "features": "endreborn:farstone",
+  "biomes": "#endreborn:is_outer_end",
   "step": "local_modifications"
 }

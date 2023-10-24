@@ -3,6 +3,7 @@ package com.endreborn.world;
 import com.endreborn.EndReborn;
 import com.endreborn.init.ModPieces;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -22,25 +23,18 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
 import java.util.Map;
+import java.util.Random;
 
 public class EndShipwreckPieces {
-    private static final ResourceLocation SHIPWRECK = new ResourceLocation(EndReborn.MODID + ":end_shipwreck");
-    private static final ResourceLocation BEACON = new ResourceLocation(EndReborn.MODID + ":end_beacon");
-    private static final Map<ResourceLocation, BlockPos> RES = ImmutableMap.of(SHIPWRECK, BlockPos.ZERO, BEACON, BlockPos.ZERO);
     public static final ResourceLocation END_SHIPWRECK_LOOT = new ResourceLocation(EndReborn.MODID, "chests/end_shipwreck");
+    private static final ResourceLocation[] STRUCTURES = new ResourceLocation[]{new ResourceLocation(EndReborn.MODID + ":end_shipwreck"), new ResourceLocation(EndReborn.MODID + ":end_beacon"), new ResourceLocation(EndReborn.MODID + ":end_shipruin")};
 
-    public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext) {
-        double chance = generationContext.random().nextDouble();
-        if (chance <= 0.7D) {
-            pieceList.addPiece(new EndShipwreckPieces.Piece(manager, SHIPWRECK, pos, rotation));
-        }
-        if (chance > 0.7D) {
-            pieceList.addPiece(new EndShipwreckPieces.Piece(manager, BEACON, pos, rotation));
-        }
+    public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext, RandomSource random) {
+        pieceList.addPiece(new EndShipwreckPieces.Piece(manager, (ResourceLocation) Util.getRandom(STRUCTURES, random), pos, rotation));
     }
     public static class Piece extends TemplateStructurePiece {
         public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
-            super(ModPieces.END_SHIPWRECK, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(RES.get(resourceLocation)));
+            super(ModPieces.END_SHIPWRECK, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
         }
 
         public Piece(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
