@@ -2,47 +2,37 @@ package com.endreborn.world;
 
 import com.endreborn.init.ModTypes;
 import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+import net.minecraft.structure.StructurePiecesCollector;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.structure.Structure;
+import net.minecraft.world.gen.structure.StructureType;
 
 import java.util.Optional;
 
 public class EndShipwreckStructure extends Structure {
-    public static final Codec<EndShipwreckStructure> CODEC = simpleCodec(EndShipwreckStructure::new);
+    public static final Codec<EndShipwreckStructure> CODEC = createCodec(EndShipwreckStructure::new);
 
-    public EndShipwreckStructure(Structure.StructureSettings structureSettings) {
-        super(structureSettings);
+    public EndShipwreckStructure(Config config) {
+        super(config);
     }
-
-    @Override
-    public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
-    }
-
-    public Optional<GenerationStub> findGenerationPoint(GenerationContext generationContext) {
-        return onTopOfChunkCenter(generationContext, Heightmap.Types.WORLD_SURFACE_WG, (builder) -> {
-            this.generatePieces(builder, generationContext);
+    public Optional<Structure.StructurePosition> getStructurePosition(Structure.Context context) {
+        return getStructurePosition(context, Heightmap.Type.WORLD_SURFACE_WG, (collector) -> {
+            this.addPieces(collector, context);
         });
     }
 
-    public void generatePieces(StructurePiecesBuilder pieceBuilder, Structure.GenerationContext generatorContext) {
-        BlockPos chunkPos = new BlockPos(generatorContext.chunkPos().getMinBlockX(), 90, generatorContext.chunkPos().getMinBlockZ());
-        int landHeight = generatorContext.chunkGenerator().getFirstOccupiedHeight(chunkPos.getX(), chunkPos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, generatorContext.heightAccessor(), generatorContext.randomState());
-        if (landHeight >= 56) {
-            BlockPos position = new BlockPos(chunkPos.getX(), landHeight - 3, chunkPos.getZ());
-            Rotation rotation = Rotation.getRandom(generatorContext.random());
-
-            EndShipwreckPieces.addPieces(generatorContext.structureTemplateManager(), position, rotation, pieceBuilder, generatorContext);
+    private void addPieces(StructurePiecesCollector collector, Structure.Context context) {
+        BlockPos chunkPos = new BlockPos(context.chunkPos().getStartX(), 90, context.chunkPos().getStartZ());
+        int landHeight = context.chunkGenerator().getHeightOnGround(chunkPos.getX(), chunkPos.getZ(), Heightmap.Type.WORLD_SURFACE_WG, context.world(), context.noiseConfig());
+        if (landHeight >= 57) {
+            BlockPos position = new BlockPos(chunkPos.getX(), landHeight, chunkPos.getZ());
+            BlockRotation rotation = BlockRotation.random(context.random());
+            EndShipwreckPieces.addParts(context.structureTemplateManager(), position, rotation, collector, context.random());
         }
     }
-
-    @Override
-    public StructureType<?> type() {
-        return ModTypes.END_SHIPWRECK.get();
+    public StructureType<?> getType() {
+        return ModTypes.END_SHIPWRECK;
     }
 }

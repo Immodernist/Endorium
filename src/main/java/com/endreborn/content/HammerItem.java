@@ -1,38 +1,36 @@
 package com.endreborn.content;
 
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-import javax.annotation.Nonnull;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.random.Random;
 
 public class HammerItem extends Item {
-    public HammerItem(Properties p_41383_) {
+    public HammerItem(Item.Settings p_41383_) {
         super(p_41383_);
     }
 
     @Override
-    public boolean hasCraftingRemainingItem(@Nonnull ItemStack stack) {
+    public boolean hasRecipeRemainder() {
         return true;
     }
 
-    @Nonnull
-    @Override
-    public ItemStack getCraftingRemainingItem(@Nonnull ItemStack stack)
-    {
+    public ItemStack getRecipeRemainder(ItemStack stack) {
         ItemStack container = stack.copy();
-        if(container.hurt(1, RandomSource.createNewThreadLocalInstance(), null))
+        if(container.damage(1, Random.create(), null))
             return ItemStack.EMPTY;
         else
             return container;
     }
-    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(1, attacker, null);
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1, attacker, (e) -> {
+            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
+        });
         return true;
     }
-    @Override
-    public boolean isEnchantable(@Nonnull ItemStack stack) {
+
+    public boolean isEnchantable(ItemStack stack) {
         return false;
     }
 }

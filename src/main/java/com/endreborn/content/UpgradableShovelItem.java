@@ -1,28 +1,24 @@
 package com.endreborn.content;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CampfireBlock;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 public class UpgradableShovelItem extends ShovelItem {
@@ -30,70 +26,67 @@ public class UpgradableShovelItem extends ShovelItem {
     private final int sharpness;
     private final int flexibility;
 
-    public UpgradableShovelItem(Tier p_43114_, float p_43115_, float p_43116_, Properties p_43117_, int sharpness, int flexibility) {
-        super(p_43114_, p_43115_, p_43116_, p_43117_);
+    public UpgradableShovelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
+        super(material, attackDamage, attackSpeed, settings);
         this.sharpness = sharpness;
         this.flexibility = flexibility;
     }
-    public Component getName(ItemStack p_41458_) {
-        return Component.translatable("item.endreborn.endorium_shovel");
+    public Text getName(ItemStack p_41458_) {
+        return Text.translatable("item.endreborn.endorium_shovel");
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.relic").withStyle(ChatFormatting.GRAY));
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.relic").formatted(Formatting.GRAY));
         if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.shovel_sharpness").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.shovel_sharpness").formatted(Formatting.DARK_GRAY));
         } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.uni_flexibility").withStyle(ChatFormatting.DARK_GRAY));
-            tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.DARK_GRAY));
         }
     }
 
-    public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, (p_41007_) -> {
-            p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1 + this.flexibility, attacker, (e) -> {
+            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
         });
         return true;
     }
-
-    @Override
-    public InteractionResult useOn(UseOnContext p_43119_) {
-        Level level = p_43119_.getLevel();
-        BlockPos blockpos = p_43119_.getClickedPos();
-        BlockState blockstate = level.getBlockState(blockpos);
-        if (p_43119_.getClickedFace() == Direction.DOWN) {
-            return InteractionResult.PASS;
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        World world = context.getWorld();
+        BlockPos blockPos = context.getBlockPos();
+        BlockState blockState = world.getBlockState(blockPos);
+        if (context.getSide() == Direction.DOWN) {
+            return ActionResult.PASS;
         } else {
-            Player player = p_43119_.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(p_43119_, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
-            BlockState blockstate2 = null;
-            if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
-                level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                blockstate2 = blockstate1;
-            } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
-                if (!level.isClientSide()) {
-                    level.levelEvent((Player) null, 1009, blockpos, 0);
+            PlayerEntity playerEntity = context.getPlayer();
+            BlockState blockState2 = (BlockState)PATH_STATES.get(blockState.getBlock());
+            BlockState blockState3 = null;
+            if (blockState2 != null && world.getBlockState(blockPos.up()).isAir()) {
+                world.playSound(playerEntity, blockPos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                blockState3 = blockState2;
+            } else if (blockState.getBlock() instanceof CampfireBlock && (Boolean)blockState.get(CampfireBlock.LIT)) {
+                if (!world.isClient()) {
+                    world.syncWorldEvent((PlayerEntity)null, 1009, blockPos, 0);
                 }
 
-                CampfireBlock.dowse(p_43119_.getPlayer(), level, blockpos, blockstate);
-                blockstate2 = blockstate.setValue(CampfireBlock.LIT, Boolean.valueOf(false));
+                CampfireBlock.extinguish(context.getPlayer(), world, blockPos, blockState);
+                blockState3 = (BlockState)blockState.with(CampfireBlock.LIT, false);
             }
 
-            if (blockstate2 != null) {
-                if (!level.isClientSide) {
-                    level.setBlock(blockpos, blockstate2, 11);
-                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
-                    if (player != null) {
-                        p_43119_.getItemInHand().hurtAndBreak(1 - this.sharpness, player, (p_43122_) -> {
-                            p_43122_.broadcastBreakEvent(p_43119_.getHand());
+            if (blockState3 != null) {
+                if (!world.isClient) {
+                    world.setBlockState(blockPos, blockState3, 11);
+                    world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, blockState3));
+                    if (playerEntity != null) {
+                        context.getStack().damage(1 - this.sharpness, playerEntity, (p) -> {
+                            p.sendToolBreakStatus(context.getHand());
                         });
                     }
                 }
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ActionResult.success(world.isClient);
             } else {
-                return InteractionResult.PASS;
+                return ActionResult.PASS;
             }
         }
     }

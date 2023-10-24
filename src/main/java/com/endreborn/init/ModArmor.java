@@ -1,42 +1,43 @@
 package com.endreborn.init;
 
-import com.endreborn.EndReborn;
-import net.minecraft.Util;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.LazyLoadedValue;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
+import com.endreborn.Endorium;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ArmorMaterials;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Lazy;
+import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.Util;
 
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
-enum ModArmor implements StringRepresentable, ArmorMaterial {
+public enum ModArmor implements StringIdentifiable, ArmorMaterial {
     TUNGSTEN("tungsten", 17, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
         p_266652_.put(ArmorItem.Type.BOOTS, 2);
         p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
         p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
         p_266652_.put(ArmorItem.Type.HELMET, 2);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.2F, () -> {
-        return Ingredient.of(ModItems.TUNGSTEN_INGOT.get());
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.2F, () -> {
+        return Ingredient.ofItems(ModItems.TUNGSTEN_INGOT);
     }),
     ENDER("ender", 21, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 2);
         p_266655_.put(ArmorItem.Type.LEGGINGS, 0);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 0);
         p_266655_.put(ArmorItem.Type.HELMET, 2);
-    }), 10, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+    }), 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return null;
     });
 
-    public static final StringRepresentable.EnumCodec<net.minecraft.world.item.ArmorMaterials> CODEC = StringRepresentable.fromEnum(net.minecraft.world.item.ArmorMaterials::values);
-    private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
-        p_266653_.put(ArmorItem.Type.BOOTS, 13);
-        p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
-        p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
-        p_266653_.put(ArmorItem.Type.HELMET, 11);
+    public static final StringIdentifiable.Codec<ArmorMaterials> CODEC = StringIdentifiable.createCodec(ArmorMaterials::values);
+    private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = (EnumMap) Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 13);
+        map.put(ArmorItem.Type.LEGGINGS, 15);
+        map.put(ArmorItem.Type.CHESTPLATE, 16);
+        map.put(ArmorItem.Type.HELMET, 11);
     });
     private final String name;
     private final int durabilityMultiplier;
@@ -45,9 +46,9 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
     private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Lazy<Ingredient> repairIngredient;
 
-    private ModArmor(String p_268171_, int p_268303_, EnumMap<ArmorItem.Type, Integer> p_267941_, int p_268086_, SoundEvent p_268145_, float p_268058_, float p_268180_, Supplier<Ingredient> p_268256_) {
+    private ModArmor(String p_268171_, int p_268303_, EnumMap<ArmorItem.Type, Integer> p_267941_, int p_268086_, SoundEvent p_268145_, float p_268058_, float p_268180_, Supplier p_268256_) {
         this.name = p_268171_;
         this.durabilityMultiplier = p_268303_;
         this.protectionFunctionForType = p_267941_;
@@ -55,18 +56,18 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
         this.sound = p_268145_;
         this.toughness = p_268058_;
         this.knockbackResistance = p_268180_;
-        this.repairIngredient = new LazyLoadedValue<>(p_268256_);
+        this.repairIngredient = new Lazy(p_268256_);
     }
 
-    public int getDurabilityForType(ArmorItem.Type p_266745_) {
-        return HEALTH_FUNCTION_FOR_TYPE.get(p_266745_) * this.durabilityMultiplier;
+    public int getDurability(ArmorItem.Type type) {
+        return (Integer)BASE_DURABILITY.get(type) * this.durabilityMultiplier;
     }
 
-    public int getDefenseForType(ArmorItem.Type p_266752_) {
-        return this.protectionFunctionForType.get(p_266752_);
+    public int getProtection(ArmorItem.Type type) {
+        return (Integer)this.protectionFunctionForType.get(type);
     }
 
-    public int getEnchantmentValue() {
+    public int getEnchantability() {
         return this.enchantmentValue;
     }
 
@@ -75,11 +76,11 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
     }
 
     public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
+        return (Ingredient)this.repairIngredient.get();
     }
 
     public String getName() {
-        return EndReborn.MODID + ":" + this.name;
+        return Endorium.MODID + ":" +  this.name;
     }
 
     public float getToughness() {
@@ -90,7 +91,7 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
         return this.knockbackResistance;
     }
 
-    public String getSerializedName() {
+    public String asString() {
         return this.name;
     }
 }

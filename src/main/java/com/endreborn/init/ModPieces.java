@@ -1,16 +1,16 @@
 package com.endreborn.init;
 
-import com.endreborn.EndReborn;
+import com.endreborn.Endorium;
 import com.endreborn.world.EndShipwreckPieces;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.structure.StructurePieceType;
+import net.minecraft.util.Identifier;
 
 public class ModPieces {
     public static StructurePieceType END_SHIPWRECK = EndShipwreckPieces.Piece::new;
 
     public static void setup() {
-        Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(EndReborn.MODID, "end_shipwreck"), END_SHIPWRECK);
+        Registry.register(Registries.STRUCTURE_PIECE, new Identifier(Endorium.MODID, "end_shipwreck"), END_SHIPWRECK);
     }
 }

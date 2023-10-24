@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "endreborn:cracked",
-  "biomes": "#endreborn:is_end_high",
-  "step": "underground_ores"
-}

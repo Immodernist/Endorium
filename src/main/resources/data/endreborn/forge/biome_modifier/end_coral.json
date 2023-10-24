@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "endreborn:end_coral",
-  "biomes": "#minecraft:is_end",
-  "step": "vegetal_decoration"
-}

@@ -1,25 +1,27 @@
 package com.endreborn.init;
 
-import com.endreborn.EndReborn;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.structure.Structure;
+import com.endreborn.Endorium;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.structure.Structure;
 
 public interface ModTags {
+
     TagKey<Structure> END_CITY_LOCATED = createStructure("purpur_eye_located");
     TagKey<Feature<?>> TUNGSTEN_ORE = createFeature("tungsten_ore");
-    TagKey<Biome> IS_END_HIGH = createBiome("is_end_high");
+    TagKey<Biome> IS_OUTER_END = createBiome("is_outer_end");
+    TagKey<Biome> IS_INNER_END = createBiome("is_inner_end");
 
-    private static TagKey<Structure> createStructure(String p_215896_) {
-        return TagKey.create(Registries.STRUCTURE, new ResourceLocation(EndReborn.MODID, p_215896_));
+    private static TagKey<Structure> createStructure(String id) {
+        return TagKey.of(RegistryKeys.STRUCTURE, new Identifier(Endorium.MODID, id));
     }
-    private static TagKey<Feature<?>> createFeature(String p_215896_) {
-        return TagKey.create(Registries.FEATURE, new ResourceLocation(EndReborn.MODID, p_215896_));
+    private static TagKey<Feature<?>> createFeature(String id) {
+        return TagKey.of(RegistryKeys.FEATURE, new Identifier(Endorium.MODID, id));
     }
-    private static TagKey<Biome> createBiome(String p_207631_) {
-        return TagKey.create(Registries.BIOME, new ResourceLocation(EndReborn.MODID, p_207631_));
+    private static TagKey<Biome> createBiome(String id) {
+        return TagKey.of(RegistryKeys.BIOME, new Identifier(Endorium.MODID, id));
     }
 }

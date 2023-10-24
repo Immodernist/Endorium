@@ -1,72 +1,50 @@
 package com.endreborn.world;
 
-import com.endreborn.EndReborn;
+import com.endreborn.Endorium;
 import com.endreborn.init.ModPieces;
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-import java.util.Map;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.structure.*;
+import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
+import net.minecraft.util.math.BlockBox;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.ServerWorldAccess;
 
 public class EndShipwreckPieces {
-    private static final ResourceLocation SHIPWRECK = new ResourceLocation(EndReborn.MODID + ":end_shipwreck");
-    private static final ResourceLocation BEACON = new ResourceLocation(EndReborn.MODID + ":end_beacon");
-    private static final Map<ResourceLocation, BlockPos> RES = ImmutableMap.of(SHIPWRECK, BlockPos.ZERO, BEACON, BlockPos.ZERO);
-    public static final ResourceLocation END_SHIPWRECK_LOOT = new ResourceLocation(EndReborn.MODID, "chests/end_shipwreck");
+    private static final Identifier[] STRUCTURES = new Identifier[]{new Identifier(Endorium.MODID + ":end_shipwreck"), new Identifier(Endorium.MODID + ":end_beacon"), new Identifier(Endorium.MODID + ":end_shipruin")};
+    public static final Identifier END_SHIPWRECK_LOOT = new Identifier(Endorium.MODID, "chests/end_shipwreck");
 
-    public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext) {
-        double chance = generationContext.random().nextDouble();
-        if (chance <= 0.7D) {
-            pieceList.addPiece(new EndShipwreckPieces.Piece(manager, SHIPWRECK, pos, rotation));
-        }
-        if (chance > 0.7D) {
-            pieceList.addPiece(new EndShipwreckPieces.Piece(manager, BEACON, pos, rotation));
-        }
+    public EndShipwreckPieces() {
     }
-    public static class Piece extends TemplateStructurePiece {
-        public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
-            super(ModPieces.END_SHIPWRECK, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(RES.get(resourceLocation)));
+    public static void addParts(StructureTemplateManager structureTemplateManager, BlockPos pos, BlockRotation rotation, StructurePiecesHolder holder, Random random) {
+        holder.addPiece(new EndShipwreckPieces.Piece(structureTemplateManager, (Identifier) Util.getRandom(STRUCTURES, random), pos, rotation));
+    }
+    public static class Piece extends SimpleStructurePiece {
+        public Piece(StructureTemplateManager manager, Identifier identifier, BlockPos pos, BlockRotation rotation) {
+            super(ModPieces.END_SHIPWRECK, 0, manager, identifier, identifier.toString(), createPlacementData(rotation, identifier), pos.add(0, -4, 0));
         }
-
-        public Piece(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
-            super(ModPieces.END_SHIPWRECK, compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
-                ResourceLocation templateLocation = new ResourceLocation(compoundNBT.getString("Template"));
-                Rotation rotation = Rotation.valueOf(compoundNBT.getString("Rot"));
-                return loadTemplate(serializationContext.structureTemplateManager(), templateLocation, rotation);
+        public Piece(StructureContext manager, NbtCompound nbt) {
+            super(ModPieces.END_SHIPWRECK, nbt, manager.structureTemplateManager(), (id) -> {
+                return createPlacementData(BlockRotation.valueOf(nbt.getString("Rot")), id);
             });
         }
-
-        private static StructurePlaceSettings loadTemplate(StructureTemplateManager manager, ResourceLocation resourceLocation, Rotation rotation) {
-            StructureTemplate template = manager.getOrCreate(resourceLocation);
-
-            BlockPos pivot = new BlockPos(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
-            return (new StructurePlaceSettings()).setRotation(rotation).setMirror(Mirror.NONE).setRotationPivot(pivot).addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
+        public void writeNbt(StructureContext context, NbtCompound nbt) {
+            super.writeNbt(context, nbt);
+            nbt.putString("Rot", this.placementData.getRotation().name());
         }
-        protected void addAdditionalSaveData(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
-            super.addAdditionalSaveData(serializationContext, compoundNBT);
-            compoundNBT.putString("Rot", this.placeSettings.getRotation().name());
+        private static StructurePlacementData createPlacementData(BlockRotation rotation, Identifier identifier) {
+            return (new StructurePlacementData()).setRotation(rotation).setMirror(BlockMirror.NONE).setPosition(BlockPos.ORIGIN).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
         }
-
-        protected void handleDataMarker(String function, BlockPos pos, ServerLevelAccessor worldIn, RandomSource rand, BoundingBox sbb) {
+        protected void handleMetadata(String function, BlockPos pos, ServerWorldAccess world, Random random, BlockBox sbb) {
             if (function.startsWith("Chest")) {
-                BlockPos blockpos = pos.below();
-                if (sbb.isInside(blockpos)) {
-                    RandomizableContainerBlockEntity.setLootTable(worldIn, rand, blockpos, EndShipwreckPieces.END_SHIPWRECK_LOOT);
+                BlockPos blockpos = pos.down();
+                if (sbb.contains(blockpos)) {
+                    LootableContainerBlockEntity.setLootTable(world, random, blockpos, END_SHIPWRECK_LOOT);
                 }
             }
         }

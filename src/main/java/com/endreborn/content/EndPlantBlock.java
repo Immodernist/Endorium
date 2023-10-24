@@ -1,30 +1,25 @@
 package com.endreborn.content;
 
 import com.endreborn.init.ModBlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.block.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 
-public class EndPlantBlock extends BushBlock implements net.minecraftforge.common.IForgeShearable{
+public class EndPlantBlock extends PlantBlock {
 
-    protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 15.0D, 5.0D, 15.0D);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 15.0D, 5.0D, 15.0D);
 
-    public EndPlantBlock(Properties p_51021_) {
+    public EndPlantBlock(AbstractBlock.Settings p_51021_) {
         super(p_51021_);
     }
 
-    public VoxelShape getShape(BlockState p_52419_, BlockGetter p_52420_, BlockPos p_52421_, CollisionContext p_52422_) {
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
-    protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
+    protected boolean canPlantOnTop(BlockState state, BlockView world, BlockPos pos) {
         Block block = state.getBlock();
-        return block == Blocks.END_STONE || block == Blocks.END_STONE_BRICKS || block == ModBlocks.CRACKED_END_BRICKS.get() || block == ModBlocks.CHISELED_END_BRICKS.get() || block == ModBlocks.SMOOTH_END_STONE.get() || block == ModBlocks.END_STONE_PILLAR.get();
-
+        return block == Blocks.END_STONE || block == Blocks.END_STONE_BRICKS || block == ModBlocks.CRACKED_END_BRICKS || block == ModBlocks.CHISELED_END_BRICKS || block == ModBlocks.SMOOTH_END_STONE || block == ModBlocks.END_STONE_PILLAR;
     }
 }

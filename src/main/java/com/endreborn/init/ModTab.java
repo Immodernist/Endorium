@@ -1,91 +1,86 @@
 package com.endreborn.init;
 
-import com.endreborn.EndReborn;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.fml.ModList;
+import com.endreborn.Endorium;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 public class ModTab {
-    public static void setup()
-    {
-        EndReborn.CREATIVE_TAB_REGISTER.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModBlocks.ENDORIUM_BLOCK.get().asItem().getDefaultInstance())
-                .title(Component.translatable("itemGroup.endgroup"))
-                .displayItems((parameters, output) -> {
-                    output.accept(ModItems.ENDORIUM_NUGGET.get());
-                    output.accept(ModItems.ENDORIUM_INGOT.get());
-                    output.accept(ModItems.ENDORIUM_SWORD.get());
-                    output.accept(ModItems.ENDORIUM_AXE.get());
-                    output.accept(ModItems.ENDORIUM_PICKAXE.get());
-                    output.accept(ModItems.ENDORIUM_SHOVEL.get());
-                    output.accept(ModItems.ENDORIUM_HOE.get());
-                    output.accept(ModBlocks.ENDORIUM_BLOCK.get());
+    private static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(Endorium.MODID, "item_group"));
 
-                    output.accept(ModItems.TUNGSTEN_NUGGET.get());
-                    output.accept(ModItems.TUNGSTEN_INGOT.get());
-                    output.accept(ModItems.TUNGSTEN_HAMMER.get());
-                    output.accept(ModItems.TUNGSTEN_SWORD.get());
-                    output.accept(ModItems.TUNGSTEN_AXE.get());
-                    output.accept(ModItems.TUNGSTEN_PICKAXE.get());
-                    output.accept(ModItems.TUNGSTEN_SHOVEL.get());
-                    output.accept(ModItems.TUNGSTEN_HOE.get());
-                    output.accept(ModItems.MYSTERIOUS_RELIC.get());
-                    output.accept(ModItems.CURIOUS_RELIC.get());
-                    if (isInstalled("immersiveengineering") || isInstalled("mekanism") || isInstalled("create")) {
-                        output.accept(ModItems.TUNGSTEN_DUST.get());
-                    }
-                    output.accept(ModItems.TUNGSTEN_HELMET.get());
-                    output.accept(ModItems.TUNGSTEN_CHESTPLATE.get());
-                    output.accept(ModItems.TUNGSTEN_LEGGINGS.get());
-                    output.accept(ModItems.TUNGSTEN_BOOTS.get());
-                    output.accept(ModItems.TUNGSTEN_RAW.get());
-                    output.accept(ModBlocks.TUNGSTEN_BLOCK.get());
-                    output.accept(ModBlocks.RAW_TUNGSTEN_BLOCK.get());
+    public static void setup() {
+        Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
+                .displayName(Text.translatable("itemGroup.endgroup"))
+                .icon(() -> new ItemStack(ModBlocks.ENDORIUM_BLOCK))
+                .entries((displayContext, entries) -> {
+                    entries.add(ModItems.ENDORIUM_NUGGET);
+                    entries.add(ModItems.ENDORIUM_INGOT);
+                    entries.add(ModItems.ENDORIUM_SWORD);
+                    entries.add(ModItems.ENDORIUM_AXE);
+                    entries.add(ModItems.ENDORIUM_PICKAXE);
+                    entries.add(ModItems.ENDORIUM_SHOVEL);
+                    entries.add(ModItems.ENDORIUM_HOE);
+                    entries.add(ModBlocks.ENDORIUM_BLOCK);
 
-                    output.accept(ModBlocks.END_CORAL.get());
-                    if (isInstalled("quark") || isInstalled("supplementaries")) {
-                        output.accept(ModBlocks.ENDSTONE_BUTTON.get());
-                    }
-                    output.accept(ModBlocks.SMOOTH_END_STONE.get());
-                    output.accept(ModBlocks.CRACKED_END_BRICKS.get());
-                    output.accept(ModBlocks.CHISELED_END_BRICKS.get());
-                    output.accept(ModBlocks.END_STONE_PILLAR.get());
-                    output.accept(ModBlocks.TUNGSTEN_ORE.get());
+                    entries.add(ModItems.TUNGSTEN_NUGGET);
+                    entries.add(ModItems.TUNGSTEN_INGOT);
+                    entries.add(ModItems.TUNGSTEN_HAMMER);
+                    entries.add(ModItems.TUNGSTEN_SWORD);
+                    entries.add(ModItems.TUNGSTEN_AXE);
+                    entries.add(ModItems.TUNGSTEN_PICKAXE);
+                    entries.add(ModItems.TUNGSTEN_SHOVEL);
+                    entries.add(ModItems.TUNGSTEN_HOE);
+                    entries.add(ModItems.MYSTERIOUS_RELIC);
+                    entries.add(ModItems.CURIOUS_RELIC);
+                    entries.add(ModItems.TUNGSTEN_DUST);
+                    entries.add(ModItems.TUNGSTEN_HELMET);
+                    entries.add(ModItems.TUNGSTEN_CHESTPLATE);
+                    entries.add(ModItems.TUNGSTEN_LEGGINGS);
+                    entries.add(ModItems.TUNGSTEN_BOOTS);
+                    entries.add(ModItems.TUNGSTEN_RAW);
+                    entries.add(ModBlocks.TUNGSTEN_BLOCK);
+                    entries.add(ModBlocks.RAW_TUNGSTEN_BLOCK);
 
-                    output.accept(ModItems.PURPUR_EYE.get());
-                    output.accept(ModBlocks.PURPUR_LANTERN.get());
-                    output.accept(ModBlocks.PURPUR_CHAIN.get());
-                    output.accept(ModBlocks.PURPUR_WALL.get());
-                    output.accept(ModBlocks.CRACKED_PURPUR.get());
+                    entries.add(ModBlocks.END_CORAL);
+                    entries.add(ModBlocks.SMOOTH_END_STONE);
+                    entries.add(ModBlocks.CRACKED_END_BRICKS);
+                    entries.add(ModBlocks.CHISELED_END_BRICKS);
+                    entries.add(ModBlocks.END_STONE_PILLAR);
+                    entries.add(ModBlocks.TUNGSTEN_ORE);
 
-                    output.accept(ModItems.OGANA_FRUIT.get());
-                    output.accept(ModBlocks.OGANA_WEED.get());
-                    output.accept(ModBlocks.END_MOSS.get());
-                    output.accept(ModBlocks.END_MOSS_BLOCK.get());
+                    entries.add(ModItems.PURPUR_EYE);
+                    entries.add(ModBlocks.PURPUR_LANTERN);
+                    entries.add(ModBlocks.PURPUR_CHAIN);
+                    entries.add(ModBlocks.PURPUR_WALL);
+                    entries.add(ModBlocks.CRACKED_PURPUR);
 
-                    output.accept(ModItems.ENDER_BOOTS.get());
-                    output.accept(ModItems.OBSIDIAN_SHARD.get());
-                    output.accept(ModItems.TRANSMITTER.get());
-                    output.accept(ModBlocks.OBSIDIAN_GLASS.get());
-                    output.accept(ModBlocks.OBSIDIAN_GLASS_PANE.get());
-                    if (isInstalled("quark") || isInstalled("supplementaries")) {
-                        output.accept(ModBlocks.FRAMED_OBSIDIAN_GLASS_PANE.get());
-                        output.accept(ModBlocks.FRAMED_OBSIDIAN_GLASS.get());
-                    }
+                    entries.add(ModItems.OGANA_FRUIT);
+                    entries.add(ModBlocks.OGANA_WEED);
+                    entries.add(ModBlocks.END_MOSS);
+                    entries.add(ModBlocks.END_MOSS_BLOCK);
 
-                    output.accept(ModBlocks.FARSTONE.get());
-                    output.accept(ModBlocks.FARSTONE_DECORATIVE.get());
-                    output.accept(ModBlocks.FARSTONE_PILLAR.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_STAIRS.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_SLAB.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_WALL.get());
+                    entries.add(ModItems.ENDER_BOOTS);
+                    entries.add(ModItems.OBSIDIAN_SHARD);
+                    entries.add(ModItems.TRANSMITTER);
+                    entries.add(ModBlocks.OBSIDIAN_GLASS);
+                    entries.add(ModBlocks.OBSIDIAN_GLASS_PANE);
 
-                    output.accept(ModItems.IRON_HAMMER.get());
+                    entries.add(ModBlocks.FARSTONE);
+                    entries.add(ModBlocks.FARSTONE_DECORATIVE);
+                    entries.add(ModBlocks.FARSTONE_PILLAR);
+                    entries.add(ModBlocks.FARSTONE_BRICKS);
+                    entries.add(ModBlocks.FARSTONE_BRICKS_STAIRS);
+                    entries.add(ModBlocks.FARSTONE_BRICKS_SLAB);
+                    entries.add(ModBlocks.FARSTONE_BRICKS_WALL);
 
-                }).build());
-    }
-    public static boolean isInstalled(String str) {
-        return ModList.get() != null && ModList.get().getModContainerById(str).isPresent();
+                    entries.add(ModItems.IRON_HAMMER);
+                })
+                .build());
     }
 }

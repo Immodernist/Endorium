@@ -1,37 +1,37 @@
 package com.endreborn.content;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.inventory.PlayerEnderChestContainer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EnderChestInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
 
 public class TransmitterItem extends Item {
-    private static final Component CONTAINER_TITLE = Component.translatable("container.ender_transmitter");
+    private static final Text CONTAINER_TITLE = Text.translatable("container.ender_transmitter");
 
-    public TransmitterItem(Properties p_41383_) {
+    public TransmitterItem(Item.Settings p_41383_) {
         super(p_41383_);
     }
 
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        PlayerEnderChestContainer enderchestinventory = playerIn.getEnderChestInventory();
-        ItemStack itemstack = playerIn.getItemInHand(handIn);
-        if (worldIn.isClientSide) {
-            return InteractionResultHolder.success(itemstack);
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        EnderChestInventory enderChestInventory = player.getEnderChestInventory();
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (world.isClient) {
+            return TypedActionResult.success(itemStack);
         } else {
-            playerIn.openMenu(new SimpleMenuProvider((p_53124_, p_53125_, p_53126_) -> {
-                return ChestMenu.threeRows(p_53124_, p_53125_, enderchestinventory);
+            player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, inventory, playerx) -> {
+                return GenericContainerScreenHandler.createGeneric9x3(syncId, inventory, enderChestInventory);
             }, CONTAINER_TITLE));
-            playerIn.awardStat(Stats.OPEN_ENDERCHEST);
-            itemstack.hurt(1, RandomSource.createNewThreadLocalInstance(), null);
-            return InteractionResultHolder.success(itemstack);
+            player.incrementStat(Stats.OPEN_ENDERCHEST);
+            itemStack.damage(1, Random.create(), null);
+            return TypedActionResult.success(itemStack);
         }
     }
 }

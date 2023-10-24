@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "endreborn:tungsten_ore",
-  "biomes": "#minecraft:is_end",
-  "step": "underground_ores"
-}

@@ -1,38 +1,33 @@
 package com.endreborn.content;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.block.BlockState;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class UpgradableHoeItem extends HoeItem {
 
     private final int sharpness;
     private final int flexibility;
 
-    public UpgradableHoeItem(Tier p_41336_, int p_41337_, float p_41338_, Properties p_41339_, int sharpness, int flexibility) {
-        super(p_41336_, p_41337_, p_41338_, p_41339_);
+    public UpgradableHoeItem(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
+        super(material, attackDamage, attackSpeed, settings);
         this.sharpness = sharpness;
         this.flexibility = flexibility;
     }
-    public Component getName(ItemStack p_41458_) {
-        return Component.translatable("item.endreborn.endorium_hoe");
+    public Text getName(ItemStack p_41458_) {
+        return Text.translatable("item.endreborn.endorium_hoe");
     }
 
     public float getSharpness() {
@@ -42,25 +37,23 @@ public class UpgradableHoeItem extends HoeItem {
         return this.flexibility;
     }
 
-    @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
-        return state.is(BlockTags.MINEABLE_WITH_HOE) ? this.speed : 1.0F + this.sharpness;
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        return state.isIn(BlockTags.HOE_MINEABLE) ? this.miningSpeed : 1.0F + this.sharpness;
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.relic").withStyle(ChatFormatting.GRAY));
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.relic").formatted(Formatting.GRAY));
         if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.hoe_sharpness").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.hoe_sharpness").formatted(Formatting.DARK_GRAY));
         } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.uni_flexibility").withStyle(ChatFormatting.DARK_GRAY));
-            tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.DARK_GRAY));
         }
     }
 
-    public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, (p_41007_) -> {
-            p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(2 + this.flexibility, attacker, (e) -> {
+            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
         });
         return true;
     }
