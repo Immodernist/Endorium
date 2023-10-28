@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "forbidden_arcanus"
+    }
+  ],
   "type": "forbidden_arcanus:combine_residues",
   "residue_amount": 9,
   "residue_name": "tungsten",

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
+    " # ",
     "#@#",
-    "###"
+    " # "
   ],
   "key": {
     "@": {
-      "item": "minecraft:ender_eye"
+      "item": "endreborn:endorium_nugget"
     },
     "#": {
-      "item": "endreborn:obsidian_shard"
+      "item": "minecraft:obsidian"
     }
   },
   "result": {

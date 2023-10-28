@@ -17,7 +17,7 @@ public class ModTab {
                     output.accept(ModItems.ENDORIUM_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_RAW.get());
-                    if (isInstalled("immersiveengineering") || isInstalled("mekanism") || isInstalled("create")) {
+                    if (isInstalled("immersiveengineering") || isInstalled("mekanism")) {
                         output.accept(ModItems.TUNGSTEN_DUST.get());
                     }
                     output.accept(ModItems.IRON_HAMMER.get());

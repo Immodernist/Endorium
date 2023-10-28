@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "forbidden_arcanus"
+    }
+  ],
   "type": "forbidden_arcanus:clibano_combustion",
   "cooking_time": 100,
   "experience": 0.35,
