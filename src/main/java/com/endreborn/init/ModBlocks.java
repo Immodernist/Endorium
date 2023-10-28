@@ -2,19 +2,21 @@ package com.endreborn.init;
 
 import com.endreborn.Endorium;
 import com.endreborn.content.EndPlantBlock;
+import com.endreborn.content.IncandescentLampBlock;
 import com.endreborn.content.MossPlantBlock;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+
+import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final Block SMOOTH_END_STONE  = new Block(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
@@ -23,9 +25,7 @@ public class ModBlocks {
     public static final Block END_STONE_PILLAR  = new PillarBlock(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
     public static final Block END_CORAL  = new EndPlantBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.STEM).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).replaceable());
 
-    public static final Block PURPUR_LANTERN  = new LanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance((p_152677_) -> {return 12;}));
     public static final Block CRACKED_PURPUR  = new Block(FabricBlockSettings.copy(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_CHAIN  = new ChainBlock(FabricBlockSettings.copy(Blocks.CHAIN));
     public static final Block PURPUR_WALL  = new WallBlock(FabricBlockSettings.copy(Blocks.PURPUR_BLOCK));
 
     public static final Block END_MOSS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
@@ -39,10 +39,11 @@ public class ModBlocks {
     public static final Block ENDORIUM_BLOCK  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.IRON_GRAY).requiresTool().strength(6.0F, 7.0F));
     public static final Block TUNGSTEN_BLOCK  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.5F, 6.0F));
     public static final Block RAW_TUNGSTEN_BLOCK  = new Block(FabricBlockSettings.copy(TUNGSTEN_BLOCK));
-
+    public static final Block INCANDESCENT_LAMP  = new IncandescentLampBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(litBlockEmission(12)));
     public static final Block FARSTONE  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.STONE_GRAY).requiresTool().strength(2.55F, 9.0F));
     public static final Block FARSTONE_DECORATIVE  = new Block(FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_BRICKS  = new Block(FabricBlockSettings.copy(FARSTONE));
+    public static final Block FARSTONE_BRICKS_CHISELED  = new Block(FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_BRICKS_STAIRS  = new StairsBlock(FARSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_BRICKS_SLAB  = new SlabBlock(FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_BRICKS_WALL  = new WallBlock(FabricBlockSettings.copy(FARSTONE));
@@ -61,12 +62,8 @@ public class ModBlocks {
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_coral"), END_CORAL);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_coral"), new BlockItem(END_CORAL, new FabricItemSettings()));
 
-        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "purpur_lantern"), PURPUR_LANTERN);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "purpur_lantern"), new BlockItem(PURPUR_LANTERN, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "cracked_purpur"), CRACKED_PURPUR);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "cracked_purpur"), new BlockItem(CRACKED_PURPUR, new FabricItemSettings()));
-        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "purpur_chain"), PURPUR_CHAIN);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "purpur_chain"), new BlockItem(PURPUR_CHAIN, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "purpur_wall"), PURPUR_WALL);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "purpur_wall"), new BlockItem(PURPUR_WALL, new FabricItemSettings()));
 
@@ -90,6 +87,8 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "tungsten_block"), new BlockItem(TUNGSTEN_BLOCK, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "raw_tungsten_block"), RAW_TUNGSTEN_BLOCK);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "raw_tungsten_block"), new BlockItem(RAW_TUNGSTEN_BLOCK, new FabricItemSettings()));
+        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "incandescent_lamp"), INCANDESCENT_LAMP);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "incandescent_lamp"), new BlockItem(INCANDESCENT_LAMP, new FabricItemSettings()));
 
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "farstone"), FARSTONE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone"), new BlockItem(FARSTONE, new FabricItemSettings()));
@@ -97,6 +96,8 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone_smooth"), new BlockItem(FARSTONE_DECORATIVE, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "farstone_bricks"), FARSTONE_BRICKS);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone_bricks"), new BlockItem(FARSTONE_BRICKS, new FabricItemSettings()));
+        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "chiseled_farstone"), FARSTONE_BRICKS_CHISELED);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "chiseled_farstone"), new BlockItem(FARSTONE_BRICKS_CHISELED, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "farstone_brick_stairs"), FARSTONE_BRICKS_STAIRS);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone_brick_stairs"), new BlockItem(FARSTONE_BRICKS_STAIRS, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "farstone_brick_slab"), FARSTONE_BRICKS_SLAB);
@@ -105,8 +106,10 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone_brick_wall"), new BlockItem(FARSTONE_BRICKS_WALL, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "farstone_pillar"), FARSTONE_PILLAR);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "farstone_pillar"), new BlockItem(FARSTONE_PILLAR, new FabricItemSettings()));
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                END_CORAL, OGANA_WEED, PURPUR_CHAIN, PURPUR_LANTERN, OBSIDIAN_GLASS, OBSIDIAN_GLASS_PANE);
      }
+    public static ToIntFunction<BlockState> litBlockEmission(int litLevel) {
+        return (state) -> {
+            return (Boolean)state.get(Properties.LIT) ? litLevel : 0;
+        };
+    }
 }

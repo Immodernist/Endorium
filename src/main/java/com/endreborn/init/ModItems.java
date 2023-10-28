@@ -47,10 +47,10 @@ public class ModItems {
     public static final Item TUNGSTEN_BOOTS = new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
     public static final Item ENDER_BOOTS = new EnderBootsItem(ModArmor.ENDER, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final Item OBSIDIAN_SHARD = new Item(new FabricItemSettings());
     public static final Item TRANSMITTER = new TransmitterItem(new FabricItemSettings().maxDamage(32));
     public static final Item PURPUR_EYE = new PurpurEyeItem(new FabricItemSettings());
     public static final Item OGANA_FRUIT = new Item(new FabricItemSettings().food(FoodComponents.SWEET_BERRIES));
+    public static final Item OGANA_TORTE = new Item(new FabricItemSettings().food(FoodComponents.PUMPKIN_PIE));
     public static final Item IRON_HAMMER = new HammerItem(new FabricItemSettings().maxDamage(32));
     public static void setup() {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "endorium_nugget"), ENDORIUM_NUGGET);
@@ -91,10 +91,10 @@ public class ModItems {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "tungsten_boots"), TUNGSTEN_BOOTS);
 
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ender_boots"), ENDER_BOOTS);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "obsidian_shard"), OBSIDIAN_SHARD);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ender_transmitter"), TRANSMITTER);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "purpur_eye"), PURPUR_EYE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana"), OGANA_FRUIT);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana_torte"), OGANA_TORTE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "iron_hammer"), IRON_HAMMER);
     }
 

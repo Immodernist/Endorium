@@ -2,10 +2,7 @@
   "type": "minecraft:crafting_shapeless",
    "ingredients": [
     {
-      "item": "minecraft:obsidian"
-    },
-    {
-      "item": "minecraft:obsidian"
+      "item": "endreborn:endorium_ingot"
     },
     {
       "tag": "endreborn:inventory_hammers",
@@ -13,7 +10,7 @@
     }
   ],
   "result": {
-    "item": "endreborn:obsidian_shard",
-    "count": 2
+    "item": "endreborn:endorium_nugget",
+    "count": 9
   }
 }

@@ -15,5 +15,6 @@ public class Endorium implements ModInitializer {
 		ModPieces.setup();
 		ModTypes.setup();
 		ModPlaces.setup();
+
 	}
 }

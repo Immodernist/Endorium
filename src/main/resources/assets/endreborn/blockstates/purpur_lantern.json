@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "hanging=true": { "model": "endreborn:block/hanging_purpur_lantern"},
-        "hanging=false": { "model": "endreborn:block/purpur_lantern"}
-  }
-}

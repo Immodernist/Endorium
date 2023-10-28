@@ -40,11 +40,11 @@
  "block.endreborn.tungsten_ore": "Mena de Tungsten",
  "block.endreborn.tungsten_block": "Bloque de Tungsten",
  "block.endreborn.raw_tungsten_block": "Block of Raw Tungsten",
+ "block.endreborn.incandescent_lamp": "Incandescent Lamp",
 
  "item.endreborn.iron_hammer": "Mazo de hierro",
  "item.endreborn.curious_relic": "Curious Relic",
  "item.endreborn.mysterious_relic": "Mysterious Relic",
- "item.endreborn.obsidian_shard": "Fragmentos de obsidiana",
  "block.endreborn.obsidian_glass": "Cristal Decorativo de Obsidiana",
  "block.endreborn.obsidian_glass_pane": "Panel de Cristal Decorativo de Obsidiana",
  "block.endreborn.framed_obsidian_glass": "Panel con marco de obsidiana",
@@ -55,6 +55,7 @@
 
  "item.endreborn.ogana": "Planta de Ogana",
  "block.endreborn.ogana_weed": "Planta de Ogana",
+ "item.endreborn.ogana_torte": "Ogana Torte",
  "block.endreborn.end_moss": "Piedra del End Musgosa",
  "block.endreborn.end_moss_block": "Musgo del End",
 
@@ -67,19 +68,18 @@
 
  "item.endreborn.purpur_eye": "Navegador Púrpura",
  "block.endreborn.cracked_purpur": "Bloque agrietado de púrpur",
- "block.endreborn.purpur_lantern": "Farolillo de púrpur",
  "block.endreborn.purpur_wall": "Muro de Púrpur",
- "block.endreborn.purpur_chain": "Cadenas de Púrpur",
 
  "block.endreborn.farstone": "Farstone",
  "block.endreborn.farstone_smooth": "Polished Farstone",
  "block.endreborn.farstone_bricks": "Farstone Bricks",
+ "block.endreborn.chiseled_farstone": "Chiseled Polished Farstone",
  "block.endreborn.farstone_pillar": "Farstone Pillar",
  "block.endreborn.farstone_brick_stairs": "Farstone Brick Stairs",
  "block.endreborn.farstone_brick_slab": "Farstone Brick Slab",
  "block.endreborn.farstone_brick_wall": "Farstone Brick Wall",
- 
- "advancements.endreborn.root.title": "Another end... erium?",
+
+ "advancements.endreborn.root.title": "Endorium",
  "advancements.endreborn.root.description": "Obtener: Pepita de endorium",
  "advancements.endreborn.endorium_block.title": "Millonarios",
  "advancements.endreborn.endorium_block.description": "Obtener: Bloque de Endorium",

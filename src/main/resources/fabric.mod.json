@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "endorium",
-	"version": "1.0.2",
+	"version": "1.0.4",
 	"name": "Endorium",
 	"description": "It's just a mod.",
 	"authors": ["Me"],
@@ -12,6 +12,9 @@
 	"entrypoints": {
 		"main": [
 			"com.endreborn.Endorium"
+		],
+		"client": [
+			"com.endreborn.EndoriumClient"
 		]
 	},
 	"mixins": [

@@ -40,11 +40,11 @@
  "block.endreborn.tungsten_ore": "Ruda tungstenu",
  "block.endreborn.tungsten_block": "Blok tungstenu",
  "block.endreborn.raw_tungsten_block": "Block of Raw Tungsten",
+ "block.endreborn.incandescent_lamp": "Incandescent Lamp",
 
  "item.endreborn.iron_hammer": "Żelazny młot kowalski",
  "item.endreborn.curious_relic": "Curious Relic",
  "item.endreborn.mysterious_relic": "Mysterious Relic",
- "item.endreborn.obsidian_shard": "Odłamki obsydianu",
  "block.endreborn.obsidian_glass": "Obsydianowe szkło dekoracyjne",
  "block.endreborn.obsidian_glass_pane": "Obsidian Decorated Glass Pane",
  "block.endreborn.framed_obsidian_glass_pane": "Obsidian Framed Glass Pane",
@@ -55,6 +55,7 @@
 
  "item.endreborn.ogana": "Roślina ogana",
  "block.endreborn.ogana_weed": "Roślina ogana",
+ "item.endreborn.ogana_torte": "Ogana Torte",
  "block.endreborn.end_moss": "Zamszony kamień Endu",
  "block.endreborn.end_moss_block": "Mech Endu",
 
@@ -67,19 +68,18 @@
 
  "item.endreborn.purpur_eye": "Purpurowy nawigator",
  "block.endreborn.cracked_purpur": "Popękany blok purpuru",
- "block.endreborn.purpur_lantern": "Purpurowa latarenka",
  "block.endreborn.purpur_wall": "Purpurowy murek",
- "block.endreborn.purpur_chain": "Purpurowy łańcuch",
 
  "block.endreborn.farstone": "Farstone",
  "block.endreborn.farstone_smooth": "Polished Farstone",
  "block.endreborn.farstone_bricks": "Farstone Bricks",
-  "block.endreborn.farstone_pillar": "Farstone Pillar",
+ "block.endreborn.chiseled_farstone": "Chiseled Polished Farstone",
+ "block.endreborn.farstone_pillar": "Farstone Pillar",
  "block.endreborn.farstone_brick_stairs": "Farstone Brick Stairs",
  "block.endreborn.farstone_brick_slab": "Farstone Brick Slab",
  "block.endreborn.farstone_brick_wall": "Farstone Brick Wall",
- 
- "advancements.endreborn.root.title": "Another end... erium?",
+
+ "advancements.endreborn.root.title": "Endorium",
  "advancements.endreborn.root.description": "Zdobądź: Bryłka endorytu",
  "advancements.endreborn.endorium_block.title": "Zysk",
  "advancements.endreborn.endorium_block.description": "Zdobądź: Blok endorytu",

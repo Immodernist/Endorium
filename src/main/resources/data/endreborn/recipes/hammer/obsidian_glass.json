@@ -5,10 +5,11 @@
       "item": "minecraft:glass"
     },
     {
-      "item": "endreborn:obsidian_shard"
+      "item": "minecraft:obsidian"
     },
     {
-      "item": "endreborn:obsidian_shard"
+      "tag": "endreborn:inventory_hammers",
+      "data": 32767
     }
   ],
   "result":
