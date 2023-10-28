@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "endreborn:tungsten_ore",
+    "endreborn:raw_tungsten_block",
+    "endreborn:tungsten_block"
+  ]
+}

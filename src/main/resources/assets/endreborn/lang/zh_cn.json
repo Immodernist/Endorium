@@ -40,11 +40,11 @@
  "block.endreborn.tungsten_ore": "钨矿",
  "block.endreborn.tungsten_block": "钨块",
  "block.endreborn.raw_tungsten_block": "Block of Raw Tungsten",
+ "block.endreborn.incandescent_lamp": "Incandescent Lamp",
 
  "item.endreborn.iron_hammer": "铁制大锤",
  "item.endreborn.curious_relic": "Curious Relic",
  "item.endreborn.mysterious_relic": "Mysterious Relic",
- "item.endreborn.obsidian_shard": "黑曜石碎片",
  "block.endreborn.obsidian_glass": "黑曜石装饰的玻璃",
  "block.endreborn.obsidian_glass_pane": "Obsidian Decorated Glass Pane",
  "block.endreborn.framed_obsidian_glass": "黑曜石框玻璃",
@@ -55,6 +55,7 @@
 
  "item.endreborn.ogana": "奥加纳果",
  "block.endreborn.ogana_weed": "奥加纳草",
+ "item.endreborn.ogana_torte": "Ogana Torte",
  "block.endreborn.end_moss": "苔藓末地石",
  "block.endreborn.end_moss_block": "末地苔藓",
 
@@ -67,19 +68,18 @@
 
  "item.endreborn.purpur_eye": "紫珀导航珠",
  "block.endreborn.cracked_purpur": "裂纹紫珀块",
- "block.endreborn.purpur_lantern": "紫珀灯笼",
  "block.endreborn.purpur_wall": "紫珀墙",
- "block.endreborn.purpur_chain": "紫珀锁链",
 
  "block.endreborn.farstone": "Farstone",
  "block.endreborn.farstone_smooth": "Polished Farstone",
  "block.endreborn.farstone_bricks": "Farstone Bricks",
+ "block.endreborn.chiseled_farstone": "Chiseled Polished Farstone",
  "block.endreborn.farstone_pillar": "Farstone Pillar",
  "block.endreborn.farstone_brick_stairs": "Farstone Brick Stairs",
  "block.endreborn.farstone_brick_slab": "Farstone Brick Slab",
  "block.endreborn.farstone_brick_wall": "Farstone Brick Wall",
- 
- "advancements.endreborn.root.title": "Another end... erium?",
+
+ "advancements.endreborn.root.title": "Endorium",
  "advancements.endreborn.root.description": "Collect: Endorium Nugget",
  "advancements.endreborn.endorium_block.title": "赚大发了",
  "advancements.endreborn.endorium_block.description": "获得末地合金块",

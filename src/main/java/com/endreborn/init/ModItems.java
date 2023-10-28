@@ -47,6 +47,7 @@ public class ModItems {
     public static RegistryObject<Item> TRANSMITTER;
     public static RegistryObject<Item> PURPUR_EYE;
     public static RegistryObject<Item> OGANA_FRUIT;
+    public static RegistryObject<Item> OGANA_TORTE;
     public static RegistryObject<Item> IRON_HAMMER;
 
     public static void setup() {
@@ -88,10 +89,10 @@ public class ModItems {
         TUNGSTEN_BOOTS = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.BOOTS, (new Item.Properties())), "tungsten_boots");
 
         ENDER_BOOTS = registerItem(() -> new EnderBootsItem(ModArmor.ENDER, ArmorItem.Type.BOOTS, (new Item.Properties())), "ender_boots");
-        OBSIDIAN_SHARD = registerItem(() -> new Item(new Item.Properties()), "obsidian_shard");
         TRANSMITTER = registerItem(() -> new TransmitterItem(new Item.Properties().defaultDurability(32)), "ender_transmitter");
         PURPUR_EYE = registerItem(() -> new PurpurEyeItem(new Item.Properties()), "purpur_eye");
         OGANA_FRUIT = registerItem(() -> new Item(new Item.Properties().food(Foods.SWEET_BERRIES)), "ogana");
+        OGANA_TORTE = registerItem(() -> new Item(new Item.Properties().food(Foods.PUMPKIN_PIE)), "ogana_torte");
         IRON_HAMMER = registerItem(() -> new HammerItem(new Item.Properties().defaultDurability(32)), "iron_hammer");
     }
 

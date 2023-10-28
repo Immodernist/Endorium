@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "endreborn:obsidian_glass",
-    "endreborn:obsidian_glass_pane"
-  ],
-  "optional": [
-    "endreborn:framed_obsidian_glass",
-    "endreborn:framed_obsidian_glass_pane"
+    "endreborn:framed_obsidian_glass"
   ]
 }

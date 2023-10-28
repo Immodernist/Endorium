@@ -10,11 +10,10 @@
  "tooltip.sword_flexibility_n": "-100% Прочность против существ",
  "tooltip.axe_sharpness": "-100% Прочность при сдирании",
  "tooltip.pickaxe_sharpness": " Эффективность к песку и гравию",
- "tooltip.paxel_sharpness": "-100% Прочность при сдирании",
  "tooltip.hoe_sharpness": "+100% Эффективность к траве и листве",
  "tooltip.shovel_sharpness": "-100% Прочность при укладке",
 
- "item.endreborn.endorium_nugget": "Эндориумовый самородок",
+ "item.endreborn.endorium_nugget": "Эндориумовая пластина",
  "item.endreborn.endorium_ingot": "Эндориумовый слиток",
  "item.endreborn.endorium_sword": "Эндориумовый меч",
  "item.endreborn.endorium_pickaxe": "Эндориумовая кирка",
@@ -40,11 +39,11 @@
  "block.endreborn.tungsten_ore": "Вольфрамовая руда",
  "block.endreborn.tungsten_block": "Вольфрамовый блок",
  "block.endreborn.raw_tungsten_block": "Блок рудного вольфрама",
+ "block.endreborn.incandescent_lamp": "Лампа накаливания",
 
  "item.endreborn.iron_hammer": "Железная кувалда",
  "item.endreborn.curious_relic": "Любопытная реликвия",
  "item.endreborn.mysterious_relic": "Мистическая реликвия",
- "item.endreborn.obsidian_shard": "Осколок обсидана",
  "block.endreborn.obsidian_glass": "Укрепленное обсидианом стекло",
  "block.endreborn.obsidian_glass_pane": "Укрепленная обсидианом стеклянная панель",
  "block.endreborn.framed_obsidian_glass": "Обрамленное обсидианом стекло",
@@ -55,6 +54,7 @@
 
  "item.endreborn.ogana": "Плод оганы",
  "block.endreborn.ogana_weed": "Сорняк оганы",
+ "item.endreborn.ogana_torte": "Слоенный пирог из оганы",
  "block.endreborn.end_moss": "Замшелый эндерняк",
  "block.endreborn.end_moss_block": "Мох Края",
 
@@ -67,19 +67,18 @@
 
  "item.endreborn.purpur_eye": "Пурпурный навигатор",
  "block.endreborn.cracked_purpur": "Старый пурпурный блок",
- "block.endreborn.purpur_lantern": "Пурпуровый фонарь",
  "block.endreborn.purpur_wall": "Пурпуровая стена",
- "block.endreborn.purpur_chain": "Пурпуровая цепь",
 
  "block.endreborn.farstone": "Дальнекамень",
  "block.endreborn.farstone_smooth": "Гладкий дальнекамень",
  "block.endreborn.farstone_bricks": "Дальнекаменные кирпичи",
+ "block.endreborn.chiseled_farstone": "Резной дальнекамень",
  "block.endreborn.farstone_pillar": "Дальнекаменная колонна",
  "block.endreborn.farstone_brick_stairs": "Ступеньки из дальнекаменного кирпича",
  "block.endreborn.farstone_brick_slab": "Плита из дальнекаменного кирпича",
  "block.endreborn.farstone_brick_wall": "Стена из дальнекаменного кирпича",
  
- "advancements.endreborn.root.title": "Another end... erium?",
+ "advancements.endreborn.root.title": "Endorium",
  "advancements.endreborn.root.description": "Соберите эндориумовый самородок",
  "advancements.endreborn.endorium_block.title": "Гипперинфляция",
  "advancements.endreborn.endorium_block.description": "Соберите эндориумовый блок",

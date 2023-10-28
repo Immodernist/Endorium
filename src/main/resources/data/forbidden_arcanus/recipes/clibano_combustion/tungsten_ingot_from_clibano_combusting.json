@@ -1,0 +1,13 @@
+{
+  "type": "forbidden_arcanus:clibano_combustion",
+  "cooking_time": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "endreborn:tungsten_ore"
+  },
+  "residue": {
+    "chance": 0.1,
+    "name": "tungsten"
+  },
+  "result": "endreborn:tungsten_ingot"
+}

@@ -1,1 +1,8 @@
-{"values":["endreborn:tungsten_pickaxe", "endreborn:endorium_pickaxe"]}
+{
+  "values":[
+    "endreborn:tungsten_pickaxe",
+    "endreborn:endorium_pickaxe",
+    "endreborn:curious_endorium_pickaxe",
+    "endreborn:mysterious_endorium_pickaxe"
+  ]
+}

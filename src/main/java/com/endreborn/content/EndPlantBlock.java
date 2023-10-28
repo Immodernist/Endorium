@@ -25,6 +25,5 @@ public class EndPlantBlock extends BushBlock implements net.minecraftforge.commo
     protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         Block block = state.getBlock();
         return block == Blocks.END_STONE || block == Blocks.END_STONE_BRICKS || block == ModBlocks.CRACKED_END_BRICKS.get() || block == ModBlocks.CHISELED_END_BRICKS.get() || block == ModBlocks.SMOOTH_END_STONE.get() || block == ModBlocks.END_STONE_PILLAR.get();
-
     }
 }
