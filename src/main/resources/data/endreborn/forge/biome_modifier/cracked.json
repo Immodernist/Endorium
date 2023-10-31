@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "endreborn:cracked",
-  "biomes": "#minecraft:has_structure/end_city",
-  "step": "underground_ores"
-}

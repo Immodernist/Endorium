@@ -22,7 +22,6 @@ public class EndReborn {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TAB_REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public EndReborn() {
-
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CREATIVE_TAB_REGISTER.register(bus);
         BLOCK_REGISTER.register(bus);

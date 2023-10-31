@@ -1,8 +1,6 @@
 package com.endreborn.init;
 
 import com.endreborn.EndReborn;
-import com.endreborn.world.CrackedBlocksFeature;
-import com.endreborn.world.FarstoneCraterFeature;
 import com.endreborn.world.FarstoneFeature;
 import com.endreborn.world.MossedEndIslandFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -10,7 +8,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class ModFeatures {
-    public static final Feature<NoneFeatureConfiguration> CRACKED = registerFeature("cracked", new CrackedBlocksFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> MOSSED_ISLAND = registerFeature("mossed_island", new MossedEndIslandFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> FARSTONE_CRATER = registerFeature("farstone", new FarstoneFeature(NoneFeatureConfiguration.CODEC));
     public static void setup() {}
