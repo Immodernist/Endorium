@@ -1,7 +1,6 @@
 package com.endreborn.init;
 
 import com.endreborn.Endorium;
-import com.endreborn.world.CrackedBlocksFeature;
 import com.endreborn.world.FarstoneFeature;
 import com.endreborn.world.MossedEndIslandFeature;
 import net.minecraft.registry.Registries;
@@ -12,12 +11,10 @@ import net.minecraft.world.gen.feature.Feature;
 
 public class ModFeatures {
     public static final Feature<DefaultFeatureConfig> FARSTONE = new FarstoneFeature(DefaultFeatureConfig.CODEC);
-    public static final Feature<DefaultFeatureConfig> CRACKED = new CrackedBlocksFeature(DefaultFeatureConfig.CODEC);
     public static final Feature<DefaultFeatureConfig> MOSS_ISLAND = new MossedEndIslandFeature(DefaultFeatureConfig.CODEC);
 
     public static void setup() {
         register("farstone", FARSTONE);
-        register("cracked", CRACKED);
         register("mossed_island", MOSS_ISLAND);
     }
     private static void register(String name, Feature<?> feature) {
