@@ -12,7 +12,7 @@ public class ModFeatures {
     public static final Feature<NoneFeatureConfiguration> FARSTONE_CRATER = registerFeature("farstone", new FarstoneFeature(NoneFeatureConfiguration.CODEC));
     public static void setup() {}
     private static <C extends FeatureConfiguration, F extends Feature<C>> F registerFeature(String key, F value) {
-        EndReborn.FEATURE_REGISTER.register(key, () -> value);
+        EndReborn.FEATURE.register(key, () -> value);
         return value;
     }
 }

@@ -42,7 +42,6 @@ public class ModItems {
     public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_PICKAXE;
     public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SHOVEL;
     public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SWORD;
-    public static RegistryObject<Item> OBSIDIAN_SHARD;
     public static RegistryObject<Item> ENDER_BOOTS;
     public static RegistryObject<Item> TRANSMITTER;
     public static RegistryObject<Item> PURPUR_EYE;
@@ -97,6 +96,6 @@ public class ModItems {
     }
 
     public static RegistryObject<Item> registerItem(Supplier<Item> itemSupplier, String name) {
-        return EndReborn.ITEM_REGISTER.register(name, itemSupplier);
+        return EndReborn.ITEM.register(name, itemSupplier);
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -25,7 +24,6 @@ public class ModBlocks {
     public static RegistryObject<Block> SMOOTH_END_STONE;
     public static RegistryObject<Block> END_STONE_PILLAR;
     public static RegistryObject<Block> END_CORAL;
-    public static RegistryObject<Block> ENDSTONE_BUTTON;
     public static RegistryObject<Block> CRACKED_PURPUR;
     public static RegistryObject<Block> PURPUR_WALL;
     public static RegistryObject<Block> END_MOSS;
@@ -33,8 +31,6 @@ public class ModBlocks {
     public static RegistryObject<Block> END_MOSS_BLOCK;
     public static RegistryObject<Block> OBSIDIAN_GLASS;
     public static RegistryObject<Block> OBSIDIAN_GLASS_PANE;
-    public static RegistryObject<Block> FRAMED_OBSIDIAN_GLASS_PANE;
-    public static RegistryObject<Block> FRAMED_OBSIDIAN_GLASS;
     public static RegistryObject<Block> TUNGSTEN_ORE;
     public static RegistryObject<Block> RAW_TUNGSTEN_BLOCK;
     public static RegistryObject<Block> ENDORIUM_BLOCK;
@@ -55,7 +51,6 @@ public class ModBlocks {
         CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
         END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
         END_CORAL = registerBlock(() -> new EndPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "end_coral");
-        ENDSTONE_BUTTON = registerBlock(() -> new ButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.STONE, 20, false), "end_stone_button");
 
         CRACKED_PURPUR = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)), "cracked_purpur");
         PURPUR_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK).forceSolidOn()), "purpur_wall");
@@ -66,8 +61,6 @@ public class ModBlocks {
 
         OBSIDIAN_GLASS = registerBlock(() -> new GlassBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");
         OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass_pane");
-        FRAMED_OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.copy(OBSIDIAN_GLASS_PANE.get())), "framed_obsidian_glass_pane");
-        FRAMED_OBSIDIAN_GLASS = registerBlock(() -> new GlassBlock(BlockBehaviour.Properties.copy(OBSIDIAN_GLASS.get())), "framed_obsidian_glass");
 
         TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "tungsten_ore");
         ENDORIUM_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(6.0F, 7.0F)), "endorium_block");
@@ -87,8 +80,8 @@ public class ModBlocks {
     }
 
     public static RegistryObject<Block> registerBlock(Supplier<Block> blockSupplier, String name) {
-        RegistryObject<Block> blockRegistryObject = EndReborn.BLOCK_REGISTER.register(name, blockSupplier);
-        EndReborn.ITEM_REGISTER.register(name, () -> new BlockItem(blockRegistryObject.get(), new Item.Properties()));
+        RegistryObject<Block> blockRegistryObject = EndReborn.BLOCK.register(name, blockSupplier);
+        EndReborn.ITEM.register(name, () -> new BlockItem(blockRegistryObject.get(), new Item.Properties()));
         return blockRegistryObject;
     }
     private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {

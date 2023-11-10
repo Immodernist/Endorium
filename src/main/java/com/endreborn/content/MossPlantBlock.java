@@ -24,7 +24,6 @@ public class MossPlantBlock extends BushBlock implements net.minecraftforge.comm
     protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         Block block = state.getBlock();
         return block == ModBlocks.END_MOSS.get() || block == ModBlocks.END_MOSS_BLOCK.get();
-
     }
 }
 

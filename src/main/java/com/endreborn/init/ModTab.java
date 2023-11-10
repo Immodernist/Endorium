@@ -8,7 +8,7 @@ import net.minecraftforge.fml.ModList;
 public class ModTab {
     public static void setup()
     {
-        EndReborn.CREATIVE_TAB_REGISTER.register("endgroup", () -> CreativeModeTab.builder()
+        EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
                 .icon(() -> ModItems.TUNGSTEN_HAMMER.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
@@ -47,17 +47,12 @@ public class ModTab {
 
                     output.accept(ModBlocks.OBSIDIAN_GLASS_PANE.get());
                     output.accept(ModBlocks.OBSIDIAN_GLASS.get());
-                    if (isInstalled("quark") || isInstalled("supplementaries")) {
-                        output.accept(ModBlocks.FRAMED_OBSIDIAN_GLASS_PANE.get());
-                        output.accept(ModBlocks.FRAMED_OBSIDIAN_GLASS.get());
-                    }
+
                     output.accept(ModBlocks.TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.RAW_TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.ENDORIUM_BLOCK.get());
                     output.accept(ModBlocks.END_CORAL.get());
-                    if (isInstalled("quark") || isInstalled("supplementaries")) {
-                        output.accept(ModBlocks.ENDSTONE_BUTTON.get());
-                    }
+
                     output.accept(ModBlocks.SMOOTH_END_STONE.get());
                     output.accept(ModBlocks.CRACKED_END_BRICKS.get());
                     output.accept(ModBlocks.CHISELED_END_BRICKS.get());
