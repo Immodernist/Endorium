@@ -1,9 +1,7 @@
 package com.endreborn.init;
 
 import com.endreborn.EndReborn;
-import com.endreborn.content.EndPlantBlock;
-import com.endreborn.content.IncandescentLampBlock;
-import com.endreborn.content.MossPlantBlock;
+import com.endreborn.content.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -28,6 +26,7 @@ public class ModBlocks {
     public static RegistryObject<Block> PURPUR_WALL;
     public static RegistryObject<Block> END_MOSS;
     public static RegistryObject<Block> OGANA_WEED;
+    public static RegistryObject<Block> OGANA_PLANT;
     public static RegistryObject<Block> END_MOSS_BLOCK;
     public static RegistryObject<Block> OBSIDIAN_GLASS;
     public static RegistryObject<Block> OBSIDIAN_GLASS_PANE;
@@ -57,6 +56,7 @@ public class ModBlocks {
 
         END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss");
         OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(END_CORAL.get())), "ogana_weed");
+        OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(END_CORAL.get())), "ogana_plant");
         END_MOSS_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss_block");
 
         OBSIDIAN_GLASS = registerBlock(() -> new GlassBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");

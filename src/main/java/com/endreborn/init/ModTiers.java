@@ -7,7 +7,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModTiers implements Tier {
-    TUNGSTEN(2, 260, 6.0F, 2.5F, 0, () -> {
+    TUNGSTEN(2, 280, 6.0F, 2.5F, 0, () -> {
         return Ingredient.of(ModItems.TUNGSTEN_INGOT.get());
     }),
     ENDORIUM(4, 1348, 8.0F, 4.0F, 12, () -> {

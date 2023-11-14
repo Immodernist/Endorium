@@ -15,7 +15,6 @@ import net.minecraftforge.registries.DeferredRegister;
 @Mod("endreborn")
 public class EndReborn {
     public static final String MODID = "endreborn";
-
     public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(Registries.BLOCK, MODID);
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Registries.ITEM, MODID);
     public static final DeferredRegister<Feature<?>> FEATURE = DeferredRegister.create(Registries.FEATURE, MODID);

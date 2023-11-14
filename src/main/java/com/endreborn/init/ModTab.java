@@ -6,10 +6,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.fml.ModList;
 
 public class ModTab {
-    public static void setup()
-    {
+    public static void setup() {
         EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModItems.TUNGSTEN_HAMMER.get().asItem().getDefaultInstance())
+                .icon(() -> ModItems.OGANA_TORTE.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());
@@ -51,7 +50,6 @@ public class ModTab {
                     output.accept(ModBlocks.TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.RAW_TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.ENDORIUM_BLOCK.get());
-                    output.accept(ModBlocks.END_CORAL.get());
 
                     output.accept(ModBlocks.SMOOTH_END_STONE.get());
                     output.accept(ModBlocks.CRACKED_END_BRICKS.get());
@@ -61,6 +59,7 @@ public class ModTab {
                     output.accept(ModBlocks.PURPUR_WALL.get());
                     output.accept(ModBlocks.CRACKED_PURPUR.get());
                     output.accept(ModBlocks.OGANA_WEED.get());
+                    output.accept(ModBlocks.OGANA_PLANT.get());
                     output.accept(ModBlocks.END_MOSS.get());
                     output.accept(ModBlocks.END_MOSS_BLOCK.get());
                     output.accept(ModBlocks.FARSTONE_BRICKS_WALL.get());
