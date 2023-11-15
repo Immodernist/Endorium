@@ -19,13 +19,16 @@
                   }
                 }
               ],
-              "name": "endreborn:end_coral"
+              "name": "endreborn:ogana_plant"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "endreborn:ogana"
             }
           ]
         }
       ],
       "rolls": 1.0
     }
-  ],
-  "random_sequence": "endreborn:blocks/end_coral"
+  ]
 }

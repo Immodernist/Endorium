@@ -6,22 +6,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-               "min": 0.0,
-               "max": 1.0,
-               "type": "minecraft:uniform"
-              }
-            }
-          ],
-          "name": "endreborn:ogana"
+          "name": "endreborn:ogana_weed"
         }
       ],
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "items": [
+                      "minecraft:shears"
+            ]
+          }
         }
       ]
     }

@@ -1,10 +1,8 @@
 package com.endreborn.content;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.HoeItem;
@@ -12,14 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class UpgradableHoeItem extends HoeItem {
 

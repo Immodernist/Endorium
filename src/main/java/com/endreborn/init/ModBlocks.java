@@ -27,6 +27,7 @@ public class ModBlocks {
     public static RegistryObject<Block> END_MOSS;
     public static RegistryObject<Block> OGANA_WEED;
     public static RegistryObject<Block> OGANA_PLANT;
+    public static RegistryObject<Block> POTTED_OGANA;
     public static RegistryObject<Block> END_MOSS_BLOCK;
     public static RegistryObject<Block> OBSIDIAN_GLASS;
     public static RegistryObject<Block> OBSIDIAN_GLASS_PANE;
@@ -55,8 +56,9 @@ public class ModBlocks {
         PURPUR_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK).forceSolidOn()), "purpur_wall");
 
         END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss");
-        OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(END_CORAL.get())), "ogana_weed");
-        OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(END_CORAL.get())), "ogana_plant");
+        OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "ogana_weed");
+        OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(OGANA_WEED.get())), "ogana_plant");
+        POTTED_OGANA = registerBlock(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
         END_MOSS_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss_block");
 
         OBSIDIAN_GLASS = registerBlock(() -> new GlassBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");

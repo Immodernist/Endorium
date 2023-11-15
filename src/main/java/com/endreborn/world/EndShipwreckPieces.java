@@ -29,7 +29,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class EndShipwreckPieces {
     public static final ResourceLocation END_SHIPWRECK_LOOT = new ResourceLocation(EndReborn.MODID, "chests/end_shipwreck");
-    private static final ResourceLocation[] STRUCTURES = new ResourceLocation[]{new ResourceLocation(EndReborn.MODID + ":end_shipwreck"), new ResourceLocation(EndReborn.MODID + ":end_beacon"), new ResourceLocation(EndReborn.MODID + ":end_shipruin")};
+    private static final ResourceLocation[] STRUCTURES = new ResourceLocation[]{new ResourceLocation(EndReborn.MODID + ":end_shipwreck"), new ResourceLocation(EndReborn.MODID + ":end_shipruin")};
 
     public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext, RandomSource random) {
         pieceList.addPiece(new EndShipwreckPieces.Piece(manager, (ResourceLocation) Util.getRandom(STRUCTURES, random), pos, rotation));

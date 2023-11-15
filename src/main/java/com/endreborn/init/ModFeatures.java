@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class ModFeatures {
     public static final Feature<NoneFeatureConfiguration> MOSSED_ISLAND = registerFeature("mossed_island", new MossedEndIslandFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> FARSTONE_CRATER = registerFeature("farstone", new FarstoneFeature(NoneFeatureConfiguration.CODEC));
+    public static final Feature<NoneFeatureConfiguration> FARSTONE = registerFeature("farstone", new FarstoneFeature(NoneFeatureConfiguration.CODEC));
     public static void setup() {}
     private static <C extends FeatureConfiguration, F extends Feature<C>> F registerFeature(String key, F value) {
         EndReborn.FEATURE.register(key, () -> value);

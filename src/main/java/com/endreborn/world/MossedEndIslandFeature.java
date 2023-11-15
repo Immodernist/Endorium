@@ -1,6 +1,5 @@
 package com.endreborn.world;
 
-import com.endreborn.content.MossPlantBlock;
 import com.endreborn.init.ModBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -8,8 +7,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -47,8 +44,10 @@ public class MossedEndIslandFeature extends Feature<NoneFeatureConfiguration> {
                 if (worldIn.isEmptyBlock(blockpos.above())) {
                     if (decorator < 0.4D) {
                         worldIn.setBlock(blockpos, Blocks.END_STONE.defaultBlockState(), 2);
-                    } else {
+                    } else if (decorator < 0.85D){
                         worldIn.setBlock(blockpos.above(), ModBlocks.OGANA_WEED.get().defaultBlockState(), 2);
+                    } else {
+                        worldIn.setBlock(blockpos.above(), ModBlocks.OGANA_PLANT.get().defaultBlockState(), 2);
                     }
                 }
                 if (worldIn.isEmptyBlock(blockpos.below())) {
