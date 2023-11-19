@@ -12,7 +12,6 @@ public class ModTab {
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());
-                    output.accept(ModItems.TUNGSTEN_NUGGET.get());
                     output.accept(ModItems.ENDORIUM_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_RAW.get());
@@ -22,15 +21,10 @@ public class ModTab {
                     output.accept(ModItems.IRON_HAMMER.get());
                     output.accept(ModItems.TUNGSTEN_HAMMER.get());
                     output.accept(ModItems.ENDORIUM_SWORD.get());
-                    output.accept(ModItems.TUNGSTEN_SWORD.get());
                     output.accept(ModItems.ENDORIUM_AXE.get());
-                    output.accept(ModItems.TUNGSTEN_AXE.get());
                     output.accept(ModItems.ENDORIUM_PICKAXE.get());
-                    output.accept(ModItems.TUNGSTEN_PICKAXE.get());
                     output.accept(ModItems.ENDORIUM_SHOVEL.get());
-                    output.accept(ModItems.TUNGSTEN_SHOVEL.get());
                     output.accept(ModItems.ENDORIUM_HOE.get());
-                    output.accept(ModItems.TUNGSTEN_HOE.get());
                     output.accept(ModItems.MYSTERIOUS_RELIC.get());
                     output.accept(ModItems.CURIOUS_RELIC.get());
                     output.accept(ModItems.TUNGSTEN_HELMET.get());
@@ -56,7 +50,6 @@ public class ModTab {
                     output.accept(ModBlocks.CHISELED_END_BRICKS.get());
                     output.accept(ModBlocks.END_STONE_PILLAR.get());
                     output.accept(ModBlocks.TUNGSTEN_ORE.get());
-                    output.accept(ModBlocks.PURPUR_WALL.get());
                     output.accept(ModBlocks.CRACKED_PURPUR.get());
                     output.accept(ModBlocks.OGANA_WEED.get());
                     output.accept(ModBlocks.OGANA_PLANT.get());

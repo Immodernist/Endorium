@@ -21,12 +21,12 @@ import javax.annotation.Nullable;
 
 public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBlock {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 8.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(8.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 8.0D, 11.0D, 11.0D);
-    protected static final VoxelShape UP_AABB_X = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D);
-    protected static final VoxelShape DOWN_AABB_X = Block.box(5.0D, 8.0D, 5.0D, 11.0D, 15.0D, 11.0D);
+    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 7.0D);
+    protected static final VoxelShape WEST_AABB = Block.box(9.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 7.0D, 11.0D, 11.0D);
+    protected static final VoxelShape UP_AABB_X = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 7.0D, 11.0D);
+    protected static final VoxelShape DOWN_AABB_X = Block.box(5.0D, 9.0D, 5.0D, 11.0D, 15.0D, 11.0D);
 
     public IncandescentLampBlock(Properties p_49795_) {
         super(p_49795_);

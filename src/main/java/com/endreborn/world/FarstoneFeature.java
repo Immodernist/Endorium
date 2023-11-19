@@ -19,7 +19,7 @@ public class FarstoneFeature extends Feature<NoneFeatureConfiguration> {
         int o = 2 + rand.nextInt(4);
         float f = (float) (o + o + o) * 0.333F + 0.5F;
         for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-o, -o - rand.nextInt(4), -o), pos.offset(o, o, o))) {
-            if (blockpos.distSqr(pos) <= (double) (f * f) && feature.level().getBlockState(blockpos).getBlock() == Blocks.END_STONE && feature.level().getBlockState(blockpos.above()).getBlock() != ModBlocks.END_CORAL.get()) {
+            if (blockpos.distSqr(pos) <= (double) (f * f) && feature.level().getBlockState(blockpos).getBlock() == Blocks.END_STONE) {
                 feature.level().setBlock(blockpos, ModBlocks.FARSTONE.get().defaultBlockState(), 2);
             }
         }

@@ -72,7 +72,6 @@ public class ModItems {
         MYSTERIOUS_ENDORIUM_HOE = registerItem(() -> new UpgradableHoeItem(ModTiers.ENDORIUM_FLEXIBILITY, -4, -1f, new Item.Properties(), 0, 1), "mysterious_endorium_hoe");
         MYSTERIOUS_ENDORIUM_PICKAXE = registerItem(() -> new UpgradablePickaxeItem(ModTiers.ENDORIUM_FLEXIBILITY, 1, -2.8f, new Item.Properties(), 0, 1), "mysterious_endorium_pickaxe");
 
-        TUNGSTEN_NUGGET = registerItem(() -> new Item(new Item.Properties()), "tungsten_nugget");
         TUNGSTEN_INGOT = registerItem(() -> new Item(new Item.Properties()), "tungsten_ingot");
         TUNGSTEN_DUST = registerItem(() -> new Item(new Item.Properties()), "tungsten_dust");
         TUNGSTEN_RAW = registerItem(() -> new Item(new Item.Properties()), "raw_tungsten");
