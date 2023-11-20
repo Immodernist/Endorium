@@ -75,11 +75,6 @@ public class ModItems {
         TUNGSTEN_INGOT = registerItem(() -> new Item(new Item.Properties()), "tungsten_ingot");
         TUNGSTEN_DUST = registerItem(() -> new Item(new Item.Properties()), "tungsten_dust");
         TUNGSTEN_RAW = registerItem(() -> new Item(new Item.Properties()), "raw_tungsten");
-        TUNGSTEN_SWORD = registerItem(() -> new SwordItem(ModTiers.TUNGSTEN, 3, -2.4f, new Item.Properties()), "tungsten_sword");
-        TUNGSTEN_AXE = registerItem(() -> new AxeItem(ModTiers.TUNGSTEN, 6f, -3.1f, new Item.Properties()), "tungsten_axe");
-        TUNGSTEN_SHOVEL = registerItem(() -> new ShovelItem(ModTiers.TUNGSTEN, 1.5f, -3f, new Item.Properties()), "tungsten_shovel");
-        TUNGSTEN_HOE = registerItem(() -> new HoeItem(ModTiers.TUNGSTEN, -2, -1f, new Item.Properties()), "tungsten_hoe");
-        TUNGSTEN_PICKAXE = registerItem(() -> new PickaxeItem(ModTiers.TUNGSTEN, 1, -2.8f, new Item.Properties()), "tungsten_pickaxe");
         TUNGSTEN_HAMMER = registerItem(() -> new HammerItem(new Item.Properties().defaultDurability(48)), "tungsten_hammer");
         TUNGSTEN_HELMET = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.HELMET, (new Item.Properties())), "tungsten_helmet");
         TUNGSTEN_CHESTPLATE = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.CHESTPLATE, (new Item.Properties())), "tungsten_chestplate");

@@ -1,31 +1,20 @@
 {
-  "textures": {
-    "lamp": "endreborn:block/incandescent_lamp_on",
-    "particle": "endreborn:block/incandescent_lamp_on"
-  },
-  "elements": [
-    {
-      "from": [6, 0, 6],
-      "to": [10, 1, 10],
-      "faces": {
-        "north": {"uv": [12, 1, 16, 2], "texture": "#lamp"},
-        "east": {"uv": [12, 1, 16, 2], "texture": "#lamp"},
-        "south": {"uv": [12, 1, 16, 2], "texture": "#lamp"},
-        "west": {"uv": [12, 1, 16, 2], "texture": "#lamp"},
-        "down": {"uv": [12, 2, 16, 6], "texture": "#lamp"}
-      }
-    },
-    {
-      "from": [5, 1, 5],
-      "to": [11, 7, 11],
-      "faces": {
-        "north": {"uv": [0, 0, 6, 6], "texture": "#lamp"},
-        "east": {"uv": [0, 0, 6, 6], "texture": "#lamp"},
-        "south": {"uv": [0, 0, 6, 6], "texture": "#lamp"},
-        "west": {"uv": [0, 0, 6, 6], "texture": "#lamp"},
-        "up": {"uv": [6, 0, 12, 6], "texture": "#lamp"},
-        "down": {"uv": [6, 0, 12, 6], "texture": "#lamp"}
-      }
-    }
-  ]
+	"textures": {
+		"particle": "endreborn:block/incandescent_lamp",
+		"lamp": "endreborn:block/incandescent_lamp"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 1, 11],
+			"faces": {
+				"north": {"uv": [0, 6, 6, 7], "texture": "#lamp"},
+				"east": {"uv": [0, 6, 6, 7], "texture": "#lamp"},
+				"south": {"uv": [0, 6, 6, 7], "texture": "#lamp"},
+				"west": {"uv": [0, 6, 6, 7], "texture": "#lamp"},
+				"up": {"uv": [0, 6, 6, 12], "texture": "#lamp"},
+				"down": {"uv": [0, 6, 6, 12], "texture": "#lamp"}
+			}
+		}
+	]
 }

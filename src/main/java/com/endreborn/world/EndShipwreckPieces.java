@@ -51,8 +51,6 @@ public class EndShipwreckPieces {
             for (int j = 0; j < 8; ++j) {
                 BlockPos blockpos = pos.offset(rand.nextInt(4), rand.nextInt(6), rand.nextInt(4));
                 if (worldIn.getBlockState(blockpos).getBlock() == Blocks.PURPUR_BLOCK) {
-                    worldIn.setBlock(blockpos, ModBlocks.CRACKED_PURPUR.get().defaultBlockState(), 2);
-                } else if (worldIn.getBlockState(blockpos).getBlock() == Blocks.END_STONE_BRICKS) {
                     worldIn.setBlock(blockpos, ModBlocks.CRACKED_END_BRICKS.get().defaultBlockState(), 2);
                 }
             }

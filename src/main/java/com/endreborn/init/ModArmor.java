@@ -19,15 +19,15 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
         p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
         p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
         p_266652_.put(ArmorItem.Type.HELMET, 2);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.2F, () -> {
+    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.2F, () -> {
         return Ingredient.of(ModItems.TUNGSTEN_INGOT.get());
     }),
     ENDER("ender", 21, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 2);
+        p_266655_.put(ArmorItem.Type.BOOTS, 3);
         p_266655_.put(ArmorItem.Type.LEGGINGS, 0);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 0);
-        p_266655_.put(ArmorItem.Type.HELMET, 2);
-    }), 10, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+        p_266655_.put(ArmorItem.Type.HELMET, 0);
+    }), 10, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
         return null;
     });
 

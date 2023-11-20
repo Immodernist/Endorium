@@ -51,7 +51,6 @@ public class ModBlocks {
         CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
         END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
 
-        CRACKED_PURPUR = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)), "cracked_purpur");
         PURPUR_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK).forceSolidOn()), "purpur_wall");
 
         END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss");

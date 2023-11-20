@@ -32,7 +32,7 @@ public class ModTab {
                     output.accept(ModItems.TUNGSTEN_LEGGINGS.get());
                     output.accept(ModItems.TUNGSTEN_BOOTS.get());
                     output.accept(ModBlocks.INCANDESCENT_LAMP.get());
-                    output.accept(ModItems.PURPUR_EYE.get());
+                    //output.accept(ModItems.PURPUR_EYE.get());
                     output.accept(ModItems.OGANA_FRUIT.get());
                     output.accept(ModItems.OGANA_TORTE.get());
                     output.accept(ModItems.ENDER_BOOTS.get());
@@ -50,7 +50,6 @@ public class ModTab {
                     output.accept(ModBlocks.CHISELED_END_BRICKS.get());
                     output.accept(ModBlocks.END_STONE_PILLAR.get());
                     output.accept(ModBlocks.TUNGSTEN_ORE.get());
-                    output.accept(ModBlocks.CRACKED_PURPUR.get());
                     output.accept(ModBlocks.OGANA_WEED.get());
                     output.accept(ModBlocks.OGANA_PLANT.get());
                     output.accept(ModBlocks.END_MOSS.get());
