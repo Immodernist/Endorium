@@ -8,7 +8,7 @@ import net.minecraftforge.fml.ModList;
 public class ModTab {
     public static void setup() {
         EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModItems.OGANA_TORTE.get().asItem().getDefaultInstance())
+                .icon(() -> ModBlocks.INCANDESCENT_LAMP.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());
@@ -27,12 +27,7 @@ public class ModTab {
                     output.accept(ModItems.ENDORIUM_HOE.get());
                     output.accept(ModItems.MYSTERIOUS_RELIC.get());
                     output.accept(ModItems.CURIOUS_RELIC.get());
-                    output.accept(ModItems.TUNGSTEN_HELMET.get());
-                    output.accept(ModItems.TUNGSTEN_CHESTPLATE.get());
-                    output.accept(ModItems.TUNGSTEN_LEGGINGS.get());
-                    output.accept(ModItems.TUNGSTEN_BOOTS.get());
                     output.accept(ModBlocks.INCANDESCENT_LAMP.get());
-                    //output.accept(ModItems.PURPUR_EYE.get());
                     output.accept(ModItems.OGANA_FRUIT.get());
                     output.accept(ModItems.OGANA_TORTE.get());
                     output.accept(ModItems.ENDER_BOOTS.get());
@@ -46,22 +41,22 @@ public class ModTab {
                     output.accept(ModBlocks.ENDORIUM_BLOCK.get());
 
                     output.accept(ModBlocks.SMOOTH_END_STONE.get());
+                    output.accept(ModBlocks.FARSTONE_DECORATIVE.get());
                     output.accept(ModBlocks.CRACKED_END_BRICKS.get());
+                    output.accept(ModBlocks.FARSTONE_BRICKS.get());
+                    output.accept(ModBlocks.FARSTONE_BRICKS_WALL.get());
+                    output.accept(ModBlocks.FARSTONE_BRICKS_SLAB.get());
+                    output.accept(ModBlocks.FARSTONE_BRICKS_STAIRS.get());
                     output.accept(ModBlocks.CHISELED_END_BRICKS.get());
+                    output.accept(ModBlocks.FARSTONE_BRICKS_CHISELED.get());
                     output.accept(ModBlocks.END_STONE_PILLAR.get());
+                    output.accept(ModBlocks.FARSTONE_PILLAR.get());
                     output.accept(ModBlocks.TUNGSTEN_ORE.get());
+                    output.accept(ModBlocks.FARSTONE.get());
                     output.accept(ModBlocks.OGANA_WEED.get());
                     output.accept(ModBlocks.OGANA_PLANT.get());
                     output.accept(ModBlocks.END_MOSS.get());
                     output.accept(ModBlocks.END_MOSS_BLOCK.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_WALL.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_SLAB.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_STAIRS.get());
-                    output.accept(ModBlocks.FARSTONE.get());
-                    output.accept(ModBlocks.FARSTONE_DECORATIVE.get());
-                    output.accept(ModBlocks.FARSTONE_PILLAR.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS.get());
-                    output.accept(ModBlocks.FARSTONE_BRICKS_CHISELED.get());
                 }).build());
     }
     public static boolean isInstalled(String str) {

@@ -21,9 +21,6 @@ public class ModBlocks {
     public static RegistryObject<Block> CRACKED_END_BRICKS;
     public static RegistryObject<Block> SMOOTH_END_STONE;
     public static RegistryObject<Block> END_STONE_PILLAR;
-    public static RegistryObject<Block> END_CORAL;
-    public static RegistryObject<Block> CRACKED_PURPUR;
-    public static RegistryObject<Block> PURPUR_WALL;
     public static RegistryObject<Block> END_MOSS;
     public static RegistryObject<Block> OGANA_WEED;
     public static RegistryObject<Block> OGANA_PLANT;
@@ -50,8 +47,6 @@ public class ModBlocks {
         CRACKED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "cracked_end_bricks");
         CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
         END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
-
-        PURPUR_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK).forceSolidOn()), "purpur_wall");
 
         END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss");
         OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "ogana_weed");

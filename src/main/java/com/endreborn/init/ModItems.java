@@ -16,19 +16,9 @@ public class ModItems {
     public static RegistryObject<Item> ENDORIUM_SHOVEL;
     public static RegistryObject<Item> ENDORIUM_HOE;
     public static RegistryObject<Item> ENDORIUM_PICKAXE;
-    public static RegistryObject<Item> TUNGSTEN_NUGGET;
     public static RegistryObject<Item> TUNGSTEN_INGOT;
     public static RegistryObject<Item> TUNGSTEN_DUST;
-    public static RegistryObject<Item> TUNGSTEN_SWORD;
-    public static RegistryObject<Item> TUNGSTEN_AXE;
-    public static RegistryObject<Item> TUNGSTEN_SHOVEL;
-    public static RegistryObject<Item> TUNGSTEN_HOE;
-    public static RegistryObject<Item> TUNGSTEN_PICKAXE;
     public static RegistryObject<Item> TUNGSTEN_HAMMER;
-    public static RegistryObject<Item> TUNGSTEN_HELMET;
-    public static RegistryObject<Item> TUNGSTEN_CHESTPLATE;
-    public static RegistryObject<Item> TUNGSTEN_LEGGINGS;
-    public static RegistryObject<Item> TUNGSTEN_BOOTS;
     public static RegistryObject<Item> TUNGSTEN_RAW;
     public static RegistryObject<Item> CURIOUS_RELIC;
     public static RegistryObject<Item> CURIOUS_ENDORIUM_AXE;
@@ -44,7 +34,6 @@ public class ModItems {
     public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SWORD;
     public static RegistryObject<Item> ENDER_BOOTS;
     public static RegistryObject<Item> TRANSMITTER;
-    public static RegistryObject<Item> PURPUR_EYE;
     public static RegistryObject<Item> OGANA_FRUIT;
     public static RegistryObject<Item> OGANA_TORTE;
     public static RegistryObject<Item> IRON_HAMMER;
@@ -57,7 +46,7 @@ public class ModItems {
         ENDORIUM_SHOVEL = registerItem(() -> new ShovelItem(ModTiers.ENDORIUM, 1.5f, -3f, new Item.Properties()), "endorium_shovel");
         ENDORIUM_HOE = registerItem(() -> new HoeItem(ModTiers.ENDORIUM, -4, -1f, new Item.Properties()), "endorium_hoe");
         ENDORIUM_PICKAXE = registerItem(() -> new PickaxeItem(ModTiers.ENDORIUM, 1, -2.8f, new Item.Properties()), "endorium_pickaxe");
-
+        
         CURIOUS_RELIC = registerItem(() -> new Item(new Item.Properties()), "curious_relic");
         CURIOUS_ENDORIUM_SWORD = registerItem(() -> new UpgradableSwordItem(ModTiers.ENDORIUM, 3, -2.4f, new Item.Properties(), 1, 0), "curious_endorium_sword");
         CURIOUS_ENDORIUM_AXE = registerItem(() -> new UpgradableAxeItem(ModTiers.ENDORIUM, 5f, -3.1f, new Item.Properties(), 1, 0), "curious_endorium_axe");
@@ -76,14 +65,9 @@ public class ModItems {
         TUNGSTEN_DUST = registerItem(() -> new Item(new Item.Properties()), "tungsten_dust");
         TUNGSTEN_RAW = registerItem(() -> new Item(new Item.Properties()), "raw_tungsten");
         TUNGSTEN_HAMMER = registerItem(() -> new HammerItem(new Item.Properties().defaultDurability(48)), "tungsten_hammer");
-        TUNGSTEN_HELMET = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.HELMET, (new Item.Properties())), "tungsten_helmet");
-        TUNGSTEN_CHESTPLATE = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.CHESTPLATE, (new Item.Properties())), "tungsten_chestplate");
-        TUNGSTEN_LEGGINGS = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.LEGGINGS, (new Item.Properties())), "tungsten_leggings");
-        TUNGSTEN_BOOTS = registerItem(() -> new ArmorItem(ModArmor.TUNGSTEN, ArmorItem.Type.BOOTS, (new Item.Properties())), "tungsten_boots");
 
         ENDER_BOOTS = registerItem(() -> new EnderBootsItem(ModArmor.ENDER, ArmorItem.Type.BOOTS, (new Item.Properties())), "ender_boots");
         TRANSMITTER = registerItem(() -> new TransmitterItem(new Item.Properties().defaultDurability(32)), "ender_transmitter");
-        PURPUR_EYE = registerItem(() -> new PurpurEyeItem(new Item.Properties()), "purpur_eye");
         OGANA_FRUIT = registerItem(() -> new Item(new Item.Properties().food(Foods.SWEET_BERRIES)), "ogana");
         OGANA_TORTE = registerItem(() -> new Item(new Item.Properties().food(Foods.PUMPKIN_PIE)), "ogana_torte");
         IRON_HAMMER = registerItem(() -> new HammerItem(new Item.Properties().defaultDurability(32)), "iron_hammer");
