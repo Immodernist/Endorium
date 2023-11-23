@@ -79,7 +79,7 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
             } else {
                 BlockState blockstate = this.pull(p_54640_, p_54641_, p_54642_);
                 float f = blockstate.getValue(LIT) ? 0.6F : 0.5F;
-                p_54641_.playSound((Player)null, p_54642_, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
+                p_54641_.playSound((Player)null, p_54642_, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 0.3F, f);
                 p_54641_.gameEvent(p_54643_, blockstate.getValue(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, p_54642_);
                 return InteractionResult.CONSUME;
             }

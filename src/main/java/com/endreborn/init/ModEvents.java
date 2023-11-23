@@ -1,6 +1,7 @@
 package com.endreborn.init;
 
 import com.endreborn.EndReborn;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,7 +20,6 @@ public class ModEvents {
         ItemStack feet = entity.getItemBySlot(EquipmentSlot.FEET);
         if(feet.getItem() == ModItems.ENDER_BOOTS.get()) {
             if (event.getSource().getDirectEntity() != null) {
-                float amount = event.getAmount();
                 if (!entity.level().isClientSide) {
                     for(int i = 0; i < 16; ++i) {
                         double d3 = entity.getX() + (entity.getRandom().nextDouble() - 0.5D) * 16.0D;
@@ -29,11 +29,10 @@ public class ModEvents {
                             entity.stopRiding();
                         }
                         if (entity.randomTeleport(d3, d4, d5, true)) {
-                            amount = amount / 2;
-                            event.setAmount(amount);
                             break;
                         }
                     }
+                    entity.lookAt(EntityAnchorArgument.Anchor.FEET, event.getSource().getDirectEntity().position());
                 }
             }
         }

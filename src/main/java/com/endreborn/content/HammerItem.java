@@ -19,8 +19,7 @@ public class HammerItem extends Item {
 
     @Nonnull
     @Override
-    public ItemStack getCraftingRemainingItem(@Nonnull ItemStack stack)
-    {
+    public ItemStack getCraftingRemainingItem(@Nonnull ItemStack stack) {
         ItemStack container = stack.copy();
         if(container.hurt(1, RandomSource.createNewThreadLocalInstance(), null))
             return ItemStack.EMPTY;
@@ -28,7 +27,7 @@ public class HammerItem extends Item {
             return container;
     }
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(1, attacker, null);
+        stack.hurtAndBreak(2, attacker, null);
         return true;
     }
     @Override

@@ -19,10 +19,9 @@ enum ModArmor implements StringRepresentable, ArmorMaterial {
         p_266655_.put(ArmorItem.Type.LEGGINGS, 0);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 0);
         p_266655_.put(ArmorItem.Type.HELMET, 0);
-    }), 10, SoundEvents.ARMOR_EQUIP_CHAIN, 3.0F, 0.0F, () -> {
+    }), 10, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> {
         return null;
     });
-
     public static final StringRepresentable.EnumCodec<net.minecraft.world.item.ArmorMaterials> CODEC = StringRepresentable.fromEnum(net.minecraft.world.item.ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
         p_266653_.put(ArmorItem.Type.BOOTS, 13);

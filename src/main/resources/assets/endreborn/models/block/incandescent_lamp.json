@@ -1,30 +1,41 @@
 {
-  "textures": {
-    "particle": "endreborn:block/incandescent_lamp"
-  },
-  "elements": [
-    {
-      "from": [6, 0, 6],
-      "to": [10, 1, 10],
-      "faces": {
-        "north": {"uv": [12, 1, 16, 2], "texture": "#particle"},
-        "east": {"uv": [12, 1, 16, 2], "texture": "#particle"},
-        "south": {"uv": [12, 1, 16, 2], "texture": "#particle"},
-        "west": {"uv": [12, 1, 16, 2], "texture": "#particle"},
-        "down": {"uv": [12, 2, 16, 6], "texture": "#particle"}
-      }
-    },
-    {
-      "from": [5, 1, 5],
-      "to": [11, 7, 11],
-      "faces": {
-        "north": {"uv": [0, 0, 6, 6], "texture": "#particle"},
-        "east": {"uv": [0, 0, 6, 6], "texture": "#particle"},
-        "south": {"uv": [0, 0, 6, 6], "texture": "#particle"},
-        "west": {"uv": [0, 0, 6, 6], "texture": "#particle"},
-        "up": {"uv": [6, 0, 12, 6], "texture": "#particle"},
-        "down": {"uv": [6, 0, 12, 6], "texture": "#particle"}
-      }
-    }
-  ]
+	"textures": {
+		"particle": "endreborn:block/incandescent_lamp"
+	},
+	"render_type": "cutout",
+	"elements": [
+		{
+			"from": [6, 0, 6],
+			"to": [10, 1, 10],
+			"faces": {
+				"north": {"uv": [12, 1, 16, 2], "texture": "#particle"},
+				"east": {"uv": [12, 1, 16, 2], "texture": "#particle"},
+				"south": {"uv": [12, 1, 16, 2], "texture": "#particle"},
+				"west": {"uv": [12, 1, 16, 2], "texture": "#particle"},
+				"down": {"uv": [12, 2, 16, 6], "texture": "#particle"}
+			}
+		},
+		{
+			"from": [5, 1, 5],
+			"to": [11, 7, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#particle"},
+				"east": {"uv": [0, 0, 6, 6], "texture": "#particle"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#particle"},
+				"west": {"uv": [0, 0, 6, 6], "texture": "#particle"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#particle"}
+			}
+		},
+		{
+			"from": [4.5, 1, 4.5],
+			"to": [11.5, 4, 11.5],
+			"faces": {
+				"north": {"uv": [0, 6, 7, 9], "texture": "#particle"},
+				"east": {"uv": [0, 6, 7, 9], "texture": "#particle"},
+				"south": {"uv": [0, 6, 7, 9], "texture": "#particle"},
+				"west": {"uv": [0, 6, 7, 9], "texture": "#particle"},
+				"down": {"uv": [9, 6, 16, 13], "texture": "#particle"}
+			}
+		}
+	]
 }

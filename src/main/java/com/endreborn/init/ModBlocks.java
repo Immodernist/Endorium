@@ -47,21 +47,17 @@ public class ModBlocks {
         CRACKED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "cracked_end_bricks");
         CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
         END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
-
         END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss");
         OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "ogana_weed");
         OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.copy(OGANA_WEED.get())), "ogana_plant");
-        POTTED_OGANA = registerBlock(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
+        POTTED_OGANA = registerPot(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
         END_MOSS_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "end_moss_block");
-
         OBSIDIAN_GLASS = registerBlock(() -> new GlassBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");
         OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass_pane");
-
         TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)), "tungsten_ore");
         ENDORIUM_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(6.0F, 7.0F)), "endorium_block");
         TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.5F, 6.0F)), "tungsten_block");
         RAW_TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())), "raw_tungsten_block");
-
         FARSTONE = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.55F, 9.0F)), "farstone");
         FARSTONE_DECORATIVE = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(FARSTONE.get())), "farstone_smooth");
         FARSTONE_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.copy(FARSTONE.get())), "farstone_bricks");
@@ -70,18 +66,19 @@ public class ModBlocks {
         FARSTONE_BRICKS_SLAB = registerBlock(() -> new SlabBlock(BlockBehaviour.Properties.copy(FARSTONE.get())), "farstone_brick_slab");
         FARSTONE_BRICKS_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.copy(FARSTONE.get()).forceSolidOn()), "farstone_brick_wall");
         FARSTONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(FARSTONE.get())), "farstone_pillar");
-
-        INCANDESCENT_LAMP = registerBlock(() -> new IncandescentLampBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(litBlockEmission(12))), "incandescent_lamp");
+        INCANDESCENT_LAMP = registerBlock(() -> new IncandescentLampBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(litBlockEmission())), "incandescent_lamp");
     }
-
     public static RegistryObject<Block> registerBlock(Supplier<Block> blockSupplier, String name) {
         RegistryObject<Block> blockRegistryObject = EndReborn.BLOCK.register(name, blockSupplier);
         EndReborn.ITEM.register(name, () -> new BlockItem(blockRegistryObject.get(), new Item.Properties()));
         return blockRegistryObject;
     }
-    private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
+    public static RegistryObject<Block> registerPot(Supplier<Block> blockSupplier, String name) {
+        return EndReborn.BLOCK.register(name, blockSupplier);
+    }
+    private static ToIntFunction<BlockState> litBlockEmission() {
         return (p_50763_) -> {
-            return p_50763_.getValue(BlockStateProperties.LIT) ? p_50760_ : 0;
+            return p_50763_.getValue(BlockStateProperties.LIT) ? 12 : 0;
         };
     }
 }

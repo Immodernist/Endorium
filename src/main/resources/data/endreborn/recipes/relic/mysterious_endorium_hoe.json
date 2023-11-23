@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "endreborn:endorium_ingot"
+    "item": "minecraft:dragon_breath"
   },
   "base": {
     "item": "endreborn:endorium_hoe"

@@ -15,9 +15,6 @@ public class ModTab {
                     output.accept(ModItems.ENDORIUM_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_INGOT.get());
                     output.accept(ModItems.TUNGSTEN_RAW.get());
-                    if (isInstalled("immersiveengineering") || isInstalled("mekanism")) {
-                        output.accept(ModItems.TUNGSTEN_DUST.get());
-                    }
                     output.accept(ModItems.IRON_HAMMER.get());
                     output.accept(ModItems.TUNGSTEN_HAMMER.get());
                     output.accept(ModItems.ENDORIUM_SWORD.get());
@@ -32,14 +29,11 @@ public class ModTab {
                     output.accept(ModItems.OGANA_TORTE.get());
                     output.accept(ModItems.ENDER_BOOTS.get());
                     output.accept(ModItems.TRANSMITTER.get());
-
                     output.accept(ModBlocks.OBSIDIAN_GLASS_PANE.get());
                     output.accept(ModBlocks.OBSIDIAN_GLASS.get());
-
                     output.accept(ModBlocks.TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.RAW_TUNGSTEN_BLOCK.get());
                     output.accept(ModBlocks.ENDORIUM_BLOCK.get());
-
                     output.accept(ModBlocks.SMOOTH_END_STONE.get());
                     output.accept(ModBlocks.FARSTONE_DECORATIVE.get());
                     output.accept(ModBlocks.CRACKED_END_BRICKS.get());

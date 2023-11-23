@@ -7,13 +7,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModTiers implements Tier {
-    ENDORIUM(4, 1348, 8.0F, 4.0F, 12, () -> {
+    ENDORIUM(4, 1453, 8.0F, 4.0F, 12, () -> {
         return Ingredient.of(ModItems.ENDORIUM_INGOT.get());
     }),
-    ENDORIUM_FLEXIBILITY(4, 1348, 8.0F, 5.0F, 12, () -> {
+    CURIOUS_ENDORIUM(4, 1453, 8.0F, 5.0F, 12, () -> {
         return Ingredient.of(ModItems.ENDORIUM_INGOT.get());
     }),
-    MYSTERIOUS_ENDORIUM(4, 1348, 9.5F, 5.0F, 12, () -> {
+    MYSTERIOUS_ENDORIUM(4, 1453, 9.5F, 5.0F, 12, () -> {
         return Ingredient.of(ModItems.ENDORIUM_INGOT.get());
     });
 
