@@ -2,7 +2,6 @@ package com.endreborn.content;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.SimpleMenuProvider;
@@ -30,7 +29,9 @@ public class TransmitterItem extends Item {
                 return ChestMenu.threeRows(p_53124_, p_53125_, enderchestinventory);
             }, CONTAINER_TITLE));
             playerIn.awardStat(Stats.OPEN_ENDERCHEST);
-            itemstack.hurt(1, RandomSource.createNewThreadLocalInstance(), null);
+            itemstack.hurtAndBreak(1, playerIn, (p_41007_) -> {
+                p_41007_.broadcastBreakEvent(handIn);
+            });
             return InteractionResultHolder.success(itemstack);
         }
     }
