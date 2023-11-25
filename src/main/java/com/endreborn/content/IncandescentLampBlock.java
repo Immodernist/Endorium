@@ -73,7 +73,7 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
         return null;
     }
     public InteractionResult use(BlockState p_54640_, Level p_54641_, BlockPos p_54642_, Player p_54643_, InteractionHand p_54644_, BlockHitResult p_54645_) {
-        if(p_54641_.hasNeighborSignal(p_54642_) || p_54640_.getValue(LIT)) {
+        if(p_54641_.hasNeighborSignal(p_54642_)) {
             if (p_54641_.isClientSide) {
                 return InteractionResult.SUCCESS;
             } else {
