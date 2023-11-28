@@ -22,7 +22,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 public class EndShipwreckPieces {
-    private static final Identifier[] STRUCTURES = new Identifier[]{new Identifier(Endorium.MODID + ":end_shipwreck"), new Identifier(Endorium.MODID + ":end_beacon"), new Identifier(Endorium.MODID + ":end_shipruin")};
+    private static final Identifier[] STRUCTURES = new Identifier[]{new Identifier(Endorium.MODID + ":end_shipwreck"), new Identifier(Endorium.MODID + ":end_shipruin")};
     public static final Identifier END_SHIPWRECK_LOOT = new Identifier(Endorium.MODID, "chests/end_shipwreck");
 
     public EndShipwreckPieces() {
@@ -50,9 +50,7 @@ public class EndShipwreckPieces {
             super.generate(worldIn, structureAccessor, chunkGenerator, rand, chunkBox, chunkPos, pivot);
             for (int j = 0; j < 8; ++j) {
                 BlockPos blockpos = pos.add(rand.nextInt(4), rand.nextInt(6), rand.nextInt(4));
-                if (worldIn.getBlockState(blockpos).getBlock() == Blocks.PURPUR_BLOCK) {
-                    worldIn.setBlockState(blockpos, ModBlocks.CRACKED_PURPUR.getDefaultState(), 2);
-                } else if (worldIn.getBlockState(blockpos).getBlock() == Blocks.END_STONE_BRICKS) {
+                if (worldIn.getBlockState(blockpos).getBlock() == Blocks.END_STONE) {
                     worldIn.setBlockState(blockpos, ModBlocks.CRACKED_END_BRICKS.getDefaultState(), 2);
                 }
             }

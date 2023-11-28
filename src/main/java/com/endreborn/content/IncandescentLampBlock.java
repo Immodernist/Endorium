@@ -2,42 +2,51 @@ package com.endreborn.content;
 
 import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Property;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class IncandescentLampBlock extends WallMountedBlock {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape NORTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 8.0D);
-    protected static final VoxelShape WEST_AABB = Block.createCuboidShape(8.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_AABB = Block.createCuboidShape(1.0D, 5.0D, 5.0D, 8.0D, 11.0D, 11.0D);
-    protected static final VoxelShape UP_AABB_X = Block.createCuboidShape(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D);
-    protected static final VoxelShape DOWN_AABB_X = Block.createCuboidShape(5.0D, 8.0D, 5.0D, 11.0D, 15.0D, 11.0D);
-
-    public IncandescentLampBlock(Settings settings) {
-        super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACE, WallMountLocation.FLOOR)).with(FACING, Direction.NORTH)).with(LIT, false));
+    protected static final VoxelShape NORTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
+    protected static final VoxelShape NORTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 15.0D, 11.0D, 11.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 7.0D);
+    protected static final VoxelShape SOUTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 1.0D);
+    protected static final VoxelShape WEST_AABB = Block.createCuboidShape(9.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
+    protected static final VoxelShape WEST_LIT = Block.createCuboidShape(15.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_AABB = Block.createCuboidShape(1.0D, 5.0D, 5.0D, 7.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_LIT = Block.createCuboidShape(0.0D, 5.0D, 5.0D, 1.0D, 11.0D, 11.0D);
+    protected static final VoxelShape UP_AABB = Block.createCuboidShape(5.0D, 1.0D, 5.0D, 11.0D, 7.0D, 11.0D);
+    protected static final VoxelShape UP_LIT = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 1.0D, 11.0D);
+    protected static final VoxelShape DOWN_AABB = Block.createCuboidShape(5.0D, 9.0D, 5.0D, 11.0D, 15.0D, 11.0D);
+    protected static final VoxelShape DOWN_LIT = Block.createCuboidShape(5.0D, 15.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+    public IncandescentLampBlock(Settings p_49795_) {
+        super(p_49795_);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACE, WallMountLocation.FLOOR).with(FACING, Direction.NORTH).with(LIT, Boolean.valueOf(false)));
     }
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext p_55659_) {
         for(Direction direction : p_55659_.getPlacementDirections()) {
             BlockState blockstate;
             if (direction.getAxis() == Direction.Axis.Y) {
-                blockstate = this.getDefaultState().with(FACE, direction == Direction.UP ? WallMountLocation.CEILING : WallMountLocation.FLOOR).with(FACING, p_55659_.getHorizontalPlayerFacing()).with(LIT, Boolean.valueOf(p_55659_.getWorld().isReceivingRedstonePower(p_55659_.getBlockPos())));
+                blockstate = this.getDefaultState().with(FACE, direction == Direction.UP ? WallMountLocation.CEILING : WallMountLocation.FLOOR);
             } else {
-                blockstate = this.getDefaultState().with(FACE, WallMountLocation.WALL).with(FACING, direction.getOpposite()).with(LIT, Boolean.valueOf(p_55659_.getWorld().isReceivingRedstonePower(p_55659_.getBlockPos())));
+                blockstate = this.getDefaultState().with(FACE, WallMountLocation.WALL).with(FACING, direction.getOpposite());
             }
-
             if (blockstate.canPlaceAt(p_55659_.getWorld(), p_55659_.getBlockPos())) {
                 return blockstate;
             }
@@ -45,37 +54,39 @@ public class IncandescentLampBlock extends WallMountedBlock {
         return null;
     }
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch ((WallMountLocation)state.get(FACE)) {
-            case FLOOR:
-                return UP_AABB_X;
-            case WALL:
-                return switch ((Direction) state.get(FACING)) {
-                    case EAST -> EAST_AABB;
-                    case WEST -> WEST_AABB;
-                    case SOUTH -> SOUTH_AABB;
-                    default -> NORTH_AABB;
-                };
-            case CEILING:
-            default:
-                return DOWN_AABB_X;
-        }
+        boolean lit = state.get(LIT);
+        return switch ((WallMountLocation) state.get(FACE)) {
+            case FLOOR -> lit ? UP_LIT : UP_AABB;
+            case WALL -> switch ((Direction) state.get(FACING)) {
+                case EAST -> lit ? EAST_LIT : EAST_AABB;
+                case WEST -> lit ? WEST_LIT : WEST_AABB;
+                case SOUTH -> lit ? SOUTH_LIT : SOUTH_AABB;
+                default -> lit ? NORTH_LIT : NORTH_AABB;
+            };
+            default -> lit ? DOWN_LIT : DOWN_AABB;
+        };
     }
-    public void neighborUpdate(BlockState p_55666_, World p_55667_, BlockPos p_55668_, Block p_55669_, BlockPos p_55670_, boolean p_55671_) {
-        if (!p_55667_.isClient) {
-            boolean flag = (Boolean)p_55666_.get(LIT);
-            if (flag != p_55667_.isReceivingRedstonePower(p_55668_)) {
-                if (flag) {
-                    p_55667_.scheduleBlockTick(p_55668_, this, 24000);
-                } else {
-                    p_55667_.setBlockState(p_55668_, p_55666_.cycle(LIT), 2);
-                }
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isReceivingRedstonePower(pos)) {
+            if (world.isClient) {
+                return ActionResult.SUCCESS;
+            } else {
+                BlockState blockState = this.togglePower(state, world, pos);
+                float f = (Boolean) blockState.get(LIT) ? 0.6F : 0.5F;
+                world.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, f);
+                world.emitGameEvent(player, (Boolean) blockState.get(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
+                return ActionResult.CONSUME;
             }
         }
-    }
-    public void scheduledTick(BlockState p_221937_, ServerWorld p_221938_, BlockPos p_221939_, Random p_221940_) {
-        if ((Boolean)p_221937_.get(LIT) && !p_221938_.isReceivingRedstonePower(p_221939_)) {
-            p_221938_.setBlockState(p_221939_, p_221937_.cycle(LIT), 2);
+        else {
+            return ActionResult.PASS;
         }
+    }
+
+    public BlockState togglePower(BlockState state, World world, BlockPos pos) {
+        state = (BlockState)state.cycle(LIT);
+        world.setBlockState(pos, state, 3);
+        return state;
     }
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{LIT, FACE, FACING});

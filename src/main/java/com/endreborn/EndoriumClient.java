@@ -9,6 +9,6 @@ public class EndoriumClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                ModBlocks.END_CORAL, ModBlocks.OGANA_WEED, ModBlocks.OBSIDIAN_GLASS, ModBlocks.OBSIDIAN_GLASS_PANE);
+                ModBlocks.INCANDESCENT_LAMP, ModBlocks.OGANA_WEED, ModBlocks.OGANA_PLANT, ModBlocks.OBSIDIAN_GLASS, ModBlocks.OBSIDIAN_GLASS_PANE);
     }
 }

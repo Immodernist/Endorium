@@ -7,13 +7,13 @@ import net.minecraft.util.Lazy;
 import java.util.function.Supplier;
 
 public enum ModTiers implements ToolMaterial {
-    TUNGSTEN(2, 260, 6.0F, 2.5F, 0, () -> {
-        return Ingredient.ofItems(ModItems.TUNGSTEN_INGOT);
-    }),
-    ENDORIUM(4, 1348, 8.0F, 4.0F, 12, () -> {
+    ENDORIUM(4, 1453, 8.0F, 4.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     }),
-    ENDORIUM_FLEXIBILITY(4, 1348, 9.5F, 4.0F, 12, () -> {
+    CURIOUS_ENDORIUM(4, 1453, 8.0F, 5.0F, 12, () -> {
+        return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
+    }),
+    MYSTERIOUS_ENDORIUM(4, 1453, 9.5F, 5.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     });
     private final int level;

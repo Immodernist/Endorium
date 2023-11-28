@@ -1,7 +1,6 @@
 package com.endreborn.init;
 
 import com.endreborn.Endorium;
-import com.endreborn.content.EndPlantBlock;
 import com.endreborn.content.IncandescentLampBlock;
 import com.endreborn.content.MossPlantBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -23,13 +22,10 @@ public class ModBlocks {
     public static final Block CRACKED_END_BRICKS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
     public static final Block CHISELED_END_BRICKS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
     public static final Block END_STONE_PILLAR  = new PillarBlock(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
-    public static final Block END_CORAL  = new EndPlantBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.STEM).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).replaceable());
-
-    public static final Block CRACKED_PURPUR  = new Block(FabricBlockSettings.copy(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_WALL  = new WallBlock(FabricBlockSettings.copy(Blocks.PURPUR_BLOCK));
 
     public static final Block END_MOSS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
-    public static final Block OGANA_WEED  = new MossPlantBlock(FabricBlockSettings.copy(END_CORAL));
+    public static final Block OGANA_PLANT  = new MossPlantBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.STEM).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY));
+    public static final Block OGANA_WEED  = new MossPlantBlock(FabricBlockSettings.copy(OGANA_PLANT).replaceable());
     public static final Block END_MOSS_BLOCK  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
 
     public static final Block OBSIDIAN_GLASS  = new GlassBlock(FabricBlockSettings.copy(Blocks.GLASS).instrument(Instrument.PLING).mapColor(MapColor.BLACK).requiresTool().strength(40.0f, 1200.0f));
@@ -49,7 +45,6 @@ public class ModBlocks {
     public static final Block FARSTONE_BRICKS_WALL  = new WallBlock(FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_PILLAR  = new PillarBlock(FabricBlockSettings.copy(FARSTONE));
 
-
     public static void setup() {
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_stone_smooth"), SMOOTH_END_STONE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_stone_smooth"), new BlockItem(SMOOTH_END_STONE, new FabricItemSettings()));
@@ -59,18 +54,13 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "chiseled_end_bricks"), new BlockItem(CHISELED_END_BRICKS, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_stone_pillar"), END_STONE_PILLAR);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_stone_pillar"), new BlockItem(END_STONE_PILLAR, new FabricItemSettings()));
-        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_coral"), END_CORAL);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_coral"), new BlockItem(END_CORAL, new FabricItemSettings()));
-
-        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "cracked_purpur"), CRACKED_PURPUR);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "cracked_purpur"), new BlockItem(CRACKED_PURPUR, new FabricItemSettings()));
-        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "purpur_wall"), PURPUR_WALL);
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "purpur_wall"), new BlockItem(PURPUR_WALL, new FabricItemSettings()));
 
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_moss"), END_MOSS);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_moss"), new BlockItem(END_MOSS, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "ogana_weed"), OGANA_WEED);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana_weed"), new BlockItem(OGANA_WEED, new FabricItemSettings()));
+        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "ogana_plant"), OGANA_PLANT);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana_plant"), new BlockItem(OGANA_PLANT, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_moss_block"), END_MOSS_BLOCK);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_moss_block"), new BlockItem(END_MOSS_BLOCK, new FabricItemSettings()));
 

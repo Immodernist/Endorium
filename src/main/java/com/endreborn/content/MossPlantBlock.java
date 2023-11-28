@@ -3,6 +3,7 @@ package com.endreborn.content;
 import com.endreborn.init.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
@@ -15,13 +16,13 @@ public class MossPlantBlock extends PlantBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        Vec3d vec3 = state.getModelOffset(world, pos);
+        return SHAPE.offset(vec3.x, vec3.y, vec3.z);
     }
 
     protected boolean canPlantOnTop(BlockState state, BlockView world, BlockPos pos) {
         Block block = state.getBlock();
         return block == ModBlocks.END_MOSS || block == ModBlocks.END_MOSS_BLOCK;
-
     }
 }
 

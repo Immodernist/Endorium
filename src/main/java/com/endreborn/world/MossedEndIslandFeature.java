@@ -44,8 +44,10 @@ public class MossedEndIslandFeature extends Feature<DefaultFeatureConfig> {
                 if (worldIn.isAir(blockpos.up())) {
                     if (decorator < 0.4D) {
                         worldIn.setBlockState(blockpos, Blocks.END_STONE.getDefaultState(), 2);
-                    } else {
+                    } else if (decorator < 0.85D){
                         worldIn.setBlockState(blockpos.up(), ModBlocks.OGANA_WEED.getDefaultState(), 2);
+                    } else {
+                        worldIn.setBlockState(blockpos.up(), ModBlocks.OGANA_PLANT.getDefaultState(), 2);
                     }
                 }
                 if (worldIn.isAir(blockpos.down())) {

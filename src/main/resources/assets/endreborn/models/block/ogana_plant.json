@@ -1,8 +1,7 @@
 {
     "parent": "block/cross",
-    "ambientocclusion": false,
     "render_type": "cutout",
     "textures": {
-        "cross": "endreborn:block/end_coral"
+        "cross": "endreborn:block/ogana_plant"
     }
 }

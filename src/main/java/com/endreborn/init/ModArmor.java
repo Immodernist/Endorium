@@ -15,19 +15,11 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum ModArmor implements StringIdentifiable, ArmorMaterial {
-    TUNGSTEN("tungsten", 17, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
-        p_266652_.put(ArmorItem.Type.BOOTS, 2);
-        p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
-        p_266652_.put(ArmorItem.Type.HELMET, 2);
-    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.2F, () -> {
-        return Ingredient.ofItems(ModItems.TUNGSTEN_INGOT);
-    }),
     ENDER("ender", 21, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 2);
+        p_266655_.put(ArmorItem.Type.BOOTS, 3);
         p_266655_.put(ArmorItem.Type.LEGGINGS, 0);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 0);
-        p_266655_.put(ArmorItem.Type.HELMET, 2);
+        p_266655_.put(ArmorItem.Type.HELMET, 0);
     }), 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return null;
     });

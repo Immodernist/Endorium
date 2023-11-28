@@ -1,6 +1,0 @@
-{
-    "parent": "block/button",
-    "textures": {
-        "texture": "endreborn:block/end_stone_smooth"
-    }
-}
