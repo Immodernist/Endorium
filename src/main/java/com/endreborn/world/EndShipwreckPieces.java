@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureManager;
@@ -70,7 +71,7 @@ public class EndShipwreckPieces {
             if (function.startsWith("Chest")) {
                 BlockPos blockpos = pos.below();
                 if (sbb.isInside(blockpos)) {
-                    RandomizableContainerBlockEntity.setLootTable(worldIn, rand, blockpos, EndShipwreckPieces.END_SHIPWRECK_LOOT);
+                    RandomizableContainer.m_307915_(worldIn, rand, blockpos, EndShipwreckPieces.END_SHIPWRECK_LOOT);
                 }
             }
         }

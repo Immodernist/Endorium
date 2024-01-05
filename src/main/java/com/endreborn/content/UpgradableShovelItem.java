@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UpgradableShovelItem extends ShovelItem {
-
     private final int sharpness;
     private final int flexibility;
 

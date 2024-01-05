@@ -18,7 +18,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UpgradableHoeItem extends HoeItem {
-
     private final int sharpness;
     private final int flexibility;
 

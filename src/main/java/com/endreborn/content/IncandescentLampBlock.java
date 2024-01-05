@@ -1,5 +1,6 @@
 package com.endreborn.content;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -25,6 +26,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBlock {
+    public static final MapCodec<IncandescentLampBlock> f_302232_ = m_306223_(IncandescentLampBlock::new);
+    public MapCodec<IncandescentLampBlock> m_304657_() {
+        return f_302232_;
+    }
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
     protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
     protected static final VoxelShape NORTH_LIT = Block.box(5.0D, 5.0D, 15.0D, 11.0D, 11.0D, 16.0D);

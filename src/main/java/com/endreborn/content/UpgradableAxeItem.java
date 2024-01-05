@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class UpgradableAxeItem extends AxeItem {
-
     private final int sharpness;
     private final int flexibility;
 
