@@ -1,7 +1,8 @@
 package com.endreborn.content;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
@@ -36,16 +37,21 @@ public class IncandescentLampBlock extends WallMountedBlock {
     protected static final VoxelShape DOWN_LIT = Block.createCuboidShape(5.0D, 15.0D, 5.0D, 11.0D, 16.0D, 11.0D);
     public IncandescentLampBlock(Settings p_49795_) {
         super(p_49795_);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACE, WallMountLocation.FLOOR).with(FACING, Direction.NORTH).with(LIT, Boolean.valueOf(false)));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH).with(LIT, Boolean.valueOf(false)));
+    }
+
+    public static final MapCodec<IncandescentLampBlock> f_302232_ = createCodec(IncandescentLampBlock::new);
+    public MapCodec<IncandescentLampBlock> getCodec() {
+        return f_302232_;
     }
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext p_55659_) {
         for(Direction direction : p_55659_.getPlacementDirections()) {
             BlockState blockstate;
             if (direction.getAxis() == Direction.Axis.Y) {
-                blockstate = this.getDefaultState().with(FACE, direction == Direction.UP ? WallMountLocation.CEILING : WallMountLocation.FLOOR);
+                blockstate = this.getDefaultState().with(FACE, direction == Direction.UP ? BlockFace.CEILING : BlockFace.FLOOR);
             } else {
-                blockstate = this.getDefaultState().with(FACE, WallMountLocation.WALL).with(FACING, direction.getOpposite());
+                blockstate = this.getDefaultState().with(FACE, BlockFace.WALL).with(FACING, direction.getOpposite());
             }
             if (blockstate.canPlaceAt(p_55659_.getWorld(), p_55659_.getBlockPos())) {
                 return blockstate;
@@ -55,7 +61,7 @@ public class IncandescentLampBlock extends WallMountedBlock {
     }
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         boolean lit = state.get(LIT);
-        return switch ((WallMountLocation) state.get(FACE)) {
+        return switch ((BlockFace) state.get(FACE)) {
             case FLOOR -> lit ? UP_LIT : UP_AABB;
             case WALL -> switch ((Direction) state.get(FACING)) {
                 case EAST -> lit ? EAST_LIT : EAST_AABB;

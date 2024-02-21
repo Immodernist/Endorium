@@ -28,7 +28,7 @@ public class ModBlocks {
     public static final Block OGANA_WEED  = new MossPlantBlock(FabricBlockSettings.copy(OGANA_PLANT).replaceable());
     public static final Block END_MOSS_BLOCK  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
 
-    public static final Block OBSIDIAN_GLASS  = new GlassBlock(FabricBlockSettings.copy(Blocks.GLASS).instrument(Instrument.PLING).mapColor(MapColor.BLACK).requiresTool().strength(40.0f, 1200.0f));
+    public static final Block OBSIDIAN_GLASS  = new TransparentBlock(FabricBlockSettings.copy(Blocks.GLASS).instrument(Instrument.PLING).mapColor(MapColor.BLACK).requiresTool().strength(40.0f, 1200.0f));
     public static final Block OBSIDIAN_GLASS_PANE  = new PaneBlock(FabricBlockSettings.copy(OBSIDIAN_GLASS));
 
     public static final Block TUNGSTEN_ORE  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));

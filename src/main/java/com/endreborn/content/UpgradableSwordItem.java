@@ -1,6 +1,5 @@
 package com.endreborn.content;
 
-
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;

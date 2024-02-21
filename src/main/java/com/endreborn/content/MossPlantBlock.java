@@ -1,6 +1,7 @@
 package com.endreborn.content;
 
 import com.endreborn.init.ModBlocks;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -13,6 +14,11 @@ public class MossPlantBlock extends PlantBlock {
 
     public MossPlantBlock(AbstractBlock.Settings p_51021_) {
         super(p_51021_);
+    }
+
+    public static final MapCodec<MossPlantBlock> f_302232_ = createCodec(MossPlantBlock::new);
+    public MapCodec<MossPlantBlock> getCodec() {
+        return f_302232_;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

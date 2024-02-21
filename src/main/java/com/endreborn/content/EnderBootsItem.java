@@ -1,6 +1,5 @@
 package com.endreborn.content;
 
-
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;

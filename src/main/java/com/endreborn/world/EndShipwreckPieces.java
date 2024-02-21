@@ -4,7 +4,7 @@ import com.endreborn.Endorium;
 import com.endreborn.init.ModBlocks;
 import com.endreborn.init.ModPieces;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.inventory.LootableInventory;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.structure.*;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
@@ -59,7 +59,7 @@ public class EndShipwreckPieces {
             if (function.startsWith("Chest")) {
                 BlockPos blockpos = pos.down();
                 if (sbb.contains(blockpos)) {
-                    LootableContainerBlockEntity.setLootTable(world, random, blockpos, END_SHIPWRECK_LOOT);
+                    LootableInventory.setLootTable(world, random, blockpos, END_SHIPWRECK_LOOT);
                 }
             }
         }

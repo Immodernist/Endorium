@@ -21,8 +21,8 @@
 		"endorium.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.23",
-		"minecraft": "~1.20.1",
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.4",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
