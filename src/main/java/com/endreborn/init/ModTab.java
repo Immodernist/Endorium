@@ -8,7 +8,7 @@ import net.minecraftforge.fml.ModList;
 public class ModTab {
     public static void setup() {
         EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModBlocks.INCANDESCENT_LAMP.get().asItem().getDefaultInstance())
+                .icon(() -> ModItems.OGANA_FRUIT.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());

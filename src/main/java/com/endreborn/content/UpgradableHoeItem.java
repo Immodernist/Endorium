@@ -16,7 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
 public class UpgradableHoeItem extends HoeItem {
     private final int sharpness;
     private final int flexibility;
@@ -30,18 +29,10 @@ public class UpgradableHoeItem extends HoeItem {
         return Component.translatable("item.endreborn.endorium_hoe");
     }
 
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
-    }
-
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        return state.is(BlockTags.MINEABLE_WITH_HOE) ? this.speed : 1.0F + this.sharpness;
+        return state.is(BlockTags.MINEABLE_WITH_HOE) ? this.speed + this.sharpness * 2.4F: 1.0F;
     }
-
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.relic").withStyle(ChatFormatting.GRAY));
@@ -52,7 +43,6 @@ public class UpgradableHoeItem extends HoeItem {
             tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
-
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
         p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, (p_41007_) -> {
             p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);

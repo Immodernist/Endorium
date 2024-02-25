@@ -24,11 +24,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
 public class UpgradableShovelItem extends ShovelItem {
     private final int sharpness;
     private final int flexibility;
-
     public UpgradableShovelItem(Tier p_43114_, float p_43115_, float p_43116_, Properties p_43117_, int sharpness, int flexibility) {
         super(p_43114_, p_43115_, p_43116_, p_43117_);
         this.sharpness = sharpness;
@@ -37,7 +35,6 @@ public class UpgradableShovelItem extends ShovelItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_shovel");
     }
-
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.relic").withStyle(ChatFormatting.GRAY));
@@ -48,14 +45,12 @@ public class UpgradableShovelItem extends ShovelItem {
             tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
-
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
         p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, (p_41007_) -> {
             p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
         return true;
     }
-
     @Override
     public InteractionResult useOn(UseOnContext p_43119_) {
         Level level = p_43119_.getLevel();
@@ -95,12 +90,5 @@ public class UpgradableShovelItem extends ShovelItem {
                 return InteractionResult.PASS;
             }
         }
-    }
-
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
     }
 }

@@ -47,11 +47,11 @@ public class ModBlocks {
         CRACKED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "cracked_end_bricks");
         CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
         END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
-        END_MOSS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "end_moss");
+        END_MOSS = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "end_moss");
         OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "ogana_weed");
         OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.m_308003_(OGANA_WEED.get())), "ogana_plant");
         POTTED_OGANA = registerPot(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
-        END_MOSS_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "end_moss_block");
+        END_MOSS_BLOCK = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(1.4F).sound(SoundType.MOSS)), "end_moss_block");
         OBSIDIAN_GLASS = registerBlock(() -> new TransparentBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");
         OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass_pane");
         TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "tungsten_ore");
@@ -66,7 +66,7 @@ public class ModBlocks {
         FARSTONE_BRICKS_SLAB = registerBlock(() -> new SlabBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_brick_slab");
         FARSTONE_BRICKS_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get()).forceSolidOn()), "farstone_brick_wall");
         FARSTONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_pillar");
-        INCANDESCENT_LAMP = registerBlock(() -> new IncandescentLampBlock(BlockBehaviour.Properties.m_308003_(Blocks.LANTERN).lightLevel(litBlockEmission())), "incandescent_lamp");
+        INCANDESCENT_LAMP = registerBlock(() -> new IncandescentLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).forceSolidOn().strength(3.0F).sound(SoundType.LANTERN).lightLevel(litBlockEmission())), "incandescent_lamp");
     }
     public static RegistryObject<Block> registerBlock(Supplier<Block> blockSupplier, String name) {
         RegistryObject<Block> blockRegistryObject = EndReborn.BLOCK.register(name, blockSupplier);

@@ -25,11 +25,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
-
 public class UpgradableAxeItem extends AxeItem {
     private final int sharpness;
     private final int flexibility;
-
     public UpgradableAxeItem(Tier p_40521_, float p_40522_, float p_40523_, Properties p_40524_, int sharpness, int flexibility) {
         super(p_40521_, p_40522_, p_40523_, p_40524_);
 
@@ -39,7 +37,6 @@ public class UpgradableAxeItem extends AxeItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_axe");
     }
-
     @Override
     public InteractionResult useOn(UseOnContext p_40529_) {
         Level level = p_40529_.getLevel();
@@ -92,19 +89,10 @@ public class UpgradableAxeItem extends AxeItem {
             tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
-
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
         p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, (p_41007_) -> {
             p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
         return true;
     }
-
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
-    }
-
 }

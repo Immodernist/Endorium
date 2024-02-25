@@ -17,11 +17,9 @@ import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
 public class UpgradablePickaxeItem extends PickaxeItem {
     private final int sharpness;
     private final int flexibility;
-
     public UpgradablePickaxeItem(Tier p_42961_, int p_42962_, float p_42963_, Properties p_42964_, int sharpness, int flexibility) {
         super(p_42961_, p_42962_, p_42963_, p_42964_);
         this.sharpness = sharpness;
@@ -37,7 +35,6 @@ public class UpgradablePickaxeItem extends PickaxeItem {
         });
         return true;
     }
-
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.relic").withStyle(ChatFormatting.GRAY));
@@ -56,11 +53,5 @@ public class UpgradablePickaxeItem extends PickaxeItem {
         else {
             return state.is(BlockTags.MINEABLE_WITH_PICKAXE) ? this.speed : 1.0F;
         }
-    }
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
     }
 }

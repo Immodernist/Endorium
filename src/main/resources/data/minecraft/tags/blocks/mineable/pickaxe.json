@@ -6,7 +6,6 @@
     "endreborn:chiseled_end_bricks",
     "endreborn:end_stone_pillar",
     "endreborn:end_moss",
-    "endreborn:end_moss_block",
     "endreborn:obsidian_glass",
     "endreborn:obsidian_glass_pane",
     "endreborn:raw_tungsten_block",
@@ -20,6 +19,7 @@
     "endreborn:farstone_brick_stairs",
     "endreborn:farstone_brick_slab",
     "endreborn:farstone_brick_wall",
+    "endreborn:incandescent_lamp",
     "endreborn:farstone_pillar"
   ]
 }
