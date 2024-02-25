@@ -90,11 +90,4 @@ public class UpgradableShovelItem extends ShovelItem {
             }
         }
     }
-
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
-    }
 }

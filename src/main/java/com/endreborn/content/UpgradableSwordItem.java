@@ -12,6 +12,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +42,7 @@ public class UpgradableSwordItem extends SwordItem {
         }
     }
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(2 + this.flexibility, attacker, (e) -> {
+        stack.damage(1 + this.flexibility, attacker, (e) -> {
             e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
         });
         return true;
@@ -51,7 +52,16 @@ public class UpgradableSwordItem extends SwordItem {
         if (state.isOf(Blocks.COBWEB)) {
             return 15 + this.sharpness*5;
         } else {
-            return state.isIn(BlockTags.SWORD_EFFICIENT) ? 1.5F + this.sharpness: 1.0F;
+            return state.isIn(BlockTags.SWORD_EFFICIENT) ? 1.5F + (float) this.sharpness /2: 1.0F;
         }
+    }
+    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
+        if (state.getHardness(world, pos) != 0.0F) {
+            stack.damage(2 - this.flexibility, miner, (e) -> {
+                e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
+            });
+        }
+
+        return true;
     }
 }

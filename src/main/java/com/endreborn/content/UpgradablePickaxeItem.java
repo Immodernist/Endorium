@@ -18,10 +18,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class UpgradablePickaxeItem extends PickaxeItem {
-
     private final int sharpness;
     private final int flexibility;
-
     public UpgradablePickaxeItem(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
         super(material, attackDamage, attackSpeed, settings);
         this.sharpness = sharpness;
@@ -53,12 +51,5 @@ public class UpgradablePickaxeItem extends PickaxeItem {
         } else {
             return state.isIn(BlockTags.PICKAXE_MINEABLE) ? this.miningSpeed : 1.0F;
         }
-    }
-
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
     }
 }

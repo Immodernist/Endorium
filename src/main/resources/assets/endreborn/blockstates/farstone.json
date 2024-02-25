@@ -1,5 +1,12 @@
 {
   "variants": {
-    "": { "model": "endreborn:block/farstone" }
+    "": [
+      {
+        "model": "endreborn:block/farstone"
+      },
+      {
+        "model": "endreborn:block/farstone_mirrored"
+      }
+    ]
   }
 }

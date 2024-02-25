@@ -17,10 +17,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class UpgradableHoeItem extends HoeItem {
-
     private final int sharpness;
     private final int flexibility;
-
     public UpgradableHoeItem(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
         super(material, attackDamage, attackSpeed, settings);
         this.sharpness = sharpness;
@@ -30,15 +28,8 @@ public class UpgradableHoeItem extends HoeItem {
         return Text.translatable("item.endreborn.endorium_hoe");
     }
 
-    public float getSharpness() {
-        return this.sharpness;
-    }
-    public float getFlexibility() {
-        return this.flexibility;
-    }
-
     public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-        return state.isIn(BlockTags.HOE_MINEABLE) ? this.miningSpeed : 1.0F + this.sharpness;
+        return state.isIn(BlockTags.HOE_MINEABLE) ? this.miningSpeed + this.sharpness * 2.4F: 1.0F;
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

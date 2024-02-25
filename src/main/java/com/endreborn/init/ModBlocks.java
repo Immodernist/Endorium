@@ -1,6 +1,7 @@
 package com.endreborn.init;
 
 import com.endreborn.Endorium;
+import com.endreborn.content.EndMossBlock;
 import com.endreborn.content.IncandescentLampBlock;
 import com.endreborn.content.MossPlantBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -23,10 +24,10 @@ public class ModBlocks {
     public static final Block CHISELED_END_BRICKS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
     public static final Block END_STONE_PILLAR  = new PillarBlock(FabricBlockSettings.copy(Blocks.END_STONE_BRICKS));
 
-    public static final Block END_MOSS  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
+    public static final Block END_MOSS  = new EndMossBlock(FabricBlockSettings.copy(Blocks.END_STONE));
     public static final Block OGANA_PLANT  = new MossPlantBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.STEM).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY));
     public static final Block OGANA_WEED  = new MossPlantBlock(FabricBlockSettings.copy(OGANA_PLANT).replaceable());
-    public static final Block END_MOSS_BLOCK  = new Block(FabricBlockSettings.copy(Blocks.END_STONE));
+    public static final Block END_MOSS_BLOCK  = new EndMossBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).strength(1.4F).sounds(BlockSoundGroup.MOSS_BLOCK));
 
     public static final Block OBSIDIAN_GLASS  = new TransparentBlock(FabricBlockSettings.copy(Blocks.GLASS).instrument(Instrument.PLING).mapColor(MapColor.BLACK).requiresTool().strength(40.0f, 1200.0f));
     public static final Block OBSIDIAN_GLASS_PANE  = new PaneBlock(FabricBlockSettings.copy(OBSIDIAN_GLASS));
@@ -35,7 +36,7 @@ public class ModBlocks {
     public static final Block ENDORIUM_BLOCK  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.IRON_GRAY).requiresTool().strength(6.0F, 7.0F));
     public static final Block TUNGSTEN_BLOCK  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.5F, 6.0F));
     public static final Block RAW_TUNGSTEN_BLOCK  = new Block(FabricBlockSettings.copy(TUNGSTEN_BLOCK));
-    public static final Block INCANDESCENT_LAMP  = new IncandescentLampBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(litBlockEmission(12)));
+    public static final Block INCANDESCENT_LAMP  = new IncandescentLampBlock(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).solid().strength(3.0F).sounds(BlockSoundGroup.LANTERN).luminance(litBlockEmission(12)));
     public static final Block FARSTONE  = new Block(FabricBlockSettings.create().instrument(Instrument.BASEDRUM).mapColor(MapColor.STONE_GRAY).requiresTool().strength(2.55F, 9.0F));
     public static final Block FARSTONE_DECORATIVE  = new Block(FabricBlockSettings.copy(FARSTONE));
     public static final Block FARSTONE_BRICKS  = new Block(FabricBlockSettings.copy(FARSTONE));
