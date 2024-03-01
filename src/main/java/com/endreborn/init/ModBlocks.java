@@ -26,6 +26,7 @@ public class ModBlocks {
     public static RegistryObject<Block> OGANA_PLANT;
     public static RegistryObject<Block> POTTED_OGANA;
     public static RegistryObject<Block> END_MOSS_BLOCK;
+    public static RegistryObject<Block> END_MOSS_CARPET;
     public static RegistryObject<Block> OBSIDIAN_GLASS;
     public static RegistryObject<Block> OBSIDIAN_GLASS_PANE;
     public static RegistryObject<Block> TUNGSTEN_ORE;
@@ -52,6 +53,8 @@ public class ModBlocks {
         OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.m_308003_(OGANA_WEED.get())), "ogana_plant");
         POTTED_OGANA = registerPot(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
         END_MOSS_BLOCK = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(1.4F).sound(SoundType.MOSS)), "end_moss_block");
+        END_MOSS_CARPET = registerBlock(() -> new CarpetBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(0.1F).sound(SoundType.MOSS_CARPET).pushReaction(PushReaction.DESTROY)), "end_moss_carpet");
+
         OBSIDIAN_GLASS = registerBlock(() -> new TransparentBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");
         OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass_pane");
         TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "tungsten_ore");

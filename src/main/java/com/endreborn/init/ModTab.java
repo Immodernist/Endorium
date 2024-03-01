@@ -8,7 +8,7 @@ import net.minecraftforge.fml.ModList;
 public class ModTab {
     public static void setup() {
         EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModItems.OGANA_FRUIT.get().asItem().getDefaultInstance())
+                .icon(() -> ModItems.TRANSMITTER.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());
@@ -51,6 +51,7 @@ public class ModTab {
                     output.accept(ModBlocks.OGANA_PLANT.get());
                     output.accept(ModBlocks.END_MOSS.get());
                     output.accept(ModBlocks.END_MOSS_BLOCK.get());
+                    output.accept(ModBlocks.END_MOSS_CARPET.get());
                 }).build());
     }
     public static boolean isInstalled(String str) {

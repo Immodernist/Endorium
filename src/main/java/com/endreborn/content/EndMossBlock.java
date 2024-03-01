@@ -27,12 +27,11 @@ public class EndMossBlock extends Block implements BonemealableBlock {
     public void performBonemeal(ServerLevel worldIn, RandomSource rand, BlockPos pos, BlockState p_221536_) {
         for (int j = 0; j < 8; ++j) {
             int decorator = rand.nextInt(5);
-            BlockPos blockpos = pos.offset(rand.nextInt(4), 0, rand.nextInt(4));
+            BlockPos blockpos = pos.offset(rand.nextInt(-2,2), 0, rand.nextInt(-2,2));
             if (worldIn.getBlockState(blockpos).getBlock() == this && worldIn.isEmptyBlock(blockpos.above())) {
-                if (decorator < 2) {
+                if (decorator == 1) {
                     worldIn.setBlock(blockpos.above(), ModBlocks.OGANA_PLANT.get().defaultBlockState(), 2);
-                }
-                else {
+                } else {
                     worldIn.setBlock(blockpos.above(), ModBlocks.OGANA_WEED.get().defaultBlockState(), 2);
                 }
             }

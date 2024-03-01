@@ -42,12 +42,13 @@
  "container.ender_transmitter": "Передавач Енду",
  "item.endreborn.ender_boots": "Чоботи Енду",
 
- "item.endreborn.ogana": "Фрукт огани",
- "item.endreborn.ogana_torte": "Огановий торт",
- "block.endreborn.ogana_weed": "Оганова трава",
- "block.endreborn.ogana_plant": "Огановий реп'яшник",
+ "item.endreborn.ogana": "Порочний фрукт",
+ "item.endreborn.ogana_torte": "Порочний листковий торт",
+ "block.endreborn.ogana_weed": "Порочне бур'ян",
+ "block.endreborn.ogana_plant": "Порочний реп'яшник",
  "block.endreborn.end_moss": "Моховитий камінь Енду",
  "block.endreborn.end_moss_block": "Мох Енду",
+ "block.endreborn.end_moss_carpet": "Моховий покрив Енду",
 
  "block.endreborn.end_stone_pillar": "Колона з каменю Енду",
  "block.endreborn.end_stone_smooth": "Полірований камінь Енду",
@@ -75,6 +76,6 @@
  "advancements.endreborn.glass.description": "Отримайте обсидіанову декоровану шибу",
  "advancements.endreborn.end_stone_pillar.title": "П'ята колона!",
  "advancements.endreborn.end_stone_pillar.description": "Отримайте колони з каменю Енду, кварцу та пурпуру",
- "advancements.endreborn.relic.title": "Це той самий меч?",
+ "advancements.endreborn.relic.title": "Досі той самий меч?",
  "advancements.endreborn.relic.description": "Покращте будь-який інструмент"
 }

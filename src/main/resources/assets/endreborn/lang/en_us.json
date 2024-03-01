@@ -42,12 +42,13 @@
  "container.ender_transmitter": "Ender Transmitter",
  "item.endreborn.ender_boots": "Ender Boots",
 
- "item.endreborn.ogana": "Ogana",
- "item.endreborn.ogana_torte": "Ogana Torte",
- "block.endreborn.ogana_weed": "Ogana Grass",
- "block.endreborn.ogana_plant": "Ogana Burdock",
+ "item.endreborn.ogana": "Wicked Fruit",
+ "item.endreborn.ogana_torte": "Wicked Fruit Torte",
+ "block.endreborn.ogana_weed": "Wicked Grass",
+ "block.endreborn.ogana_plant": "Wicked Burdock",
  "block.endreborn.end_moss": "Mossy End Stone",
  "block.endreborn.end_moss_block": "End Moss",
+ "block.endreborn.end_moss_carpet": "End Moss Carpet",
 
  "block.endreborn.end_stone_pillar": "End Stone Pillar",
  "block.endreborn.end_stone_smooth": "Polished End Stone",

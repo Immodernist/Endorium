@@ -42,12 +42,13 @@
  "container.ender_transmitter": "Трансмиттер Края",
  "item.endreborn.ender_boots": "Ботинки Эндера",
 
- "item.endreborn.ogana": "Плод оганы",
- "item.endreborn.ogana_torte": "Слоенный пирог из оганы",
- "block.endreborn.ogana_weed": "Сорняк оганы",
- "block.endreborn.ogana_plant": "Репей оганы",
+ "item.endreborn.ogana": "Порочный плод",
+ "item.endreborn.ogana_torte": "Порочный слоенный пирог",
+ "block.endreborn.ogana_weed": "Порочный сорняк",
+ "block.endreborn.ogana_plant": "Порочный репей",
  "block.endreborn.end_moss": "Замшелый эндерняк",
  "block.endreborn.end_moss_block": "Мох Края",
+ "block.endreborn.end_moss_carpet": "Моховый ковер Края",
 
  "block.endreborn.end_stone_pillar": "Эндерняковая колонна",
  "block.endreborn.end_stone_smooth": "Полированный эндерняк",
@@ -73,7 +74,7 @@
  "advancements.endreborn.ender_transmitter.description": "Соберите трансмиттер Края",
  "advancements.endreborn.glass.title": "Великий обсидиановый брандмауэр",
  "advancements.endreborn.glass.description": "Создайте укрепленную обсидианом стеклянную панель",
- "advancements.endreborn.end_stone_pillar.title": "Они пробудились",
+ "advancements.endreborn.end_stone_pillar.title": "Они пробудились!",
  "advancements.endreborn.end_stone_pillar.description": "Соберите: Эндерняковая колонна, Кварцевая колонна, Пурпурная колонна",
  "advancements.endreborn.relic.title": "Все тот же меч?",
  "advancements.endreborn.relic.description": "Улучшите любой инструмент"
