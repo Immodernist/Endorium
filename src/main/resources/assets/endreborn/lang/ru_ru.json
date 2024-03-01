@@ -10,7 +10,7 @@
  "tooltip.sword_flexibility_n": "-100% Прочность против существ",
  "tooltip.axe_sharpness": "-100% Прочность при сдирании",
  "tooltip.pickaxe_sharpness": "Эффективность к песку и гравию",
- "tooltip.hoe_sharpness": "+30% Эффективность к подходящим блокам",
+ "tooltip.hoe_sharpness": "Эффективность к льду",
  "tooltip.shovel_sharpness": "-100% Прочность при укладке",
  "gui.forbidden_arcanus.clibano.residue.tungsten": "Tungsten",
 
