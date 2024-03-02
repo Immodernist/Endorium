@@ -10,7 +10,7 @@ import net.minecraft.world.BlockView;
 
 public class MossPlantBlock extends PlantBlock {
 
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 15.0D, 10.0D, 15.0D);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
     public MossPlantBlock(AbstractBlock.Settings p_51021_) {
         super(p_51021_);

@@ -29,7 +29,12 @@ public class UpgradableHoeItem extends HoeItem {
     }
 
     public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-        return state.isIn(BlockTags.HOE_MINEABLE) ? this.miningSpeed + this.sharpness * 2.4F: 1.0F;
+        if (sharpness == 1){
+            return (state.isIn(BlockTags.HOE_MINEABLE) || state.isIn(BlockTags.ICE)) ? this.miningSpeed: 1.0F;
+        }
+        else {
+            return (state.isIn(BlockTags.HOE_MINEABLE)) ? this.miningSpeed: 1.0F;
+        }
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

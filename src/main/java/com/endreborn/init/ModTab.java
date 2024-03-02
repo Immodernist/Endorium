@@ -17,7 +17,7 @@ public class ModTab {
     public static void setup() {
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
                 .displayName(Text.translatable("itemGroup.endgroup"))
-                .icon(() -> new ItemStack(ModItems.OGANA_FRUIT))
+                .icon(() -> new ItemStack(ModItems.TRANSMITTER))
                 .entries((displayContext, output) -> {
                     output.add(ModItems.ENDORIUM_NUGGET);
                     output.add(ModItems.ENDORIUM_INGOT);
@@ -59,6 +59,7 @@ public class ModTab {
                     output.add(ModBlocks.OGANA_PLANT);
                     output.add(ModBlocks.END_MOSS);
                     output.add(ModBlocks.END_MOSS_BLOCK);
+                    output.add(ModBlocks.END_MOSS_CARPET);
                 })
                 .build());
     }

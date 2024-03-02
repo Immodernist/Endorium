@@ -31,12 +31,11 @@ public class EndMossBlock extends Block implements Fertilizable {
     public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
         for (int j = 0; j < 8; ++j) {
             int decorator = rand.nextInt(5);
-            BlockPos blockpos = pos.add(rand.nextInt(4), 0, rand.nextInt(4));
+            BlockPos blockpos = pos.add(rand.nextBetween(-2,2), 0, rand.nextBetween(-2,2));
             if (worldIn.getBlockState(blockpos).getBlock() == this && worldIn.isAir(blockpos.up())) {
-                if (decorator < 2) {
+                if (decorator == 1) {
                     worldIn.setBlockState(blockpos.up(), ModBlocks.OGANA_PLANT.getDefaultState(), 2);
-                }
-                else {
+                } else {
                     worldIn.setBlockState(blockpos.up(), ModBlocks.OGANA_WEED.getDefaultState(), 2);
                 }
             }

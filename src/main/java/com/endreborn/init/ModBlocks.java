@@ -28,6 +28,7 @@ public class ModBlocks {
     public static final Block OGANA_PLANT  = new MossPlantBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.STEM).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY));
     public static final Block OGANA_WEED  = new MossPlantBlock(FabricBlockSettings.copy(OGANA_PLANT).replaceable());
     public static final Block END_MOSS_BLOCK  = new EndMossBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).strength(1.4F).sounds(BlockSoundGroup.MOSS_BLOCK));
+    public static final Block END_MOSS_CARPET  = new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).strength(0.1F).sounds(BlockSoundGroup.MOSS_CARPET).pistonBehavior(PistonBehavior.DESTROY));
 
     public static final Block OBSIDIAN_GLASS  = new TransparentBlock(FabricBlockSettings.copy(Blocks.GLASS).instrument(Instrument.PLING).mapColor(MapColor.BLACK).requiresTool().strength(40.0f, 1200.0f));
     public static final Block OBSIDIAN_GLASS_PANE  = new PaneBlock(FabricBlockSettings.copy(OBSIDIAN_GLASS));
@@ -64,6 +65,8 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana_plant"), new BlockItem(OGANA_PLANT, new FabricItemSettings()));
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_moss_block"), END_MOSS_BLOCK);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_moss_block"), new BlockItem(END_MOSS_BLOCK, new FabricItemSettings()));
+        Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "end_moss_carpet"), END_MOSS_CARPET);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "end_moss_carpet"), new BlockItem(END_MOSS_CARPET, new FabricItemSettings()));
 
         Registry.register(Registries.BLOCK, new Identifier(Endorium.MODID, "obsidian_glass"), OBSIDIAN_GLASS);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "obsidian_glass"), new BlockItem(OBSIDIAN_GLASS, new FabricItemSettings()));
