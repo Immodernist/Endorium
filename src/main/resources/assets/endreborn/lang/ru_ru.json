@@ -1,5 +1,5 @@
 ﻿{
- "itemGroup.endgroup": "Endorium",
+ "itemGroup.endgroup": "Эндориум",
  "tooltip.ender_boots": "Телепорт при уроне",
  "tooltip.relic": "Эффект реликвии:",
  "tooltip.effect": "Эффект материала:",
@@ -8,11 +8,11 @@
  "tooltip.sword_sharpness": "+25% Эффективность к подходящим блокам",
  "tooltip.sword_flexibility": "+50% Прочность против блоков",
  "tooltip.sword_flexibility_n": "-100% Прочность против существ",
- "tooltip.axe_sharpness": "-100% Прочность при сдирании",
+ "tooltip.axe_sharpness": "+100% Прочность при сдирании",
  "tooltip.pickaxe_sharpness": "Эффективность к песку и гравию",
  "tooltip.hoe_sharpness": "Эффективность к льду",
- "tooltip.shovel_sharpness": "-100% Прочность при укладке",
- "gui.forbidden_arcanus.clibano.residue.tungsten": "Tungsten",
+ "tooltip.shovel_sharpness": "+100% Прочность при укладке",
+ "gui.forbidden_arcanus.clibano.residue.tungsten": "Вольфрам",
 
  "item.endreborn.endorium_nugget": "Эндориумовая пластина",
  "item.endreborn.endorium_ingot": "Эндориумовый слиток",
@@ -25,7 +25,6 @@
 
  "item.endreborn.tungsten_nugget": "Вольфрамовый самородок",
  "item.endreborn.tungsten_ingot": "Вольфрамовый слиток",
- "item.endreborn.tungsten_dust": "Вольфрамовая пыль",
  "item.endreborn.raw_tungsten": "Рудной вольфрам",
  "item.endreborn.tungsten_hammer": "Вольфрамовая кувалда",
  "block.endreborn.tungsten_ore": "Вольфрамовая руда",
@@ -64,18 +63,18 @@
  "block.endreborn.farstone_brick_slab": "Плита из дальнекаменного кирпича",
  "block.endreborn.farstone_brick_wall": "Стена из дальнекаменного кирпича",
 
- "advancements.endreborn.root.title": "Endorium",
- "advancements.endreborn.root.description": "Соберите эндориумовый самородок",
+ "advancements.endreborn.root.title": "Эндориум",
+ "advancements.endreborn.root.description": "Соберите эндориумовый самородок.",
  "advancements.endreborn.endorium_block.title": "Гипперинфляция",
- "advancements.endreborn.endorium_block.description": "Соберите эндориумовый блок",
+ "advancements.endreborn.endorium_block.description": "Соберите эндориумовый блок.",
  "advancements.endreborn.iron_hammer.title": "Glory`&`Hammer",
- "advancements.endreborn.iron_hammer.description": "Соберите железную кувалду",
+ "advancements.endreborn.iron_hammer.description": "Соберите железную кувалду.",
  "advancements.endreborn.ender_transmitter.title": "Трансцендентально близко",
- "advancements.endreborn.ender_transmitter.description": "Соберите трансмиттер Края",
+ "advancements.endreborn.ender_transmitter.description": "Соберите трансмиттер Края.",
  "advancements.endreborn.glass.title": "Великий обсидиановый брандмауэр",
- "advancements.endreborn.glass.description": "Создайте укрепленную обсидианом стеклянную панель",
+ "advancements.endreborn.glass.description": "Соберите укрепленную обсидианом стеклянную панель.",
  "advancements.endreborn.end_stone_pillar.title": "Они пробудились!",
- "advancements.endreborn.end_stone_pillar.description": "Соберите: Эндерняковая колонна, Кварцевая колонна, Пурпурная колонна",
+ "advancements.endreborn.end_stone_pillar.description": "Соберите три колонны.",
  "advancements.endreborn.relic.title": "Все тот же меч?",
- "advancements.endreborn.relic.description": "Улучшите любой инструмент"
+ "advancements.endreborn.relic.description": "Улучшите любой инструмент."
 }
