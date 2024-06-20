@@ -5,6 +5,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.PlayerEnderChestContainer;
@@ -29,9 +30,7 @@ public class TransmitterItem extends Item {
                 return ChestMenu.threeRows(p_53124_, p_53125_, enderchestinventory);
             }, CONTAINER_TITLE));
             playerIn.awardStat(Stats.OPEN_ENDERCHEST);
-            itemstack.hurtAndBreak(1, playerIn, (p_41007_) -> {
-                p_41007_.broadcastBreakEvent(handIn);
-            });
+            itemstack.hurtAndBreak(1, playerIn, EquipmentSlot.MAINHAND);
             return InteractionResultHolder.success(itemstack);
         }
     }

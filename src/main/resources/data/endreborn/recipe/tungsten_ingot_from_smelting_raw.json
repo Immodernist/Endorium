@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "endreborn:raw_tungsten"
+  },
+  "result": {
+    "id": "endreborn:tungsten_ingot"
+  },
+  "experience": 0.15,
+  "cookingtime": 200
+}

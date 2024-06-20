@@ -13,8 +13,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class MossPlantBlock extends BushBlock{
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-    public static final MapCodec<MossPlantBlock> f_302232_ = m_306223_(MossPlantBlock::new);
-    public MapCodec<MossPlantBlock> m_304657_() {
+    public static final MapCodec<MossPlantBlock> f_302232_ = simpleCodec(MossPlantBlock::new);
+
+    public MapCodec<MossPlantBlock> codec() {
         return f_302232_;
     }
     public MossPlantBlock(Properties p_51021_) {

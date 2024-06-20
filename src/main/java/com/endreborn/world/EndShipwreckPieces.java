@@ -23,14 +23,14 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
+import net.minecraft.world.level.levelgen.structure.structures.EndCityPieces;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
 public class EndShipwreckPieces {
-    public static final ResourceLocation END_SHIPWRECK_LOOT = new ResourceLocation(EndReborn.MODID, "chests/end_shipwreck");
-    private static final ResourceLocation[] STRUCTURES = new ResourceLocation[]{new ResourceLocation(EndReborn.MODID + ":end_shipwreck"), new ResourceLocation(EndReborn.MODID + ":end_shipruin")};
+    private static final ResourceLocation[] STRUCTURES = new ResourceLocation[]{ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"end_shipwreck"), ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"end_shipruin")};
 
     public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext, RandomSource random) {
         pieceList.addPiece(new EndShipwreckPieces.Piece(manager, (ResourceLocation) Util.getRandom(STRUCTURES, random), pos, rotation));
@@ -39,10 +39,9 @@ public class EndShipwreckPieces {
         public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
             super(ModPieces.END_SHIPWRECK, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
         }
-
         public Piece(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
             super(ModPieces.END_SHIPWRECK, compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
-                ResourceLocation templateLocation = new ResourceLocation(compoundNBT.getString("Template"));
+                ResourceLocation templateLocation = ResourceLocation.parse(compoundNBT.getString("Template"));
                 Rotation rotation = Rotation.valueOf(compoundNBT.getString("Rot"));
                 return loadTemplate(serializationContext.structureTemplateManager(), templateLocation, rotation);
             });
@@ -71,7 +70,7 @@ public class EndShipwreckPieces {
             if (function.startsWith("Chest")) {
                 BlockPos blockpos = pos.below();
                 if (sbb.isInside(blockpos)) {
-                    RandomizableContainer.m_307915_(worldIn, rand, blockpos, EndShipwreckPieces.END_SHIPWRECK_LOOT);
+                    RandomizableContainer.setBlockEntityLootTable(worldIn, rand, blockpos, ModLootTables.END_SHIPWRECK_LOOT);
                 }
             }
         }

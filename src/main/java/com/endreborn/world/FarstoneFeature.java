@@ -23,7 +23,6 @@ public class FarstoneFeature extends Feature<NoneFeatureConfiguration> {
                 feature.level().setBlock(blockpos, ModBlocks.FARSTONE.get().defaultBlockState(), 2);
             }
         }
-
         return true;
     }
 }

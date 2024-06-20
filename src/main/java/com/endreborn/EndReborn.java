@@ -26,7 +26,6 @@ public class EndReborn {
         BLOCK.register(bus);
         ITEM.register(bus);
         FEATURE.register(bus);
-        //ModEntities.ENTITIES.register(bus);
         ModTypes.REGISTRY.register(bus);
         bus.addListener(this::setup);
 

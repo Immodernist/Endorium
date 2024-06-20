@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -26,8 +25,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBlock {
-    public static final MapCodec<IncandescentLampBlock> f_302232_ = m_306223_(IncandescentLampBlock::new);
-    public MapCodec<IncandescentLampBlock> m_304657_() {
+    public static final MapCodec<IncandescentLampBlock> f_302232_ = simpleCodec(IncandescentLampBlock::new);
+
+    public MapCodec<IncandescentLampBlock> codec() {
         return f_302232_;
     }
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
@@ -77,7 +77,9 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
         }
         return null;
     }
-    public InteractionResult use(BlockState p_54640_, Level p_54641_, BlockPos p_54642_, Player p_54643_, InteractionHand p_54644_, BlockHitResult p_54645_) {
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState p_54640_, Level p_54641_, BlockPos p_54642_, Player p_54643_, BlockHitResult p_54645_) {
         if(p_54641_.hasNeighborSignal(p_54642_)) {
             if (p_54641_.isClientSide) {
                 return InteractionResult.SUCCESS;

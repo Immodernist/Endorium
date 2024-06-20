@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "endreborn:farstone"
+  },
+  "result": {
+    "id": "endreborn:farstone_bricks",
+    "count": 1
+  }
+}

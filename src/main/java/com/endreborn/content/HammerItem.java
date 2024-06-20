@@ -1,10 +1,8 @@
 package com.endreborn.content;
 
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.KnockbackEnchantment;
 
 import javax.annotation.Nonnull;
 
@@ -16,14 +14,17 @@ public class HammerItem extends Item {
     public boolean hasCraftingRemainingItem(@Nonnull ItemStack stack) {
         return true;
     }
-    
+
     @Nonnull
     @Override
     public ItemStack getCraftingRemainingItem(@Nonnull ItemStack stack) {
         ItemStack container = stack.copy();
-        if(container.hurt(1, RandomSource.createNewThreadLocalInstance(), null))
+        int i = stack.getDamageValue() + 1;
+        if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
+        }
         else
+            container.hurtAndBreak(1, null, null, null);
             return container;
     }
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -34,4 +35,5 @@ public class HammerItem extends Item {
     public boolean isEnchantable(@Nonnull ItemStack stack) {
         return false;
     }
+
 }

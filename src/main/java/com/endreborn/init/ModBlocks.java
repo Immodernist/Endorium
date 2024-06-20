@@ -44,31 +44,31 @@ public class ModBlocks {
     public static RegistryObject<Block> INCANDESCENT_LAMP;
 
     public static void setup() {
-        SMOOTH_END_STONE = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "end_stone_smooth");
-        CRACKED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "cracked_end_bricks");
-        CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
-        END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
-        END_MOSS = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "end_moss");
+        SMOOTH_END_STONE = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS)), "end_stone_smooth");
+        CRACKED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS)), "cracked_end_bricks");
+        CHISELED_END_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS)), "chiseled_end_bricks");
+        END_STONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS)), "end_stone_pillar");
+        END_MOSS = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)), "end_moss");
         OGANA_WEED = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()), "ogana_weed");
-        OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.m_308003_(OGANA_WEED.get())), "ogana_plant");
+        OGANA_PLANT = registerBlock(() -> new MossPlantBlock(BlockBehaviour.Properties.ofFullCopy(OGANA_WEED.get())), "ogana_plant");
         POTTED_OGANA = registerPot(() -> new FlowerPotBlock(OGANA_PLANT.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)), "potted_ogana");
         END_MOSS_BLOCK = registerBlock(() -> new EndMossBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(1.4F).sound(SoundType.MOSS)), "end_moss_block");
         END_MOSS_CARPET = registerBlock(() -> new CarpetBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(0.1F).sound(SoundType.MOSS_CARPET).pushReaction(PushReaction.DESTROY)), "end_moss_carpet");
 
         OBSIDIAN_GLASS = registerBlock(() -> new TransparentBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass");
         OBSIDIAN_GLASS_PANE = registerBlock(() -> new IronBarsBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PLING).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(40.0f, 1200.0f).sound(SoundType.GLASS).noOcclusion()), "obsidian_glass_pane");
-        TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(Blocks.END_STONE)), "tungsten_ore");
+        TUNGSTEN_ORE = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)), "tungsten_ore");
         ENDORIUM_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(6.0F, 7.0F)), "endorium_block");
         TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.5F, 6.0F)), "tungsten_block");
-        RAW_TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(TUNGSTEN_BLOCK.get())), "raw_tungsten_block");
+        RAW_TUNGSTEN_BLOCK = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(TUNGSTEN_BLOCK.get())), "raw_tungsten_block");
         FARSTONE = registerBlock(() -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.55F, 9.0F)), "farstone");
-        FARSTONE_DECORATIVE = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_smooth");
-        FARSTONE_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_bricks");
-        FARSTONE_BRICKS_CHISELED = registerBlock(() -> new Block(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "chiseled_farstone");
-        FARSTONE_BRICKS_STAIRS = registerBlock(() -> new StairBlock(FARSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_brick_stairs");
-        FARSTONE_BRICKS_SLAB = registerBlock(() -> new SlabBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_brick_slab");
-        FARSTONE_BRICKS_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get()).forceSolidOn()), "farstone_brick_wall");
-        FARSTONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.m_308003_(FARSTONE.get())), "farstone_pillar");
+        FARSTONE_DECORATIVE = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_smooth");
+        FARSTONE_BRICKS = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_bricks");
+        FARSTONE_BRICKS_CHISELED = registerBlock(() -> new Block(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "chiseled_farstone");
+        FARSTONE_BRICKS_STAIRS = registerBlock(() -> new StairBlock(FARSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_brick_stairs");
+        FARSTONE_BRICKS_SLAB = registerBlock(() -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_brick_slab");
+        FARSTONE_BRICKS_WALL = registerBlock(() -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get()).forceSolidOn()), "farstone_brick_wall");
+        FARSTONE_PILLAR = registerBlock(() -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_pillar");
         INCANDESCENT_LAMP = registerBlock(() -> new IncandescentLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).forceSolidOn().strength(3.0F).sound(SoundType.LANTERN).lightLevel(litBlockEmission())), "incandescent_lamp");
     }
     public static RegistryObject<Block> registerBlock(Supplier<Block> blockSupplier, String name) {

@@ -11,6 +11,6 @@ public class ModPieces {
     public static StructurePieceType END_SHIPWRECK = EndShipwreckPieces.Piece::new;
 
     public static void setup() {
-        Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(EndReborn.MODID, "end_shipwreck"), END_SHIPWRECK);
+        Registry.register(BuiltInRegistries.STRUCTURE_PIECE, ResourceLocation.fromNamespaceAndPath(EndReborn.MODID, "end_shipwreck"), END_SHIPWRECK);
     }
 }

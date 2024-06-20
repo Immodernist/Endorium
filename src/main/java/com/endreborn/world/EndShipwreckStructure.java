@@ -1,7 +1,7 @@
 package com.endreborn.world;
 
 import com.endreborn.init.ModTypes;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -13,8 +13,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilde
 import java.util.Optional;
 
 public class EndShipwreckStructure extends Structure {
-    public static final Codec<EndShipwreckStructure> CODEC = simpleCodec(EndShipwreckStructure::new);
-
+    public static final MapCodec<EndShipwreckStructure> CODEC = simpleCodec(EndShipwreckStructure::new);
     public EndShipwreckStructure(Structure.StructureSettings structureSettings) {
         super(structureSettings);
     }
