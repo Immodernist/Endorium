@@ -13,7 +13,7 @@ import java.util.Set;
 public class ModLootTables {
     private static final Set<ResourceKey<LootTable>> LOCATIONS = new HashSet<>();
     private static final Set<ResourceKey<LootTable>> IMMUTABLE_LOCATIONS = Collections.unmodifiableSet(LOCATIONS);
-    public static final ResourceKey<LootTable> END_SHIPWRECK_LOOT = register("chests/end_shipwreck");
+    public static final ResourceKey<LootTable> CITADEL_LOOT = register("chests/citadel");
     private static ResourceKey<LootTable> register(String p_78768_) {
         return register(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(EndReborn.MODID, p_78768_)));
     }

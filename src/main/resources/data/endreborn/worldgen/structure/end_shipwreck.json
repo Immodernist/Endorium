@@ -1,6 +1,0 @@
-{
-  "type": "endreborn:end_shipwreck",
-  "biomes": "#endreborn:is_inner_end",
-  "spawn_overrides": {},
-  "step": "surface_structures"
-}

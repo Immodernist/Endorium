@@ -2,7 +2,8 @@
   "parent":"endreborn:endreborn/root",
   "display":{
     "icon":{
-      "item":"endreborn:endorium_block"
+      "count": 1,
+      "id": "endreborn:endorium_block"
     },
     "title":{
       "translate":"advancements.endreborn.endorium_block.title"

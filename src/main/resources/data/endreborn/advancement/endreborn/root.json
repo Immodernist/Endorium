@@ -1,7 +1,8 @@
 {
   "display": {
-    "icon": {
-      "item": "endreborn:tungsten_hammer"
+    "icon":{
+      "count": 1,
+      "id": "endreborn:tungsten_hammer"
     },
     "title": {
       "translate": "advancements.endreborn.root.title"

@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "endreborn:farstone",
-  "biomes": "#endreborn:is_outer_end",
-  "step": "local_modifications"
-}

@@ -2,7 +2,8 @@
   "parent":"endreborn:endreborn/root",
   "display":{
     "icon":{
-      "item":"endreborn:end_stone_pillar"
+      "count": 1,
+      "id": "endreborn:end_stone_pillar"
     },
     "title":{
       "translate":"advancements.endreborn.end_stone_pillar.title"

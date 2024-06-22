@@ -12,9 +12,9 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilde
 
 import java.util.Optional;
 
-public class EndShipwreckStructure extends Structure {
-    public static final MapCodec<EndShipwreckStructure> CODEC = simpleCodec(EndShipwreckStructure::new);
-    public EndShipwreckStructure(Structure.StructureSettings structureSettings) {
+public class CitadelStructure extends Structure {
+    public static final MapCodec<CitadelStructure> CODEC = simpleCodec(CitadelStructure::new);
+    public CitadelStructure(Structure.StructureSettings structureSettings) {
         super(structureSettings);
     }
 
@@ -34,12 +34,12 @@ public class EndShipwreckStructure extends Structure {
         if (landHeight >= 56) {
             BlockPos position = new BlockPos(chunkPos.getX(), landHeight, chunkPos.getZ());
             Rotation rotation = Rotation.getRandom(generatorContext.random());
-            EndShipwreckPieces.addPieces(generatorContext.structureTemplateManager(), position, rotation, pieceBuilder, generatorContext, generatorContext.random());
+            CitadelPieces.addPieces(generatorContext.structureTemplateManager(), position, rotation, pieceBuilder, generatorContext, generatorContext.random());
         }
     }
 
     @Override
     public StructureType<?> type() {
-        return ModTypes.END_SHIPWRECK.get();
+        return ModTypes.CITADEL_TYPE.get();
     }
 }

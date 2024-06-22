@@ -2,7 +2,8 @@
   "parent":"endreborn:endreborn/root",
   "display":{
     "icon":{
-      "item":"endreborn:iron_hammer"
+      "count": 1,
+      "id": "endreborn:iron_hammer"
     },
     "title":{
       "translate":"advancements.endreborn.iron_hammer.title"

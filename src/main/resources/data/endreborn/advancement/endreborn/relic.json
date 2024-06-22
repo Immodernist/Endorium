@@ -1,8 +1,9 @@
 {
   "parent": "endreborn:endreborn/iron_hammer",
   "display": {
-    "icon": {
-      "item": "endreborn:mysterious_relic"
+    "icon":{
+      "count": 1,
+      "id": "endreborn:curious_upgrade_template"
     },
     "title": {
       "translate": "advancements.endreborn.relic.title"

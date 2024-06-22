@@ -22,10 +22,10 @@ public class HammerItem extends Item {
         int i = stack.getDamageValue() + 1;
         if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
-        }
-        else
+        } else {
             container.hurtAndBreak(1, null, null, null);
             return container;
+        }
     }
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.hurtAndBreak(2, attacker, null);
@@ -35,5 +35,4 @@ public class HammerItem extends Item {
     public boolean isEnchantable(@Nonnull ItemStack stack) {
         return false;
     }
-
 }

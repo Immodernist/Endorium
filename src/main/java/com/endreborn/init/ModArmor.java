@@ -28,7 +28,7 @@ public class ModArmor {
             }),
             10,
             SoundEvents.ARMOR_EQUIP_CHAIN,
-            2.0F,
+            3.0F,
             0.0F,
             () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get()));
 
