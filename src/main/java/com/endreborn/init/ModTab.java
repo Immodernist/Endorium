@@ -17,7 +17,7 @@ public class ModTab {
     public static void setup() {
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
                 .displayName(Text.translatable("itemGroup.endgroup"))
-                .icon(() -> new ItemStack(ModItems.TRANSMITTER))
+                .icon(() -> new ItemStack(ModItems.CURIOUS_TEMPLATE))
                 .entries((displayContext, output) -> {
                     output.add(ModItems.ENDORIUM_NUGGET);
                     output.add(ModItems.ENDORIUM_INGOT);
@@ -30,8 +30,8 @@ public class ModTab {
                     output.add(ModItems.ENDORIUM_PICKAXE);
                     output.add(ModItems.ENDORIUM_SHOVEL);
                     output.add(ModItems.ENDORIUM_HOE);
-                    output.add(ModItems.MYSTERIOUS_RELIC);
-                    output.add(ModItems.CURIOUS_RELIC);
+                    output.add(ModItems.MYSTERIOUS_TEMPLATE);
+                    output.add(ModItems.CURIOUS_TEMPLATE);
                     output.add(ModBlocks.INCANDESCENT_LAMP);
                     output.add(ModItems.OGANA_FRUIT);
                     output.add(ModItems.OGANA_TORTE);
@@ -60,7 +60,6 @@ public class ModTab {
                     output.add(ModBlocks.END_MOSS);
                     output.add(ModBlocks.END_MOSS_BLOCK);
                     output.add(ModBlocks.END_MOSS_CARPET);
-                })
-                .build());
+                }).build());
     }
 }

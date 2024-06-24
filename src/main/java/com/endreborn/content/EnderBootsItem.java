@@ -18,7 +18,6 @@ public class EnderBootsItem extends ArmorItem {
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.effect").formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("tooltip.ender_boots").formatted(Formatting.DARK_GRAY));
+        tooltip.add(Text.translatable("tooltip.ender_boots").formatted(Formatting.GRAY));
     }
 }

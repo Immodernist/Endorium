@@ -38,12 +38,11 @@ public class UpgradableHoeItem extends HoeItem {
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.relic").formatted(Formatting.GRAY));
         if (this.sharpness > 0) {
-            tooltip.add(Text.translatable("tooltip.hoe_sharpness").formatted(Formatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.hoe_sharpness").formatted(Formatting.GRAY));
         } else if (this.flexibility > 0){
-            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.DARK_GRAY));
-            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.DARK_GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.GRAY));
         }
     }
 

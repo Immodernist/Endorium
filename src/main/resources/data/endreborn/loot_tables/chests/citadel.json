@@ -66,12 +66,12 @@
         {
           "type": "minecraft:item",
           "weight": 3,
-          "name": "endreborn:curious_relic"
+          "name": "endreborn:curious_upgrade_template"
         },
         {
           "type": "minecraft:item",
           "weight": 3,
-          "name": "endreborn:mysterious_relic"
+          "name": "endreborn:mysterious_upgrade_template"
         },
         {
           "type": "minecraft:item",

@@ -1,8 +1,6 @@
 {
  "itemGroup.endgroup": "Endorio",
- "tooltip.ender_boots": "Teletransporta aleatoriamente ante el daño",
- "tooltip.relic": "Efectos de reliquia:",
- "tooltip.effect": "Efectos del material:",
+ "tooltip.ender_boots": "Teletransportarse ante daños",
  "tooltip.uni_flexibility_n": "-50% Dureza a las entidades",
  "tooltip.uni_flexibility": "+20% Eficiencia a bloques",
  "tooltip.sword_sharpness": "+25% Eficiencia a los bloques previstos",
@@ -33,8 +31,10 @@
  "block.endreborn.incandescent_lamp": "Lampara incandescente",
 
  "item.endreborn.iron_hammer": "Martillo de hierro",
- "item.endreborn.curious_relic": "Reliquia curiosa",
- "item.endreborn.mysterious_relic": "Reliquia misteriosa",
+ "item.endreborn.curious_upgrade_template": "Molde curiosa",
+ "item.endreborn.mysterious_upgrade_template": "Molde misteriosa",
+ "item.endreborn.smithing_template.endorium_upgrade.applies_to": "Equipamiento de endorio",
+ "upgrade.endreborn.endorium_upgrade": "Mejora de endorio",
  "block.endreborn.obsidian_glass": "Cristal enmarcado de obsidiana",
  "block.endreborn.obsidian_glass_pane": "Panel de Cristal enmarcado de obsidiana",
  "item.endreborn.ender_transmitter": "Transmisor ender",

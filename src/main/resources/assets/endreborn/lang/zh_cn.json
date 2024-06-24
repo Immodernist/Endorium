@@ -1,8 +1,6 @@
 ﻿{
  "itemGroup.endgroup": "末地合金",
  "tooltip.ender_boots": "受到伤害时随机传送玩家",
- "tooltip.relic": "饰品效果：",
- "tooltip.effect": "盔甲效果：",
  "tooltip.uni_flexibility_n": "方块的硬度减少50%",
  "tooltip.uni_flexibility": "破坏方块的速度增加20%",
  "tooltip.sword_sharpness": "破坏蜘蛛网的速度增加25%",
@@ -33,8 +31,10 @@
  "block.endreborn.incandescent_lamp": "白炽灯",
 
  "item.endreborn.iron_hammer": "铁锤",
- "item.endreborn.curious_relic": "可疑的饰品",
- "item.endreborn.mysterious_relic": "神秘饰品",
+ "item.endreborn.curious_upgrade_template": "Curious Template",
+ "item.endreborn.mysterious_upgrade_template": "Mysterious Template",
+ "item.endreborn.smithing_template.endorium_upgrade.applies_to": "Endorium Equipment",
+ "upgrade.endreborn.endorium_upgrade": "Endorium Upgrade",
  "block.endreborn.obsidian_glass": "黑曜石镶框玻璃",
  "block.endreborn.obsidian_glass_pane": "黑曜石镶框玻璃板",
  "item.endreborn.ender_transmitter": "末影连接器",

@@ -18,12 +18,10 @@ import java.util.function.Supplier;
 public enum ModArmor implements StringIdentifiable, ArmorMaterial {
     ENDER("ender", 21, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 3);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 0);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 0);
-        p_266655_.put(ArmorItem.Type.HELMET, 0);
-    }), 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
-        return null;
-    });
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 1);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 1);
+        p_266655_.put(ArmorItem.Type.HELMET, 1);
+    }), 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> Ingredient.ofItems(ModItems.ENDORIUM_INGOT));
 
     public static final Codec<ArmorMaterials> CODEC = StringIdentifiable.createCodec(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {

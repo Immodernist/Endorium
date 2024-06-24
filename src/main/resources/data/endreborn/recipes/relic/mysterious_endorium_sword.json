@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:dragon_breath"
+    "item": "endreborn:endorium_ingot"
   },
   "base": {
     "item": "endreborn:endorium_sword"
@@ -10,6 +10,6 @@
     "item": "endreborn:mysterious_endorium_sword"
   },
   "template": {
-    "item": "endreborn:mysterious_relic"
+    "item": "endreborn:mysterious_upgrade_template"
   }
 }

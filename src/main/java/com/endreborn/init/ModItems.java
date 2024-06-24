@@ -12,23 +12,23 @@ public class ModItems {
     public static final Item ENDORIUM_NUGGET = new Item(new FabricItemSettings());
     public static final Item ENDORIUM_INGOT = new Item(new FabricItemSettings());
     public static final Item ENDORIUM_SWORD = new SwordItem(ModTiers.ENDORIUM, 3, -2.4f, new FabricItemSettings());
-    public static final Item ENDORIUM_AXE = new AxeItem(ModTiers.ENDORIUM, 5f, -3.1f, new FabricItemSettings());
+    public static final Item ENDORIUM_AXE = new AxeItem(ModTiers.ENDORIUM, 5f, -3.0f, new FabricItemSettings());
     public static final Item ENDORIUM_SHOVEL = new ShovelItem(ModTiers.ENDORIUM, 1.5f, -3f, new FabricItemSettings());
-    public static final Item ENDORIUM_HOE = new HoeItem(ModTiers.ENDORIUM, -4, -1f, new FabricItemSettings());
+    public static final Item ENDORIUM_HOE = new HoeItem(ModTiers.ENDORIUM, -3, -1f, new FabricItemSettings());
     public static final Item ENDORIUM_PICKAXE = new PickaxeItem(ModTiers.ENDORIUM, 1, -2.8f, new FabricItemSettings());
 
-    public static final Item CURIOUS_RELIC = new Item(new FabricItemSettings());
+    public static final Item CURIOUS_TEMPLATE = UpgradeTemplateItem.createEndoriumUpgrade();
     public static final Item CURIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.CURIOUS_ENDORIUM, 3, -2.4f, new FabricItemSettings(), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.CURIOUS_ENDORIUM, 5f, -3.1f,  new FabricItemSettings(), 1, 0);
+    public static final Item CURIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.CURIOUS_ENDORIUM, 5f, -3.0f,  new FabricItemSettings(), 1, 0);
     public static final Item CURIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.CURIOUS_ENDORIUM, 1.5f, -3f, new FabricItemSettings(), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.CURIOUS_ENDORIUM, -4, -1f, new FabricItemSettings(), 1, 0);
+    public static final Item CURIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.CURIOUS_ENDORIUM, -3, -1f, new FabricItemSettings(), 1, 0);
     public static final Item CURIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.CURIOUS_ENDORIUM, 1, -2.8f, new FabricItemSettings(), 1, 0);
 
-    public static final Item MYSTERIOUS_RELIC = new Item(new FabricItemSettings());
+    public static final Item MYSTERIOUS_TEMPLATE = UpgradeTemplateItem.createEndoriumUpgrade();
     public static final Item MYSTERIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.MYSTERIOUS_ENDORIUM, 3, -2.4f, new FabricItemSettings(), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 5f, -3.1f, new FabricItemSettings(), 0, 1);
+    public static final Item MYSTERIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 5f, -3.0f, new FabricItemSettings(), 0, 1);
     public static final Item MYSTERIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.MYSTERIOUS_ENDORIUM, 1.5f, -3f, new FabricItemSettings(), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, -4, -1f, new FabricItemSettings(), 0, 1);
+    public static final Item MYSTERIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, -3, -1f, new FabricItemSettings(), 0, 1);
     public static final Item MYSTERIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 1, -2.8f, new FabricItemSettings(), 0, 1);
 
     public static final Item TUNGSTEN_INGOT = new Item(new FabricItemSettings());
@@ -48,14 +48,14 @@ public class ModItems {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "endorium_hoe"), ENDORIUM_HOE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "endorium_pickaxe"), ENDORIUM_PICKAXE);
 
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_relic"), CURIOUS_RELIC);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_upgrade_template"), CURIOUS_TEMPLATE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_endorium_sword"), CURIOUS_ENDORIUM_SWORD);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_endorium_axe"), CURIOUS_ENDORIUM_AXE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_endorium_shovel"), CURIOUS_ENDORIUM_SHOVEL);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_endorium_hoe"), CURIOUS_ENDORIUM_HOE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "curious_endorium_pickaxe"), CURIOUS_ENDORIUM_PICKAXE);
 
-        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "mysterious_relic"), MYSTERIOUS_RELIC);
+        Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "mysterious_upgrade_template"), MYSTERIOUS_TEMPLATE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "mysterious_endorium_sword"), MYSTERIOUS_ENDORIUM_SWORD);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "mysterious_endorium_axe"), MYSTERIOUS_ENDORIUM_AXE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "mysterious_endorium_shovel"), MYSTERIOUS_ENDORIUM_SHOVEL);
@@ -72,5 +72,4 @@ public class ModItems {
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "ogana_torte"), OGANA_TORTE);
         Registry.register(Registries.ITEM, new Identifier(Endorium.MODID, "iron_hammer"), IRON_HAMMER);
     }
-
 }

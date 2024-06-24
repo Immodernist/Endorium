@@ -12,11 +12,9 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class ModPlaces {
     public static final RegistryKey<PlacedFeature> TUNGSTEN_ORE = register("tungsten_ore");
-    public static final RegistryKey<PlacedFeature> FARSTONE = register("farstone");
     public static final RegistryKey<PlacedFeature> MOSS_ISLAND = register("mossed_island");
     public static void setup() {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.END_CITY_HAS_STRUCTURE), GenerationStep.Feature.UNDERGROUND_ORES, TUNGSTEN_ORE);
-        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.IS_OUTER_END), GenerationStep.Feature.TOP_LAYER_MODIFICATION, FARSTONE);
     }
 
     private static RegistryKey<PlacedFeature> register(String name) {
