@@ -38,8 +38,8 @@ public class ModItems {
     public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SWORD;
     public static RegistryObject<Item> ENDER_BOOTS;
     public static RegistryObject<Item> TRANSMITTER;
-    public static RegistryObject<Item> OGANA_FRUIT;
-    public static RegistryObject<Item> OGANA_TORTE;
+    public static RegistryObject<Item> WICKED_FRUIT;
+    public static RegistryObject<Item> WICKED_TORTE;
     public static RegistryObject<Item> IRON_HAMMER;
 
     public static void setup() {
@@ -71,8 +71,8 @@ public class ModItems {
 
         ENDER_BOOTS = registerItem(() -> new EnderBootsItem(ModArmor.ENDER, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(35))), "ender_boots");
         TRANSMITTER = registerItem(() -> new TransmitterItem(new Item.Properties().durability(32)), "ender_transmitter");
-        OGANA_FRUIT = registerItem(() -> new Item(new Item.Properties().food(Foods.SWEET_BERRIES)), "ogana");
-        OGANA_TORTE = registerItem(() -> new Item(new Item.Properties().food(Foods.PUMPKIN_PIE)), "ogana_torte");
+        WICKED_FRUIT = registerItem(() -> new Item(new Item.Properties().food(Foods.SWEET_BERRIES)), "ogana");
+        WICKED_TORTE = registerItem(() -> new Item(new Item.Properties().food(Foods.PUMPKIN_PIE)), "ogana_torte");
         IRON_HAMMER = registerItem(() -> new HammerItem(new Item.Properties().durability(32)), "iron_hammer");
     }
     public static RegistryObject<Item> registerItem(Supplier<Item> itemSupplier, String name) {

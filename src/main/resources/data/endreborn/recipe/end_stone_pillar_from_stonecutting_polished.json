@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:end_stone"
+    "item": "endreborn:end_stone_smooth"
   },
   "result": {
     "id": "endreborn:end_stone_pillar",

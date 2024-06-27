@@ -1,10 +1,10 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:end_stone"
+    "item": "endreborn:farstone_smooth"
   },
   "result": {
-    "id": "endreborn:end_stone_pillar",
+    "id": "endreborn:chiseled_farstone",
     "count": 1
   }
 }

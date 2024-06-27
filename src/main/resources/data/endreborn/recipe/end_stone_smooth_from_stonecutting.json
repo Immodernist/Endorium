@@ -4,7 +4,7 @@
     "item": "minecraft:end_stone"
   },
   "result": {
-    "id": "endreborn:end_stone_pillar",
-    "count": 1
+    "count": 1,
+    "id": "endreborn:end_stone_smooth"
   }
 }

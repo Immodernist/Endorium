@@ -3,12 +3,11 @@ package com.endreborn.init;
 import com.endreborn.EndReborn;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.fml.ModList;
 
 public class ModTab {
     public static void setup() {
         EndReborn.CREATIVE_TAB.register("endgroup", () -> CreativeModeTab.builder()
-                .icon(() -> ModItems.CURIOUS_TEMPLATE.get().asItem().getDefaultInstance())
+                .icon(() -> ModBlocks.FARSTONE_BRICKS_CHISELED.get().asItem().getDefaultInstance())
                 .title(Component.translatable("itemGroup.endgroup"))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.ENDORIUM_NUGGET.get());
@@ -25,8 +24,8 @@ public class ModTab {
                     output.accept(ModItems.MYSTERIOUS_TEMPLATE.get());
                     output.accept(ModItems.CURIOUS_TEMPLATE.get());
                     output.accept(ModBlocks.INCANDESCENT_LAMP.get());
-                    output.accept(ModItems.OGANA_FRUIT.get());
-                    output.accept(ModItems.OGANA_TORTE.get());
+                    output.accept(ModItems.WICKED_FRUIT.get());
+                    output.accept(ModItems.WICKED_TORTE.get());
                     output.accept(ModItems.ENDER_BOOTS.get());
                     output.accept(ModItems.TRANSMITTER.get());
                     output.accept(ModBlocks.OBSIDIAN_GLASS_PANE.get());
@@ -53,8 +52,5 @@ public class ModTab {
                     output.accept(ModBlocks.END_MOSS_BLOCK.get());
                     output.accept(ModBlocks.END_MOSS_CARPET.get());
                 }).build());
-    }
-    public static boolean isInstalled(String str) {
-        return ModList.get() != null && ModList.get().getModContainerById(str).isPresent();
     }
 }

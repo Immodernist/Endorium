@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:end_stone_bricks"
+    "item": "minecraft:end_stone"
   },
   "result": {
     "id": "endreborn:chiseled_end_bricks",
