@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "minecraft:end_stone"
   },
-  "result": "endreborn:end_stone_pillar",
+  "result": "endreborn:end_stone_smooth",
   "count": 1
 }

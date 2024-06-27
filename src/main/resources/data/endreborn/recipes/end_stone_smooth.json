@@ -1,9 +1,17 @@
 {
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "minecraft:end_stone"
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "minecraft:end_stone"
+    }
   },
-  "result": "endreborn:end_stone_smooth",
-  "experience": 0.15,
-  "cookingtime": 200
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "result": {
+    "count": 4,
+    "item": "endreborn:end_stone_smooth"
+  }
 }

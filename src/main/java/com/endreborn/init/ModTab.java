@@ -17,7 +17,7 @@ public class ModTab {
     public static void setup() {
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
                 .displayName(Text.translatable("itemGroup.endgroup"))
-                .icon(() -> new ItemStack(ModItems.CURIOUS_TEMPLATE))
+                .icon(() -> new ItemStack(ModBlocks.FARSTONE_BRICKS_CHISELED))
                 .entries((displayContext, output) -> {
                     output.add(ModItems.ENDORIUM_NUGGET);
                     output.add(ModItems.ENDORIUM_INGOT);
