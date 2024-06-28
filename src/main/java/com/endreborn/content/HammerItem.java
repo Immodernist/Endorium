@@ -23,12 +23,12 @@ public class HammerItem extends Item {
         if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
         } else {
-            container.hurtAndBreak(1, null, null, null);
+            container.setDamageValue(stack.getDamageValue() + 1);
             return container;
         }
     }
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(2, attacker, null);
+        stack.hurtAndBreak(1, attacker, null);
         return true;
     }
     @Override

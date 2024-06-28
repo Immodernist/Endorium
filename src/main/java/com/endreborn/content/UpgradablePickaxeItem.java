@@ -8,10 +8,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Tool;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.Tags;
 
 import java.util.List;
 public class UpgradablePickaxeItem extends PickaxeItem {
@@ -27,7 +25,7 @@ public class UpgradablePickaxeItem extends PickaxeItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_pickaxe");
     }
-    @OnlyIn(Dist.CLIENT)
+
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
         if (this.sharpness > 0) {
             tooltip.add(Component.translatable("tooltip.pickaxe_sharpness").withStyle(ChatFormatting.GRAY));
@@ -40,7 +38,7 @@ public class UpgradablePickaxeItem extends PickaxeItem {
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         Tool tool = stack.get(DataComponents.TOOL);
         if (sharpness > 0) {
-            return state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(Tags.Blocks.GRAVEL) || state.is(Tags.Blocks.SAND) ? 8.0F : 1.0F;
+            return state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(Blocks.GRAVEL) || state.is(Blocks.SAND) ? 8.0F : 1.0F;
         }
         else {
             return state.is(BlockTags.MINEABLE_WITH_PICKAXE) ? 8.0F : 1.0F;

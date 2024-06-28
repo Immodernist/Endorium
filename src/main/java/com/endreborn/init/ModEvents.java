@@ -7,14 +7,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
-@Mod.EventBusSubscriber(modid = EndReborn.MODID)
+@EventBusSubscriber(modid = EndReborn.MODID)
 public class ModEvents {
     @SubscribeEvent
-    public static void onPlayerHurt(LivingHurtEvent event) {
+    public static void onPlayerHurt(LivingIncomingDamageEvent event) {
         LivingEntity entity = event.getEntity();
         ItemStack feet = entity.getItemBySlot(EquipmentSlot.FEET);
         if(feet.getItem() == ModItems.ENDER_BOOTS.get()) {

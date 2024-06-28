@@ -10,8 +10,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 public class UpgradableSwordItem extends SwordItem {
@@ -27,7 +25,7 @@ public class UpgradableSwordItem extends SwordItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_sword");
     }
-    @OnlyIn(Dist.CLIENT)
+
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
         if (this.sharpness > 0) {
             tooltip.add(Component.translatable("tooltip.sword_sharpness").withStyle(ChatFormatting.GRAY));

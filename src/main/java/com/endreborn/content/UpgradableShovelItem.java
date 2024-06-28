@@ -16,8 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 import java.util.List;
 public class UpgradableShovelItem extends ShovelItem {
@@ -33,7 +32,7 @@ public class UpgradableShovelItem extends ShovelItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_shovel");
     }
-    @OnlyIn(Dist.CLIENT)
+
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
         if (this.sharpness > 0) {
             tooltip.add(Component.translatable("tooltip.shovel_sharpness").withStyle(ChatFormatting.GRAY));
@@ -42,36 +41,34 @@ public class UpgradableShovelItem extends ShovelItem {
             tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.GRAY));
         }
     }
-
-    @Override
-    public InteractionResult useOn(UseOnContext p_43119_) {
-        Level level = p_43119_.getLevel();
-        BlockPos blockpos = p_43119_.getClickedPos();
+    public InteractionResult useOn(UseOnContext pContext) {
+        Level level = pContext.getLevel();
+        BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
-        if (p_43119_.getClickedFace() == Direction.DOWN) {
+        if (pContext.getClickedFace() == Direction.DOWN) {
             return InteractionResult.PASS;
         } else {
-            Player playerIn = p_43119_.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(p_43119_, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
+            Player player = pContext.getPlayer();
+            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, ItemAbilities.SHOVEL_FLATTEN, false);
             BlockState blockstate2 = null;
-            if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
-                level.playSound(playerIn, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (blockstate1 != null && level.getBlockState(blockpos.above()).isAir()) {
+                level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
                 blockstate2 = blockstate1;
-            } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
+            } else if (blockstate.getBlock() instanceof CampfireBlock && (Boolean)blockstate.getValue(CampfireBlock.LIT)) {
                 if (!level.isClientSide()) {
-                    level.levelEvent((Player) null, 1009, blockpos, 0);
+                    level.levelEvent((Player)null, 1009, blockpos, 0);
                 }
 
-                CampfireBlock.dowse(p_43119_.getPlayer(), level, blockpos, blockstate);
-                blockstate2 = blockstate.setValue(CampfireBlock.LIT, Boolean.valueOf(false));
+                CampfireBlock.dowse(pContext.getPlayer(), level, blockpos, blockstate);
+                blockstate2 = (BlockState)blockstate.setValue(CampfireBlock.LIT, false);
             }
 
             if (blockstate2 != null) {
                 if (!level.isClientSide) {
                     level.setBlock(blockpos, blockstate2, 11);
-                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(playerIn, blockstate2));
-                    if (playerIn != null) {
-                        p_43119_.getItemInHand().hurtAndBreak(1 - this.sharpness, playerIn, EquipmentSlot.MAINHAND);
+                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
+                    if (player != null) {
+                        pContext.getItemInHand().hurtAndBreak(1 - this.sharpness, player, LivingEntity.getSlotForHand(pContext.getHand()));
                     }
                 }
 
@@ -81,6 +78,7 @@ public class UpgradableShovelItem extends ShovelItem {
             }
         }
     }
+
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
         p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, EquipmentSlot.MAINHAND);
         return true;

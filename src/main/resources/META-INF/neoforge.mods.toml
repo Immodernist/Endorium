@@ -1,6 +1,7 @@
 modLoader="javafml"
-loaderVersion="[0,)"
+loaderVersion="[2,)"
 license="Not for sale"
+
 [[mods]]
 modId="endreborn"
 logoFile="logo.png"
@@ -9,6 +10,12 @@ displayName="Endorium"
 credits = "All credits reserved"
 authors="Me"
 description="Type your text here"
+[[dependencies.endreborn]]
+modId="neoforge"
+type="required"
+versionRange="[21.0.40-beta,)"
+ordering="NONE"
+side="BOTH"
 [[dependencies.endreborn]]
   modId="minecraft"
   mandatory=true

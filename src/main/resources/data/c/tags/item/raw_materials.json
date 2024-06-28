@@ -1,6 +1,6 @@
 {
   "replace":false,
   "values":[
-    "#forge:raw_materials/tungsten"
+    "#c:raw_materials/tungsten"
   ]
 }

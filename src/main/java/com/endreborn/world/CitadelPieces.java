@@ -60,10 +60,10 @@ public class CitadelPieces {
     }
     public static class Piece extends TemplateStructurePiece {
         public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
-            super(ModPieces.CITADEL_PIECE, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
+            super(ModPieces.CITADEL_PIECE.get(), 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
         }
         public Piece(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
-            super(ModPieces.CITADEL_PIECE, compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
+            super(ModPieces.CITADEL_PIECE.get(), compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
                 ResourceLocation templateLocation = ResourceLocation.parse(compoundNBT.getString("Template"));
                 Rotation rotation = Rotation.valueOf(compoundNBT.getString("Rot"));
                 return loadTemplate(serializationContext.structureTemplateManager(), templateLocation, rotation);
@@ -73,7 +73,7 @@ public class CitadelPieces {
             super.postProcess(worldIn, p_229138_, p_229139_, rand, p_229141_, p_229142_, pos);
             for (int u = 2; u > 0; --u) {
                 boolean chance = rand.nextDouble() < 0.5D;
-                BlockPos randpos = pos.offset(rand.nextInt(-9, 9), rand.nextInt(-2, 2), rand.nextInt(-9, 9));
+                BlockPos randpos = pos.offset(rand.nextInt(-9, 7), rand.nextInt(-2, 2), rand.nextInt(-9, 7));
                 int o = 2 + rand.nextInt(4);
                 float f = (float) (o + o + o) * 0.333F + 0.5F;
                 for (BlockPos blockpos : BlockPos.betweenClosed(randpos.offset(-o, -o+rand.nextInt(3), -o), randpos.offset(o, o, o))) {

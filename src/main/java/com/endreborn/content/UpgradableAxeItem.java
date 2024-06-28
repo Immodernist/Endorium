@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,8 +17,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -35,47 +35,61 @@ public class UpgradableAxeItem extends AxeItem {
     public Component getName(ItemStack p_41458_) {
         return Component.translatable("item.endreborn.endorium_axe");
     }
-    @Override
-    public InteractionResult useOn(UseOnContext p_40529_) {
-        Level level = p_40529_.getLevel();
-        BlockPos blockpos = p_40529_.getClickedPos();
-        Player playerIn = p_40529_.getPlayer();
-        BlockState blockstate = level.getBlockState(blockpos);
-        Optional<BlockState> optional = Optional.ofNullable(blockstate.getToolModifiedState(p_40529_, net.minecraftforge.common.ToolActions.AXE_STRIP, false));
-        Optional<BlockState> optional1 = optional.isPresent() ? Optional.empty() : Optional.ofNullable(blockstate.getToolModifiedState(p_40529_, net.minecraftforge.common.ToolActions.AXE_SCRAPE, false));
-        Optional<BlockState> optional2 = optional.isPresent() || optional1.isPresent() ? Optional.empty() : Optional.ofNullable(blockstate.getToolModifiedState(p_40529_, net.minecraftforge.common.ToolActions.AXE_WAX_OFF, false));
-        ItemStack itemstack = p_40529_.getItemInHand();
-        Optional<BlockState> optional3 = Optional.empty();
-        if (optional.isPresent()) {
-            level.playSound(playerIn, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            optional3 = optional;
-        } else if (optional1.isPresent()) {
-            level.playSound(playerIn, blockpos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.levelEvent(playerIn, 3005, blockpos, 0);
-            optional3 = optional1;
-        } else if (optional2.isPresent()) {
-            level.playSound(playerIn, blockpos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.levelEvent(playerIn, 3004, blockpos, 0);
-            optional3 = optional2;
-        }
 
-        if (optional3.isPresent()) {
-            if (playerIn instanceof ServerPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)playerIn, blockpos, itemstack);
-            }
-
-            level.setBlock(blockpos, optional3.get(), 11);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(playerIn, optional3.get()));
-            if (playerIn != null) {
-                itemstack.hurtAndBreak(1 - this.sharpness, playerIn, EquipmentSlot.MAINHAND);
-            }
-
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
+    public InteractionResult useOn(UseOnContext pContext) {
+        Level level = pContext.getLevel();
+        BlockPos blockpos = pContext.getClickedPos();
+        Player player = pContext.getPlayer();
+        if (playerHasShieldUseIntent(pContext)) {
             return InteractionResult.PASS;
+        } else {
+            Optional<BlockState> optional = this.evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos), pContext);
+            if (optional.isEmpty()) {
+                return InteractionResult.PASS;
+            } else {
+                ItemStack itemstack = pContext.getItemInHand();
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
+                }
+
+                level.setBlock(blockpos, (BlockState)optional.get(), 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, (BlockState)optional.get()));
+                if (player != null) {
+                    itemstack.hurtAndBreak(1 - this.sharpness, player, LivingEntity.getSlotForHand(pContext.getHand()));
+                }
+
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
     }
-    @OnlyIn(Dist.CLIENT)
+    private Optional<BlockState> evaluateNewBlockState(Level pLevel, BlockPos pPos, @Nullable Player pPlayer, BlockState pState, UseOnContext p_40529_) {
+        Optional<BlockState> optional = Optional.ofNullable(pState.getToolModifiedState(p_40529_, ItemAbilities.AXE_STRIP, false));
+        if (optional.isPresent()) {
+            pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            return optional;
+        } else {
+            Optional<BlockState> optional1 = Optional.ofNullable(pState.getToolModifiedState(p_40529_, ItemAbilities.AXE_SCRAPE, false));
+            if (optional1.isPresent()) {
+                pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                pLevel.levelEvent(pPlayer, 3005, pPos, 0);
+                return optional1;
+            } else {
+                Optional<BlockState> optional2 = Optional.ofNullable(pState.getToolModifiedState(p_40529_, ItemAbilities.AXE_WAX_OFF, false));
+                if (optional2.isPresent()) {
+                    pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    pLevel.levelEvent(pPlayer, 3004, pPos, 0);
+                    return optional2;
+                } else {
+                    return Optional.empty();
+                }
+            }
+        }
+    }
+    private static boolean playerHasShieldUseIntent(UseOnContext pContext) {
+        Player player = pContext.getPlayer();
+        return pContext.getHand().equals(InteractionHand.MAIN_HAND) && player.getOffhandItem().is(Items.SHIELD) && !player.isSecondaryUseActive();
+    }
+
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
         if (this.sharpness > 0) {
             tooltip.add(Component.translatable("tooltip.axe_sharpness").withStyle(ChatFormatting.GRAY));
