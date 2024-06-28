@@ -4,7 +4,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.random.Random;
+import org.jetbrains.annotations.NotNull;
 
 public class HammerItem extends Item {
     public HammerItem(Item.Settings p_41383_) {
@@ -16,20 +16,22 @@ public class HammerItem extends Item {
         return true;
     }
 
-    public ItemStack getRecipeRemainder(ItemStack stack) {
+    @NotNull
+    @Override
+    public ItemStack getRecipeRemainder(@NotNull ItemStack stack) {
         ItemStack container = stack.copy();
-        if(container.damage(1, Random.create(), null))
+        int i = stack.getDamage() + 1;
+        if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
-        else
+        } else {
+            container.setDamage(stack.getDamage() + 1);
             return container;
+        }
     }
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1, attacker, (e) -> {
-            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-        });
+        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
-
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }

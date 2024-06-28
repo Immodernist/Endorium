@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:glass"
+    },
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "tag": "endreborn:inventory_hammers",
+      "data": 32767
+    }
+  ],
+  "result":
+    {
+        "id": "endreborn:obsidian_glass",
+        "count": 1
+    }
+}

@@ -1,7 +1,7 @@
 package com.endreborn.world;
 
 import com.endreborn.init.ModTypes;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.structure.StructurePiecesCollector;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.world.gen.structure.StructureType;
 import java.util.Optional;
 
 public class CitadelStructure extends Structure {
-    public static final Codec<CitadelStructure> CODEC = createCodec(CitadelStructure::new);
+    public static final MapCodec<CitadelStructure> CODEC = createCodec(CitadelStructure::new);
 
     public CitadelStructure(Config config) {
         super(config);

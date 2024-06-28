@@ -6,11 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Oxidizable;
 import net.minecraft.block.PillarBlock;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -21,7 +21,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,8 +30,8 @@ public class UpgradableAxeItem extends AxeItem {
     private final int sharpness;
     private final int flexibility;
 
-    public UpgradableAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
-        super(material, attackDamage, attackSpeed, settings);
+    public UpgradableAxeItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+        super(material, settings);
 
         this.sharpness = sharpness;
         this.flexibility = flexibility;
@@ -74,9 +73,7 @@ public class UpgradableAxeItem extends AxeItem {
             world.setBlockState(blockPos, (BlockState)optional4.get(), 11);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, (BlockState)optional4.get()));
             if (playerEntity != null) {
-                itemStack.damage(1 - this.sharpness, playerEntity, (p) -> {
-                    p.sendToolBreakStatus(context.getHand());
-                });
+                itemStack.damage(1 - this.sharpness, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
             }
 
             return ActionResult.success(world.isClient);
@@ -85,7 +82,7 @@ public class UpgradableAxeItem extends AxeItem {
         }
     }
 
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         if (this.sharpness > 0) {
             tooltip.add(Text.translatable("tooltip.axe_sharpness").formatted(Formatting.GRAY));
         } else if (this.flexibility > 0){
@@ -95,9 +92,7 @@ public class UpgradableAxeItem extends AxeItem {
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(2 + this.flexibility, attacker, (e) -> {
-            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-        });
+        stack.damage(2 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 

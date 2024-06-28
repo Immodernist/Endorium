@@ -1,6 +1,6 @@
 package com.endreborn.content;
 
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.item.Item;
@@ -30,9 +30,7 @@ public class TransmitterItem extends Item {
                 return GenericContainerScreenHandler.createGeneric9x3(syncId, inventory, enderChestInventory);
             }, CONTAINER_TITLE));
             player.incrementStat(Stats.OPEN_ENDERCHEST);
-            stack.damage(1, player, (e) -> {
-                e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-            });
+            stack.damage(1, player, LivingEntity.getSlotForHand(hand));
             return TypedActionResult.success(stack);
         }
     }

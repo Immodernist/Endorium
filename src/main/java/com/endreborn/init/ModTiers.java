@@ -1,58 +1,64 @@
 package com.endreborn.init;
 
+import com.google.common.base.Suppliers;
+import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public enum ModTiers implements ToolMaterial {
-    ENDORIUM(4, 1453, 8.0F, 3.0F, 12, () -> {
+    ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 8.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     }),
-    CURIOUS_ENDORIUM(4, 1453, 8.0F, 4.0F, 12, () -> {
+    CURIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1453, 8.0F, 4.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     }),
-    MYSTERIOUS_ENDORIUM(4, 1453, 9.5F, 4.0F, 12, () -> {
+    MYSTERIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1453, 9.5F, 4.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     });
-    private final int level;
-    private final int uses;
-    private final float speed;
-    private final float damage;
-    private final int enchantmentValue;
-    private final Lazy<Ingredient> repairIngredient;
 
-    private ModTiers(int p_43332_, int p_43333_, float p_43334_, float p_43335_, int p_43336_, Supplier repairIngredient) {
-        this.level = p_43332_;
-        this.uses = p_43333_;
-        this.speed = p_43334_;
-        this.damage = p_43335_;
-        this.enchantmentValue = p_43336_;
-        this.repairIngredient = new Lazy(repairIngredient);
+    private final TagKey<Block> inverseTag;
+    private final int itemDurability;
+    private final float miningSpeed;
+    private final float attackDamage;
+    private final int enchantability;
+    private final Supplier<Ingredient> repairIngredient;
+
+    private ModTiers(final TagKey inverseTag, final int itemDurability, final float miningSpeed, final float attackDamage, final int enchantability, final Supplier<Ingredient> repairIngredient) {
+        this.inverseTag = inverseTag;
+        this.itemDurability = itemDurability;
+        this.miningSpeed = miningSpeed;
+        this.attackDamage = attackDamage;
+        this.enchantability = enchantability;
+        Objects.requireNonNull(repairIngredient);
+        this.repairIngredient = Suppliers.memoize(repairIngredient::get);
     }
 
     public int getDurability() {
-        return this.uses;
+        return this.itemDurability;
     }
 
     public float getMiningSpeedMultiplier() {
-        return this.speed;
+        return this.miningSpeed;
     }
 
     public float getAttackDamage() {
-        return this.damage;
+        return this.attackDamage;
     }
 
-    public int getMiningLevel() {
-        return this.level;
+    public TagKey<Block> getInverseTag() {
+        return this.inverseTag;
     }
 
     public int getEnchantability() {
-        return this.enchantmentValue;
+        return this.enchantability;
     }
 
     public Ingredient getRepairIngredient() {
-        return (Ingredient)this.repairIngredient.get();
+        return this.repairIngredient.get();
     }
 }

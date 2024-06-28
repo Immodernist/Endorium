@@ -1,0 +1,47 @@
+{
+  "parent": "endreborn:endreborn/iron_hammer",
+  "display": {
+    "icon":{
+      "count": 1,
+      "id": "endreborn:curious_upgrade_template"
+    },
+    "title": {
+      "translate": "advancements.endreborn.relic.title"
+    },
+    "description": {
+      "translate": "advancements.endreborn.relic.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "curious_endorium_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "endreborn:curious_endorium_sword",
+              "endreborn:curious_endorium_axe",
+              "endreborn:curious_endorium_shovel",
+              "endreborn:curious_endorium_pickaxe",
+              "endreborn:curious_endorium_hoe",
+              "endreborn:mysterious_endorium_sword",
+              "endreborn:mysterious_endorium_axe",
+              "endreborn:mysterious_endorium_shovel",
+              "endreborn:mysterious_endorium_pickaxe",
+              "endreborn:mysterious_endorium_hoe"
+
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "curious_endorium_sword"
+    ]
+  ]
+}

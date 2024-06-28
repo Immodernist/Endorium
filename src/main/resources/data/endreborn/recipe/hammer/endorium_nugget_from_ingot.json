@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+    {
+      "item": "endreborn:endorium_ingot"
+    },
+    {
+      "tag": "endreborn:inventory_hammers",
+      "data": 32767
+    }
+  ],
+  "result": {
+    "id": "endreborn:endorium_nugget",
+    "count": 9
+  }
+}

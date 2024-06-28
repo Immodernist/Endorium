@@ -2,19 +2,18 @@ package com.endreborn.content;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class UpgradableSwordItem extends SwordItem {
     private final int sharpness;
     private final int flexibility;
 
-    public UpgradableSwordItem(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
-        super(material, attackDamage, attackSpeed, settings);
+    public UpgradableSwordItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+        super(material, settings);
         this.sharpness = sharpness;
         this.flexibility = flexibility;
     }
@@ -32,7 +31,7 @@ public class UpgradableSwordItem extends SwordItem {
         return Text.translatable("item.endreborn.endorium_sword");
     }
 
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         if (this.sharpness > 0) {
             tooltip.add(Text.translatable("tooltip.sword_sharpness").formatted(Formatting.GRAY));
         } else if (this.flexibility > 0){
@@ -41,9 +40,7 @@ public class UpgradableSwordItem extends SwordItem {
         }
     }
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1 + this.flexibility, attacker, (e) -> {
-            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-        });
+        stack.damage(1 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
@@ -56,11 +53,8 @@ public class UpgradableSwordItem extends SwordItem {
     }
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         if (state.getHardness(world, pos) != 0.0F) {
-            stack.damage(2 - this.flexibility, miner, (e) -> {
-                e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-            });
+            stack.damage(2 - this.flexibility, miner, EquipmentSlot.MAINHAND);
         }
-
         return true;
     }
 }

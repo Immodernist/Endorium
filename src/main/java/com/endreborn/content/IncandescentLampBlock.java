@@ -72,7 +72,7 @@ public class IncandescentLampBlock extends WallMountedBlock {
             default -> lit ? DOWN_LIT : DOWN_AABB;
         };
     }
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isReceivingRedstonePower(pos)) {
             if (world.isClient) {
                 return ActionResult.SUCCESS;

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:end_stone"
-  },
-  "result": "endreborn:end_stone_smooth",
-  "count": 1
-}

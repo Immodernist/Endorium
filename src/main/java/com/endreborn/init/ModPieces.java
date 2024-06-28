@@ -11,6 +11,6 @@ public class ModPieces {
     public static StructurePieceType CITADEL_PIECE = CitadelPieces.Piece::new;
 
     public static void setup() {
-        Registry.register(Registries.STRUCTURE_PIECE, new Identifier(Endorium.MODID, "citadel"), CITADEL_PIECE);
+        Registry.register(Registries.STRUCTURE_PIECE, Identifier.of(Endorium.MODID, "citadel"), CITADEL_PIECE);
     }
 }

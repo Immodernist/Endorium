@@ -34,17 +34,17 @@ public class UpgradeTemplateItem extends SmithingTemplateItem {
         return List.of(EMPTY_SLOT_SWORD, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_AXE, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
     }
     static {
-        APPLIES_TO = Text.translatable(Util.createTranslationKey("item", new Identifier(Endorium.MODID, "smithing_template.endorium_upgrade.applies_to"))).formatted(Formatting.BLUE);
-        INGREDIENTS = Text.translatable(Util.createTranslationKey("item", new Identifier(Endorium.MODID, "endorium_ingot"))).formatted(Formatting.BLUE);
-        UPGRADE = Text.translatable(Util.createTranslationKey("upgrade", new Identifier(Endorium.MODID, "endorium_upgrade"))).formatted(Formatting.GRAY);
-        BASE_SLOT_DESCRIPTION = Text.translatable(Util.createTranslationKey("item", new Identifier("smithing_template.netherite_upgrade.base_slot_description")));
-        ADDITIONS_SLOT_DESCRIPTION = Text.translatable(Util.createTranslationKey("item", new Identifier("smithing_template.netherite_upgrade.additions_slot_description")));
+        APPLIES_TO = Text.translatable(Util.createTranslationKey("item", Identifier.of(Endorium.MODID, "smithing_template.endorium_upgrade.applies_to"))).formatted(Formatting.BLUE);
+        INGREDIENTS = Text.translatable(Util.createTranslationKey("item", Identifier.of(Endorium.MODID, "endorium_ingot"))).formatted(Formatting.BLUE);
+        UPGRADE = Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Endorium.MODID, "endorium_upgrade"))).formatted(Formatting.GRAY);
+        BASE_SLOT_DESCRIPTION = Text.translatable(Util.createTranslationKey("item", Identifier.of("smithing_template.netherite_upgrade.base_slot_description")));
+        ADDITIONS_SLOT_DESCRIPTION = Text.translatable(Util.createTranslationKey("item", Identifier.of("smithing_template.netherite_upgrade.additions_slot_description")));
 
-        EMPTY_SLOT_HOE = new Identifier("item/empty_slot_hoe");
-        EMPTY_SLOT_AXE = new Identifier("item/empty_slot_axe");
-        EMPTY_SLOT_SWORD = new Identifier("item/empty_slot_sword");
-        EMPTY_SLOT_SHOVEL = new Identifier("item/empty_slot_shovel");
-        EMPTY_SLOT_PICKAXE = new Identifier("item/empty_slot_pickaxe");
-        EMPTY_SLOT_INGOT = new Identifier("item/empty_slot_ingot");
+        EMPTY_SLOT_HOE = Identifier.ofVanilla("item/empty_slot_hoe");
+        EMPTY_SLOT_AXE = Identifier.ofVanilla("item/empty_slot_axe");
+        EMPTY_SLOT_SWORD = Identifier.ofVanilla("item/empty_slot_sword");
+        EMPTY_SLOT_SHOVEL = Identifier.ofVanilla("item/empty_slot_shovel");
+        EMPTY_SLOT_PICKAXE = Identifier.ofVanilla("item/empty_slot_pickaxe");
+        EMPTY_SLOT_INGOT = Identifier.ofVanilla("item/empty_slot_ingot");
     }
 }

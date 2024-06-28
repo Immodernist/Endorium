@@ -3,11 +3,11 @@ package com.endreborn.content;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -26,8 +26,8 @@ public class UpgradableShovelItem extends ShovelItem {
     private final int sharpness;
     private final int flexibility;
 
-    public UpgradableShovelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, int sharpness, int flexibility) {
-        super(material, attackDamage, attackSpeed, settings);
+    public UpgradableShovelItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+        super(material, settings);
         this.sharpness = sharpness;
         this.flexibility = flexibility;
     }
@@ -35,7 +35,7 @@ public class UpgradableShovelItem extends ShovelItem {
         return Text.translatable("item.endreborn.endorium_shovel");
     }
 
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         if (this.sharpness > 0) {
             tooltip.add(Text.translatable("tooltip.shovel_sharpness").formatted(Formatting.GRAY));
         } else if (this.flexibility > 0){
@@ -45,9 +45,7 @@ public class UpgradableShovelItem extends ShovelItem {
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1 + this.flexibility, attacker, (e) -> {
-            e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-        });
+        stack.damage(2 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
     public ActionResult useOnBlock(ItemUsageContext context) {
@@ -77,9 +75,7 @@ public class UpgradableShovelItem extends ShovelItem {
                     world.setBlockState(blockPos, blockState3, 11);
                     world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, blockState3));
                     if (playerEntity != null) {
-                        context.getStack().damage(1 - this.sharpness, playerEntity, (p) -> {
-                            p.sendToolBreakStatus(context.getHand());
-                        });
+                        context.getStack().damage(1 - this.sharpness, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
                     }
                 }
 

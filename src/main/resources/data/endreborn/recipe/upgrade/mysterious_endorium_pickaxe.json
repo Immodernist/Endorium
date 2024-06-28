@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "endreborn:endorium_ingot"
+  },
+  "base": {
+    "item": "endreborn:endorium_pickaxe"
+  },
+  "result": {
+    "count": 1,
+    "id": "endreborn:mysterious_endorium_pickaxe"
+  },
+  "template": {
+    "item": "endreborn:mysterious_upgrade_template"
+  }
+}

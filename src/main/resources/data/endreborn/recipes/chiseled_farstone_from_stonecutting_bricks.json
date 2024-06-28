@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "endreborn:farstone_bricks"
-  },
-  "result": "endreborn:chiseled_farstone",
-  "count": 1
-}

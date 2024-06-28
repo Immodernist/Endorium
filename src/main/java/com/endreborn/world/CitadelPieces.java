@@ -23,12 +23,11 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 public class CitadelPieces  {
-    private static final Identifier MID = new Identifier(Endorium.MODID, "citadel_middle");
-    private static final Identifier UP = new Identifier(Endorium.MODID, "citadel_up");
-    private static final Identifier RUIN = new Identifier(Endorium.MODID, "citadel_ruin");
-    private static final Identifier PEAK = new Identifier(Endorium.MODID, "citadel_peak");
-    private static final Identifier END = new Identifier(Endorium.MODID, "citadel_bottom");
-    public static final Identifier CITADEL_LOOT = new Identifier(Endorium.MODID, "chests/citadel");
+    private static final Identifier MID = Identifier.of(Endorium.MODID, "citadel_middle");
+    private static final Identifier UP = Identifier.of(Endorium.MODID, "citadel_up");
+    private static final Identifier RUIN = Identifier.of(Endorium.MODID, "citadel_ruin");
+    private static final Identifier PEAK = Identifier.of(Endorium.MODID, "citadel_peak");
+    private static final Identifier END = Identifier.of(Endorium.MODID, "citadel_bottom");
 
     public static void addParts(StructureTemplateManager manager, BlockPos pos, BlockRotation rotation, StructurePiecesHolder pieceList, Random random) {
         pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos, rotation));
@@ -80,7 +79,7 @@ public class CitadelPieces  {
             super.generate(worldIn, structureAccessor, chunkGenerator, rand, chunkBox, chunkPos, pos);
             for (int u = 2; u > 0; --u) {
                 boolean chance = rand.nextDouble() < 0.5D;
-                BlockPos randpos = pos.add(rand.nextBetween(-9, 9), rand.nextBetween(-2, 2)-3, rand.nextBetween(-9, 9));
+                BlockPos randpos = pos.add(rand.nextBetween(-9, 7), rand.nextBetween(-2, 2)-3, rand.nextBetween(-9, 7));
                 int o = 2 + rand.nextInt(4);
                 float f = (float) (o + o + o) * 0.333F + 0.5F;
                 for (BlockPos blockpos : BlockPos.iterate(randpos.add(-o, -o + rand.nextInt(3), -o), randpos.add(o, o, o))) {
@@ -98,7 +97,7 @@ public class CitadelPieces  {
             if (function.startsWith("Chest")) {
                 BlockPos blockpos = pos.down();
                 if (sbb.contains(blockpos)) {
-                    LootableInventory.setLootTable(world, random, blockpos, CITADEL_LOOT);
+                    LootableInventory.setLootTable(world, random, blockpos, CitadelLootTables.CITADEL_LOOT);
                 }
             }
             if (function.startsWith("Shulker")) {

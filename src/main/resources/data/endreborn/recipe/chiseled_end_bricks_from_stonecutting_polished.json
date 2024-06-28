@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "endreborn:end_stone_smooth"
+  },
+  "result": {
+    "id": "endreborn:chiseled_end_bricks",
+    "count": 1
+  }
+}

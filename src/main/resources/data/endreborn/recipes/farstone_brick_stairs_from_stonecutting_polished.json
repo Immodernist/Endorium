@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "endreborn:farstone_smooth"
-  },
-  "result": "endreborn:farstone_brick_stairs",
-  "count": 1
-}
