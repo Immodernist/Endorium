@@ -63,18 +63,14 @@
  "block.endreborn.farstone_brick_slab": "Daleka kamienna ceglana płyta",
  "block.endreborn.farstone_brick_wall": "Daleki kamienny ceglany murek",
 
- "advancements.endreborn.root.title": "Endoryt",
- "advancements.endreborn.root.description": "Zbierz kawałek endorytu.",
  "advancements.endreborn.endorium_block.title": "Hiperinflacja",
- "advancements.endreborn.endorium_block.description": "Zbierz blok endorytu.",
+ "advancements.endreborn.endorium_block.description": "Zbierz blok endorytu",
  "advancements.endreborn.iron_hammer.title": "Glory`&`Hammer",
- "advancements.endreborn.iron_hammer.description": "Zbierz młot żelazny.",
+ "advancements.endreborn.iron_hammer.description": "Zbierz młot żelazny",
  "advancements.endreborn.ender_transmitter.title": "Transcendentalnie blisko",
- "advancements.endreborn.ender_transmitter.description": "Zbierz nadajnik Endu.",
- "advancements.endreborn.glass.title": "Glass-crypt protokół",
- "advancements.endreborn.glass.description": "Zbierz obsydianowe obramowane szkło.",
+ "advancements.endreborn.ender_transmitter.description": "Zbierz nadajnik Endu",
  "advancements.endreborn.end_stone_pillar.title": "Powstańcie, moi mistrzowie!",
- "advancements.endreborn.end_stone_pillar.description": "Zbierz trzy filary.",
+ "advancements.endreborn.end_stone_pillar.description": "Zbierz trzy filary",
  "advancements.endreborn.relic.title": "Czy to ten sam miecz?",
- "advancements.endreborn.relic.description": "Uaktualnij dowolne narzędzie."
+ "advancements.endreborn.relic.description": "Uaktualnij dowolne narzędzie"
 }

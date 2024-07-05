@@ -23,7 +23,7 @@ public class HammerItem extends Item {
         if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
         } else {
-            container.hurtAndBreak(1, null, null, null);
+            container.setDamageValue(stack.getDamageValue() + 1);
             return container;
         }
     }

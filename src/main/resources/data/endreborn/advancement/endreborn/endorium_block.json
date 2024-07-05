@@ -1,5 +1,5 @@
 {
-  "parent":"endreborn:endreborn/root",
+  "parent": "endreborn:endreborn/relic",
   "display":{
     "icon":{
       "count": 1,

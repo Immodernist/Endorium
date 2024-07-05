@@ -2,15 +2,14 @@ package com.endreborn.init;
 
 import com.endreborn.EndReborn;
 import com.endreborn.world.CitadelPieces;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModPieces {
-    public static StructurePieceType CITADEL_PIECE = CitadelPieces.Piece::new;
+    public static final DeferredRegister<StructurePieceType> PIECE = DeferredRegister.create(Registries.STRUCTURE_PIECE, EndReborn.MODID);
 
-    public static void setup() {
-        Registry.register(BuiltInRegistries.STRUCTURE_PIECE, ResourceLocation.fromNamespaceAndPath(EndReborn.MODID, "citadel"), CITADEL_PIECE);
-    }
+    public static final RegistryObject<StructurePieceType> CITADEL_PIECE = PIECE.register("citadel", ()-> CitadelPieces.Piece::new);
+
 }

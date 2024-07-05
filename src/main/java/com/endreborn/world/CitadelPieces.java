@@ -2,6 +2,7 @@ package com.endreborn.world;
 
 import com.endreborn.EndReborn;
 import com.endreborn.init.ModBlocks;
+import com.endreborn.init.ModLootTables;
 import com.endreborn.init.ModPieces;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -28,6 +29,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class CitadelPieces {
     private static final ResourceLocation MID = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_middle");
     private static final ResourceLocation UP = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_up");
@@ -37,9 +40,9 @@ public class CitadelPieces {
 
     public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext, RandomSource random) {
         pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos, rotation));
-        int up = random.nextInt( 3);
-        int down = random.nextInt(2, 5);
-        boolean chance = random.nextDouble() < 0.15D;
+        int up = ThreadLocalRandom.current().nextInt( 3);
+        int down = ThreadLocalRandom.current().nextInt(2, 5);
+        boolean chance = ThreadLocalRandom.current().nextDouble() < 0.15D;
         for (int u = up; u >= 0; --u) {
             pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.above(7 + u*8), rotation));
         } if (chance) {
@@ -60,10 +63,10 @@ public class CitadelPieces {
     }
     public static class Piece extends TemplateStructurePiece {
         public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
-            super(ModPieces.CITADEL_PIECE, 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
+            super(ModPieces.CITADEL_PIECE.get(), 0, manager, resourceLocation, resourceLocation.toString(), loadTemplate(manager, resourceLocation, rotation), position.offset(0, -4, 0));
         }
         public Piece(StructurePieceSerializationContext serializationContext, CompoundTag compoundNBT) {
-            super(ModPieces.CITADEL_PIECE, compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
+            super(ModPieces.CITADEL_PIECE.get(), compoundNBT, serializationContext.structureTemplateManager(), (placementSettings) -> {
                 ResourceLocation templateLocation = ResourceLocation.parse(compoundNBT.getString("Template"));
                 Rotation rotation = Rotation.valueOf(compoundNBT.getString("Rot"));
                 return loadTemplate(serializationContext.structureTemplateManager(), templateLocation, rotation);
@@ -72,11 +75,11 @@ public class CitadelPieces {
         public void postProcess(WorldGenLevel worldIn, StructureManager p_229138_, ChunkGenerator p_229139_, RandomSource rand, BoundingBox p_229141_, ChunkPos p_229142_, BlockPos pos) {
             super.postProcess(worldIn, p_229138_, p_229139_, rand, p_229141_, p_229142_, pos);
             for (int u = 2; u > 0; --u) {
-                boolean chance = rand.nextDouble() < 0.5D;
-                BlockPos randpos = pos.offset(rand.nextInt(-9, 9), rand.nextInt(-2, 2), rand.nextInt(-9, 9));
-                int o = 2 + rand.nextInt(4);
+                boolean chance = ThreadLocalRandom.current().nextDouble() < 0.5D;
+                BlockPos randpos = pos.offset(ThreadLocalRandom.current().nextInt(-9, 7), ThreadLocalRandom.current().nextInt(-2, 2), ThreadLocalRandom.current().nextInt(-9, 7));
+                int o = 2 + ThreadLocalRandom.current().nextInt(4);
                 float f = (float) (o + o + o) * 0.333F + 0.5F;
-                for (BlockPos blockpos : BlockPos.betweenClosed(randpos.offset(-o, -o+rand.nextInt(3), -o), randpos.offset(o, o, o))) {
+                for (BlockPos blockpos : BlockPos.betweenClosed(randpos.offset(-o, -o+ThreadLocalRandom.current().nextInt(3), -o), randpos.offset(o, o, o))) {
                     if (blockpos.distSqr(randpos) <= (double) (f * f) && worldIn.getBlockState(blockpos).getBlock() == Blocks.AIR) {
                         if (chance) {
                             worldIn.setBlock(blockpos, ModBlocks.FARSTONE.get().defaultBlockState(), 2);

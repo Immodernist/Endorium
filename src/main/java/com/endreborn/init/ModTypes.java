@@ -10,8 +10,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModTypes {
-    public static final DeferredRegister<StructureType<?>> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_TYPE, EndReborn.MODID);
-    public static final RegistryObject<StructureType<CitadelStructure>> CITADEL_TYPE = REGISTRY.register("citadel", () -> stuff(CitadelStructure.CODEC));
+    public static final DeferredRegister<StructureType<?>> TYPE = DeferredRegister.create(Registries.STRUCTURE_TYPE, EndReborn.MODID);
+    public static final RegistryObject<StructureType<CitadelStructure>> CITADEL_TYPE = TYPE.register("citadel", () -> stuff(CitadelStructure.CODEC));
 
     private static <T extends Structure> StructureType<T> stuff(MapCodec<T> codec) {
         return () -> codec;
