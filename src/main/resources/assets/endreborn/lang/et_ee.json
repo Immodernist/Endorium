@@ -63,18 +63,14 @@
  "block.endreborn.farstone_brick_slab": "Kaugekivi tellisplaat",
  "block.endreborn.farstone_brick_wall": "Kaugekivi tellistest müür",
 
- "advancements.endreborn.root.title": "Endoorium",
- "advancements.endreborn.root.description": "Koguge endooriumitükk.",
  "advancements.endreborn.endorium_block.title": "Hüperinflatsioon",
- "advancements.endreborn.endorium_block.description": "Koguge endooriumiplokk.",
+ "advancements.endreborn.endorium_block.description": "Koguge endooriumiplokk",
  "advancements.endreborn.iron_hammer.title": "Glory`&`Hammer",
  "advancements.endreborn.iron_hammer.description": "Koguge raudvasar.",
  "advancements.endreborn.ender_transmitter.title": "Transtsendentselt lähedal",
- "advancements.endreborn.ender_transmitter.description": "Koguge enderisaatja.",
- "advancements.endreborn.glass.title": "Glass-crypt protokoll",
- "advancements.endreborn.glass.description": "Koguge obsidiaaniga raamitud klaaspaneel.",
+ "advancements.endreborn.ender_transmitter.description": "Koguge enderisaatja",
  "advancements.endreborn.end_stone_pillar.title": "Ärgake, mu meistrid!",
- "advancements.endreborn.end_stone_pillar.description": "Koguge kolm sammast.",
+ "advancements.endreborn.end_stone_pillar.description": "Koguge kolm sammast",
  "advancements.endreborn.relic.title": "Kas see on sama mõõk?",
- "advancements.endreborn.relic.description": "Uuendage ükskõik millist tööriista."
+ "advancements.endreborn.relic.description": "Uuendage ükskõik millist tööriista"
 }

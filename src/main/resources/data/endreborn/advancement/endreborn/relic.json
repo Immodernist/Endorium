@@ -1,5 +1,5 @@
 {
-  "parent": "endreborn:endreborn/iron_hammer",
+  "parent": "minecraft:end/root",
   "display": {
     "icon":{
       "count": 1,

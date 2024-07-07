@@ -1,5 +1,5 @@
 {
-  "parent":"endreborn:endreborn/root",
+  "parent": "endreborn:endreborn/endorium_block",
   "display":{
     "icon":{
       "count": 1,

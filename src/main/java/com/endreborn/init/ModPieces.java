@@ -9,6 +9,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class ModPieces {
-    public static final DeferredRegister<StructurePieceType> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_PIECE, EndReborn.MODID);
-    public static final Supplier<StructurePieceType> CITADEL_PIECE = REGISTRY.register("buried_shipwreck", () -> CitadelPieces.Piece::new);
+    public static final DeferredRegister<StructurePieceType> PIECE = DeferredRegister.create(Registries.STRUCTURE_PIECE, EndReborn.MODID);
+    public static final Supplier<StructurePieceType> CITADEL_PIECE = PIECE.register("buried_shipwreck", () -> CitadelPieces.Piece::new);
 }

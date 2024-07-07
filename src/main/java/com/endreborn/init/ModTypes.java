@@ -9,6 +9,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class ModTypes {
-    public static final DeferredRegister<StructureType<?>> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_TYPE, EndReborn.MODID);
-    public static final Supplier<StructureType<CitadelStructure>> CITADEL_TYPE = REGISTRY.register("citadel", () -> () -> CitadelStructure.CODEC);
+    public static final DeferredRegister<StructureType<?>> TYPE = DeferredRegister.create(Registries.STRUCTURE_TYPE, EndReborn.MODID);
+    public static final Supplier<StructureType<CitadelStructure>> CITADEL_TYPE = TYPE.register("citadel", () -> () -> CitadelStructure.CODEC);
 }
