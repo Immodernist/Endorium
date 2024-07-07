@@ -63,18 +63,14 @@
  "block.endreborn.farstone_brick_slab": "Losa de ladrillo de piedra lejana",
  "block.endreborn.farstone_brick_wall": "Muro de ladrillos de piedra lejana",
 
- "advancements.endreborn.root.title": "Endorio",
- "advancements.endreborn.root.description": "Recoge trozo de endorio.",
  "advancements.endreborn.endorium_block.title": "Hiperinflación",
- "advancements.endreborn.endorium_block.description": "Recoge bloque de endorio.",
+ "advancements.endreborn.endorium_block.description": "Recoge bloque de endorio",
  "advancements.endreborn.iron_hammer.title": "Glory`&`Hammer",
- "advancements.endreborn.iron_hammer.description": "Recoge martillo de hierro.",
+ "advancements.endreborn.iron_hammer.description": "Recoge martillo de hierro",
  "advancements.endreborn.ender_transmitter.title": "Trascendentalmente cerca",
- "advancements.endreborn.ender_transmitter.description": "Recoge Transmisor ender.",
- "advancements.endreborn.glass.title": "Protocolo Glass-Crypt",
- "advancements.endreborn.glass.description": "Recoge panel de Cristal enmarcado de obsidiana.",
+ "advancements.endreborn.ender_transmitter.description": "Recoge transmisor ender",
  "advancements.endreborn.end_stone_pillar.title": "¡Despierten, Mis Maestros!",
- "advancements.endreborn.end_stone_pillar.description": "Recoge tres pilares.",
+ "advancements.endreborn.end_stone_pillar.description": "Recoge tres pilares",
  "advancements.endreborn.relic.title": "¿Es la misma espada?",
- "advancements.endreborn.relic.description": "Actualiza cualquier herramienta."
+ "advancements.endreborn.relic.description": "Actualiza cualquier herramienta"
 }

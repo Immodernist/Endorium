@@ -35,7 +35,7 @@ public class ModItems {
     public static final Item TUNGSTEN_RAW = new Item(new Item.Settings());
     public static final Item TUNGSTEN_HAMMER = new HammerItem(new Item.Settings().maxDamage(48));
     public static final Item ENDER_BOOTS = new EnderBootsItem(ModArmor.ENDER, ArmorItem.Type.BOOTS, new Item.Settings());
-    public static final Item TRANSMITTER = new TransmitterItem(new Item.Settings().maxDamage(32));
+    public static final Item TRANSMITTER = new TransmitterItem(new Item.Settings().maxDamage(24));
     public static final Item OGANA_FRUIT = new Item(new Item.Settings().food(FoodComponents.SWEET_BERRIES));
     public static final Item OGANA_TORTE = new Item(new Item.Settings().food(FoodComponents.PUMPKIN_PIE));
     public static final Item IRON_HAMMER = new HammerItem(new Item.Settings().maxDamage(32));

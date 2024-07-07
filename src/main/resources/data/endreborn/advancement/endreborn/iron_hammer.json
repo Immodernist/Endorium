@@ -1,5 +1,5 @@
 {
-  "parent":"endreborn:endreborn/root",
+  "parent": "minecraft:adventure/root",
   "display":{
     "icon":{
       "count": 1,

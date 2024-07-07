@@ -11,7 +11,6 @@
  "tooltip.hoe_sharpness": "Efficiency to Ice",
  "tooltip.shovel_sharpness": "+100% Hardness to Flattening",
  "gui.forbidden_arcanus.clibano.residue.tungsten": "Tungsten",
- "tag.item.endreborn.inventory_hammers": "Sledgehammers",
 
  "item.endreborn.endorium_nugget": "Endorium Chunk",
  "item.endreborn.endorium_ingot": "Endorium Ingot",
@@ -63,19 +62,15 @@
  "block.endreborn.farstone_brick_stairs": "Farrock Brick Stairs",
  "block.endreborn.farstone_brick_slab": "Farrock Brick Slab",
  "block.endreborn.farstone_brick_wall": "Farrock Brick Wall",
- 
- "advancements.endreborn.root.title": "Endorium",
- "advancements.endreborn.root.description": "Collect Endorium Chunk.",
+
  "advancements.endreborn.endorium_block.title": "Hyperinflation",
- "advancements.endreborn.endorium_block.description": "Collect Endorium Block.",
+ "advancements.endreborn.endorium_block.description": "Craft an Endorium Block",
  "advancements.endreborn.iron_hammer.title": "Glory`&`Hammer",
- "advancements.endreborn.iron_hammer.description": "Collect Iron Sledgehammer.",
+ "advancements.endreborn.iron_hammer.description": "Craft an Iron Sledgehammer",
  "advancements.endreborn.ender_transmitter.title": "Transcendentally close",
- "advancements.endreborn.ender_transmitter.description": "Collect Ender Transmitter.",
- "advancements.endreborn.glass.title": "Glass-crypt protocol",
- "advancements.endreborn.glass.description": "Collect Obsidian Decorated Glass Pane.",
+ "advancements.endreborn.ender_transmitter.description": "Craft an Ender Transmitter",
  "advancements.endreborn.end_stone_pillar.title": "Awaken, My Masters!",
- "advancements.endreborn.end_stone_pillar.description": "Collect three pillars.",
+ "advancements.endreborn.end_stone_pillar.description": "Collect three pillars",
  "advancements.endreborn.relic.title": "Is it the same sword?",
- "advancements.endreborn.relic.description": "Upgrade any tool."
+ "advancements.endreborn.relic.description": "Upgrade any tool at the Smithing Table"
 }
