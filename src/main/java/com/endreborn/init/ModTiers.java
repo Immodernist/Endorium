@@ -11,8 +11,7 @@ import java.util.function.Supplier;
 
 public enum ModTiers implements Tier {
     ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 8.0F, 3.0F, 12, () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get())),
-    CURIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 8.0F, 4.0F, 12, () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get())),
-    MYSTERIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 9.0F, 4.0F, 12, () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get()));
+    UPGRADE_ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 8.0F, 4.0F, 12, () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get()));
     private final TagKey<Block> incorrectBlocksForDrops;
     private final int uses;
     private final float speed;

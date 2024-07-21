@@ -31,18 +31,18 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
         return f_302232_;
     }
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
-    protected static final VoxelShape NORTH_LIT = Block.box(5.0D, 5.0D, 15.0D, 11.0D, 11.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 7.0D);
-    protected static final VoxelShape SOUTH_LIT = Block.box(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 1.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(9.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
-    protected static final VoxelShape WEST_LIT = Block.box(15.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 7.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_LIT = Block.box(0.0D, 5.0D, 5.0D, 1.0D, 11.0D, 11.0D);
-    protected static final VoxelShape UP_AABB = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 7.0D, 11.0D);
-    protected static final VoxelShape UP_LIT = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 1.0D, 11.0D);
-    protected static final VoxelShape DOWN_AABB = Block.box(5.0D, 9.0D, 5.0D, 11.0D, 15.0D, 11.0D);
-    protected static final VoxelShape DOWN_LIT = Block.box(5.0D, 15.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
+    protected static final VoxelShape NORTH_LIT = Block.box(5.0D, 5.0D, 13.0D, 11.0D, 11.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 8.0D);
+    protected static final VoxelShape SOUTH_LIT = Block.box(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 3.0D);
+    protected static final VoxelShape WEST_AABB = Block.box(8.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
+    protected static final VoxelShape WEST_LIT = Block.box(13.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 8.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_LIT = Block.box(0.0D, 5.0D, 5.0D, 3.0D, 11.0D, 11.0D);
+    protected static final VoxelShape UP_AABB = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D);
+    protected static final VoxelShape UP_LIT = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 3.0D, 11.0D);
+    protected static final VoxelShape DOWN_AABB = Block.box(5.0D, 8.0D, 5.0D, 11.0D, 15.0D, 11.0D);
+    protected static final VoxelShape DOWN_LIT = Block.box(5.0D, 13.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 
     public IncandescentLampBlock(Properties p_49795_) {
         super(p_49795_);

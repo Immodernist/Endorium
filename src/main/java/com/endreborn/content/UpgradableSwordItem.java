@@ -13,13 +13,13 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 public class UpgradableSwordItem extends SwordItem {
-    private final int sharpness;
-    private final int flexibility;
+    private final boolean curious;
+    private final boolean mysterious;
 
-    public UpgradableSwordItem(Tier p_43269_, Properties p_43272_, int sharpness, int flexibility) {
+    public UpgradableSwordItem(Tier p_43269_, Properties p_43272_, boolean curious, boolean mysterious) {
         super(p_43269_, p_43272_);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
 
     public Component getName(ItemStack p_41458_) {
@@ -27,33 +27,35 @@ public class UpgradableSwordItem extends SwordItem {
     }
 
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
-        if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.sword_sharpness").withStyle(ChatFormatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.sword_flexibility").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.sword_flexibility_n").withStyle(ChatFormatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Component.translatable("tooltip.sword_curious").withStyle(ChatFormatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Component.translatable("tooltip.sword_mysterious").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.sword_mysterious_n").withStyle(ChatFormatting.GRAY));
         }
     }
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         if (state.is(Blocks.COBWEB)) {
-            return 15 + this.sharpness*5;
+            return this.curious ? 20 : 15;
         } else {
-            return state.is(BlockTags.SWORD_EFFICIENT) ? 1.5F + (float) this.sharpness /2: 1.0F;
+            return state.is(BlockTags.SWORD_EFFICIENT) ? this.curious ? 2F : 1.5F: 1.0F;
         }
     }
 
     @Override
     public boolean mineBlock(ItemStack p_43282_, Level p_43283_, BlockState p_43284_, BlockPos p_43285_, LivingEntity p_43286_) {
         if (p_43284_.getDestroySpeed(p_43283_, p_43285_) != 0.0F) {
-            p_43282_.hurtAndBreak(2 - this.flexibility, p_43286_, EquipmentSlot.MAINHAND);
+            p_43282_.hurtAndBreak(this.mysterious ? 1 : 2, p_43286_, EquipmentSlot.MAINHAND);
         }
         return true;
     }
 
+    @Override
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(1 + this.flexibility, p_40996_, EquipmentSlot.MAINHAND);
+        p_40994_.hurtAndBreak(this.mysterious ? 1 : 0, p_40996_, EquipmentSlot.MAINHAND);
         return true;
     }
 }

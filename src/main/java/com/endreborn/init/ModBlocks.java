@@ -45,7 +45,7 @@ public class ModBlocks {
     public static DeferredBlock<Block> FARSTONE_BRICKS_CHISELED = register(() -> new Block(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "chiseled_farstone");
     public static DeferredBlock<Block> FARSTONE_BRICKS_STAIRS = register(() -> new StairBlock(FARSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_brick_stairs");
     public static DeferredBlock<Block> FARSTONE_BRICKS_SLAB = register(() -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_brick_slab");
-    public static DeferredBlock<Block> FARSTONE_BRICKS_WALL = register(() -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get()).forceSolidOn()), "farstone_brick_wall");
+    public static DeferredBlock<Block> FARSTONE_WALL = register(() -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get()).forceSolidOn()), "farstone_wall");
     public static DeferredBlock<Block> FARSTONE_PILLAR = register(() -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(FARSTONE.get())), "farstone_pillar");
     public static DeferredBlock<Block> INCANDESCENT_LAMP = register(() -> new IncandescentLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).forceSolidOn().strength(3.0F).sound(SoundType.LANTERN).lightLevel(litBlockEmission())), "incandescent_lamp");
 

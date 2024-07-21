@@ -28,35 +28,34 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class CitadelPieces {
     private static final ResourceLocation MID = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_middle");
     private static final ResourceLocation UP = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_up");
-    private static final ResourceLocation RUIN = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_ruin");
+    private static final ResourceLocation ROOM = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_room");
     private static final ResourceLocation PEAK = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_peak");
-    private static final ResourceLocation END = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_bottom");
+    private static final ResourceLocation HALL = ResourceLocation.fromNamespaceAndPath(EndReborn.MODID,"citadel_hall");
 
     public static void addPieces(StructureTemplateManager manager, BlockPos pos, Rotation rotation, StructurePieceAccessor pieceList, Structure.GenerationContext generationContext, RandomSource random) {
         pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos, rotation));
-        int up = random.nextInt( 3);
-        int down = random.nextInt(2, 5);
-        boolean chance = random.nextDouble() < 0.15D;
+        int up = ThreadLocalRandom.current().nextInt(3);
+        int down = ThreadLocalRandom.current().nextInt(2, 5);
         for (int u = up; u >= 0; --u) {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.above(7 + u*8), rotation));
-        } if (chance) {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, RUIN, pos.above(11+up*8), rotation));
-            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.above(18+up*8), rotation));
-            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.offset(-2, 26+up*8,-2), rotation));
-        } else {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos.above(15+up*8), rotation));
-            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.offset(-2, 22+up*8, -2), rotation));
-        } for (int u = down; u >= 0; --u) {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.offset(0,-(u*8), 0), rotation));
-        } if (chance) {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos.offset(0, -(7+down*8), 0), rotation));
-        } else {
-            pieceList.addPiece(new CitadelPieces.Piece(manager, RUIN, pos.offset(0, -(7+down*8), 0), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.above(7 + u * 8), rotation));
         }
-        pieceList.addPiece(new CitadelPieces.Piece(manager, END, pos.offset(-1,-(11+down*8), -1), rotation));
+        if (ThreadLocalRandom.current().nextDouble() < 0.15D) {
+            pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos.above(15 + up * 8), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.offset(-3, 22 + up * 8, -3), rotation));
+        } else {
+            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.offset(-3, 20 + up * 8, -3), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, ROOM, pos.offset(-2, 14 + up * 8, -2), rotation));
+        }
+        for (int u = down; u >= 0; --u) {
+            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.offset(0, -(u * 8), 0), rotation));
+        }
+        pieceList.addPiece(new CitadelPieces.Piece(manager, HALL, pos.offset(-4, -(7 + down * 8), -4), rotation));
+        pieceList.addPiece(new CitadelPieces.Piece(manager, ROOM, pos.offset(-2, -(12 + down * 8), -2), rotation));
     }
     public static class Piece extends TemplateStructurePiece {
         public Piece(StructureTemplateManager manager, ResourceLocation resourceLocation, BlockPos position, Rotation rotation) {
@@ -101,15 +100,26 @@ public class CitadelPieces {
 
         protected void handleDataMarker(String function, BlockPos pos, ServerLevelAccessor worldIn, RandomSource rand, BoundingBox sbb) {
             if (function.startsWith("Chest")) {
-                BlockPos blockpos = pos.below();
-                if (sbb.isInside(blockpos)) {
-                    RandomizableContainer.setBlockEntityLootTable(worldIn, rand, blockpos, ModLootTables.CITADEL_LOOT);
+                worldIn.setBlock(pos, Blocks.CHEST.defaultBlockState(), 2);
+                if (sbb.isInside(pos)) {
+                    RandomizableContainer.setBlockEntityLootTable(worldIn, rand, pos, ModLootTables.CITADEL_LOOT);
+                }
+            }
+            if (function.startsWith("Random")) {
+                if (ThreadLocalRandom.current().nextInt(10) == 1) {
+                    worldIn.setBlock(pos, Blocks.CHEST.defaultBlockState(), 2);
+                    if (sbb.isInside(pos)) {
+                        RandomizableContainer.setBlockEntityLootTable(worldIn, rand, pos, ModLootTables.CITADEL_LOOT);
+                    }
+                } else {
+                    worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
                 }
             }
             if (function.startsWith("Shulker")) {
+                worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
                 Shulker shulker = EntityType.SHULKER.create(worldIn.getLevel());
                 if (shulker != null) {
-                    shulker.setPos(pos.getX(), pos.getY()-1, pos.getZ());
+                    shulker.setPos(pos.getX(), pos.getY(), pos.getZ());
                     worldIn.addFreshEntity(shulker);
                 }
             }

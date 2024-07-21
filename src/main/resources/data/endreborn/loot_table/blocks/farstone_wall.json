@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "endreborn:farstone_brick_wall"
+          "name": "endreborn:farstone_wall"
         }
       ],
       "rolls": 1.0
