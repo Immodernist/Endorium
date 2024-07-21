@@ -40,7 +40,7 @@ public class ModTab {
                 output.accept(ModBlocks.FARSTONE_DECORATIVE.get());
                 output.accept(ModBlocks.CRACKED_END_BRICKS.get());
                 output.accept(ModBlocks.FARSTONE_BRICKS.get());
-                output.accept(ModBlocks.FARSTONE_BRICKS_WALL.get());
+                output.accept(ModBlocks.FARSTONE_WALL.get());
                 output.accept(ModBlocks.FARSTONE_BRICKS_SLAB.get());
                 output.accept(ModBlocks.FARSTONE_BRICKS_STAIRS.get());
                 output.accept(ModBlocks.CHISELED_END_BRICKS.get());

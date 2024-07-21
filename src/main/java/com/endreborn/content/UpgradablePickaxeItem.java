@@ -1,13 +1,11 @@
 package com.endreborn.content;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -15,13 +13,13 @@ import net.minecraftforge.common.Tags;
 
 import java.util.List;
 public class UpgradablePickaxeItem extends PickaxeItem {
-    private final int sharpness;
-    private final int flexibility;
+    private final boolean curious;
+    private final boolean mysterious;
 
-    public UpgradablePickaxeItem(Tier p_42961_, Properties p_42964_, int sharpness, int flexibility) {
+    public UpgradablePickaxeItem(Tier p_42961_, Properties p_42964_, boolean curious, boolean mysterious) {
         super(p_42961_, p_42964_);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
 
     public Component getName(ItemStack p_41458_) {
@@ -29,25 +27,26 @@ public class UpgradablePickaxeItem extends PickaxeItem {
     }
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
-        if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.pickaxe_sharpness").withStyle(ChatFormatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.uni_flexibility").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Component.translatable("tooltip.pickaxe_curious").withStyle(ChatFormatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Component.translatable("tooltip.uni_mysterious").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.uni_mysterious_n").withStyle(ChatFormatting.GRAY));
         }
     }
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        Tool tool = stack.get(DataComponents.TOOL);
-        if (sharpness > 0) {
+        if (curious) {
             return state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(Tags.Blocks.GRAVEL) || state.is(Tags.Blocks.SAND) ? 8.0F : 1.0F;
         }
         else {
-            return state.is(BlockTags.MINEABLE_WITH_PICKAXE) ? 8.0F : 1.0F;
+            return state.is(BlockTags.MINEABLE_WITH_PICKAXE) ? 9.6F : 1.0F;
         }
     }
+    @Override
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, EquipmentSlot.MAINHAND);
+        p_40994_.hurtAndBreak(this.mysterious ? 1 : 0, p_40996_, EquipmentSlot.MAINHAND);
         return true;
     }
 }

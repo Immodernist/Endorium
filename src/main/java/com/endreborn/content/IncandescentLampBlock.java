@@ -31,18 +31,18 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
         return f_302232_;
     }
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
-    protected static final VoxelShape NORTH_LIT = Block.box(5.0D, 5.0D, 15.0D, 11.0D, 11.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 7.0D);
-    protected static final VoxelShape SOUTH_LIT = Block.box(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 1.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(9.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
-    protected static final VoxelShape WEST_LIT = Block.box(15.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 7.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_LIT = Block.box(0.0D, 5.0D, 5.0D, 1.0D, 11.0D, 11.0D);
-    protected static final VoxelShape UP_AABB = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 7.0D, 11.0D);
-    protected static final VoxelShape UP_LIT = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 1.0D, 11.0D);
-    protected static final VoxelShape DOWN_AABB = Block.box(5.0D, 9.0D, 5.0D, 11.0D, 15.0D, 11.0D);
-    protected static final VoxelShape DOWN_LIT = Block.box(5.0D, 15.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+    protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
+    protected static final VoxelShape NORTH_LIT = Block.box(5.0D, 5.0D, 13.0D, 11.0D, 11.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 8.0D);
+    protected static final VoxelShape SOUTH_LIT = Block.box(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 3.0D);
+    protected static final VoxelShape WEST_AABB = Block.box(8.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
+    protected static final VoxelShape WEST_LIT = Block.box(13.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_AABB = Block.box(1.0D, 5.0D, 5.0D, 8.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_LIT = Block.box(0.0D, 5.0D, 5.0D, 3.0D, 11.0D, 11.0D);
+    protected static final VoxelShape UP_AABB = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D);
+    protected static final VoxelShape UP_LIT = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 3.0D, 11.0D);
+    protected static final VoxelShape DOWN_AABB = Block.box(5.0D, 8.0D, 5.0D, 11.0D, 15.0D, 11.0D);
+    protected static final VoxelShape DOWN_LIT = Block.box(5.0D, 13.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 
     public IncandescentLampBlock(Properties p_49795_) {
         super(p_49795_);
@@ -85,8 +85,7 @@ public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBloc
                 return InteractionResult.SUCCESS;
             } else {
                 BlockState blockstate = this.pull(p_54640_, p_54641_, p_54642_);
-                float f = blockstate.getValue(LIT) ? 0.6F : 0.5F;
-                p_54641_.playSound((Player)null, p_54642_, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 0.3F, f);
+                p_54641_.playSound((Player)null, p_54642_, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 0.3F, blockstate.getValue(LIT) ? 0.6F : 0.5F);
                 p_54641_.gameEvent(p_54643_, blockstate.getValue(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, p_54642_);
                 return InteractionResult.CONSUME;
             }

@@ -19,17 +19,16 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 public class UpgradableAxeItem extends AxeItem {
-    private final int sharpness;
-    private final int flexibility;
+    private final boolean curious;
+    private final boolean mysterious;
 
-    public UpgradableAxeItem(Tier p_40521_, Properties p_40524_, int sharpness, int flexibility) {
+    public UpgradableAxeItem(Tier p_40521_, Properties p_40524_, boolean curious, boolean mysterious) {
         super(p_40521_, p_40524_);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
 
     public Component getName(ItemStack p_41458_) {
@@ -67,7 +66,7 @@ public class UpgradableAxeItem extends AxeItem {
             level.setBlock(blockpos, optional3.get(), 11);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(playerIn, optional3.get()));
             if (playerIn != null) {
-                itemstack.hurtAndBreak(1 - this.sharpness, playerIn, EquipmentSlot.MAINHAND);
+                itemstack.hurtAndBreak(this.curious ? 0 : 1, playerIn, EquipmentSlot.MAINHAND);
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -77,15 +76,17 @@ public class UpgradableAxeItem extends AxeItem {
     }
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
-        if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.axe_sharpness").withStyle(ChatFormatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.uni_flexibility").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Component.translatable("tooltip.axe_curious").withStyle(ChatFormatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Component.translatable("tooltip.uni_mysterious").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.uni_mysterious_n").withStyle(ChatFormatting.GRAY));
         }
     }
+    @Override
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, EquipmentSlot.MAINHAND);
+        p_40994_.hurtAndBreak(this.mysterious ? 1 : 0, p_40996_, EquipmentSlot.MAINHAND);
         return true;
     }
 }

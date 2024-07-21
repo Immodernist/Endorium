@@ -21,13 +21,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 public class UpgradableShovelItem extends ShovelItem {
-    private final int sharpness;
-    private final int flexibility;
+    private final boolean curious;
+    private final boolean mysterious;
 
-    public UpgradableShovelItem(Tier p_43114_, Properties p_43117_, int sharpness, int flexibility) {
+    public UpgradableShovelItem(Tier p_43114_, Properties p_43117_, boolean curious, boolean mysterious) {
         super(p_43114_, p_43117_);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
 
     public Component getName(ItemStack p_41458_) {
@@ -35,11 +35,12 @@ public class UpgradableShovelItem extends ShovelItem {
     }
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, Item.TooltipContext text, List<Component> tooltip, TooltipFlag flag) {
-        if (this.sharpness > 0) {
-            tooltip.add(Component.translatable("tooltip.shovel_sharpness").withStyle(ChatFormatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Component.translatable("tooltip.uni_flexibility").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.uni_flexibility_n").withStyle(ChatFormatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Component.translatable("tooltip.shovel_curious").withStyle(ChatFormatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Component.translatable("tooltip.uni_mysterious").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.uni_mysterious_n").withStyle(ChatFormatting.GRAY));
         }
     }
 
@@ -71,7 +72,7 @@ public class UpgradableShovelItem extends ShovelItem {
                     level.setBlock(blockpos, blockstate2, 11);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(playerIn, blockstate2));
                     if (playerIn != null) {
-                        p_43119_.getItemInHand().hurtAndBreak(1 - this.sharpness, playerIn, EquipmentSlot.MAINHAND);
+                        p_43119_.getItemInHand().hurtAndBreak(this.curious ? 0 : 1, playerIn, EquipmentSlot.MAINHAND);
                     }
                 }
 
@@ -81,8 +82,10 @@ public class UpgradableShovelItem extends ShovelItem {
             }
         }
     }
+
+    @Override
     public boolean hurtEnemy(ItemStack p_40994_, LivingEntity p_40995_, LivingEntity p_40996_) {
-        p_40994_.hurtAndBreak(2 + this.flexibility, p_40996_, EquipmentSlot.MAINHAND);
+        p_40994_.hurtAndBreak(this.mysterious ? 1 : 0, p_40996_, EquipmentSlot.MAINHAND);
         return true;
     }
 }
