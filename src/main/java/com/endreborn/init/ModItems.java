@@ -18,18 +18,18 @@ public class ModItems {
     public static final Item ENDORIUM_PICKAXE = new PickaxeItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModTiers.ENDORIUM,1, -2.8f)));
 
     public static final Item CURIOUS_TEMPLATE = UpgradeTemplateItem.createEndoriumUpgrade();
-    public static final Item CURIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.CURIOUS_ENDORIUM, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModTiers.ENDORIUM, 3, -2.4f)), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.CURIOUS_ENDORIUM, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModTiers.ENDORIUM, 5f, -3.0f)), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.CURIOUS_ENDORIUM, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModTiers.ENDORIUM, 1.5f, -3f)), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.CURIOUS_ENDORIUM, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModTiers.ENDORIUM,-3.0F, 0.0F)), 1, 0);
-    public static final Item CURIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.CURIOUS_ENDORIUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModTiers.ENDORIUM,1, -2.8f)), 1, 0);
+    public static final Item CURIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModTiers.ENDORIUM, 4, -2.4f)), true, false);
+    public static final Item CURIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModTiers.ENDORIUM, 6f, -3.0f)), true, false);
+    public static final Item CURIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModTiers.ENDORIUM, 2.5f, -3f)), true, false);
+    public static final Item CURIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModTiers.ENDORIUM,-3.0F, 0.0F)), true, false);
+    public static final Item CURIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.ENDORIUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModTiers.ENDORIUM,2, -2.8f)), true, false);
 
     public static final Item MYSTERIOUS_TEMPLATE = UpgradeTemplateItem.createEndoriumUpgrade();
-    public static final Item MYSTERIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModTiers.ENDORIUM, 3, -2.4f)), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModTiers.ENDORIUM, 5f, -3.0f)), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModTiers.ENDORIUM, 1.5f, -3f)), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModTiers.ENDORIUM,-3.0F, 0.0F)), 0, 1);
-    public static final Item MYSTERIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModTiers.ENDORIUM,1, -2.8f)), 0, 1);
+    public static final Item MYSTERIOUS_ENDORIUM_SWORD = new UpgradableSwordItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModTiers.ENDORIUM, 4, -2.4f)), false, true);
+    public static final Item MYSTERIOUS_ENDORIUM_AXE = new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModTiers.ENDORIUM, 6f, -3.0f)), false, true);
+    public static final Item MYSTERIOUS_ENDORIUM_SHOVEL = new UpgradableShovelItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModTiers.ENDORIUM, 2.5f, -3f)), false, true);
+    public static final Item MYSTERIOUS_ENDORIUM_HOE = new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModTiers.ENDORIUM,-3.0F, 0.0F)), false, true);
+    public static final Item MYSTERIOUS_ENDORIUM_PICKAXE = new UpgradablePickaxeItem(ModTiers.MYSTERIOUS_ENDORIUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModTiers.ENDORIUM,2, -2.8f)), false, true);
 
     public static final Item TUNGSTEN_INGOT = new Item(new Item.Settings());
     public static final Item TUNGSTEN_RAW = new Item(new Item.Settings());

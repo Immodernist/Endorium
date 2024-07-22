@@ -22,38 +22,34 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class CitadelPieces  {
     private static final Identifier MID = Identifier.of(Endorium.MODID, "citadel_middle");
     private static final Identifier UP = Identifier.of(Endorium.MODID, "citadel_up");
-    private static final Identifier RUIN = Identifier.of(Endorium.MODID, "citadel_ruin");
+    private static final Identifier ROOM = Identifier.of(Endorium.MODID, "citadel_room");
     private static final Identifier PEAK = Identifier.of(Endorium.MODID, "citadel_peak");
-    private static final Identifier END = Identifier.of(Endorium.MODID, "citadel_bottom");
+    private static final Identifier HALL = Identifier.of(Endorium.MODID, "citadel_hall");
 
     public static void addParts(StructureTemplateManager manager, BlockPos pos, BlockRotation rotation, StructurePiecesHolder pieceList, Random random) {
         pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos, rotation));
-        int up = random.nextInt(3);
-        int down = random.nextBetween(2, 5);
-        boolean chance = random.nextDouble() < 0.15D;
+        int up = ThreadLocalRandom.current().nextInt(3);
+        int down = ThreadLocalRandom.current().nextInt(2, 5);
         for (int u = up; u >= 0; --u) {
             pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.up(7 + u * 8), rotation));
         }
-        if (chance) {
-            pieceList.addPiece(new Piece(manager, RUIN, pos.up(11 + up * 8), rotation));
-            pieceList.addPiece(new Piece(manager, UP, pos.up(18 + up * 8), rotation));
-            pieceList.addPiece(new Piece(manager, PEAK, pos.add(-2, 26 + up * 8, -2), rotation));
+        if (ThreadLocalRandom.current().nextDouble() < 0.15D) {
+            pieceList.addPiece(new CitadelPieces.Piece(manager, MID, pos.up(15 + up * 8), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.add(-3, 22 + up * 8, -3), rotation));
         } else {
-            pieceList.addPiece(new Piece(manager, MID, pos.up(15 + up * 8), rotation));
-            pieceList.addPiece(new Piece(manager, PEAK, pos.add(-2, 22 + up * 8, -2), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, PEAK, pos.add(-3, 20 + up * 8, -3), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, ROOM, pos.add(-2, 14 + up * 8, -2), rotation));
         }
         for (int u = down; u >= 0; --u) {
-            pieceList.addPiece(new Piece(manager, UP, pos.add(0, -(u * 8), 0), rotation));
+            pieceList.addPiece(new CitadelPieces.Piece(manager, UP, pos.add(0, -(u * 8), 0), rotation));
         }
-        if (chance) {
-            pieceList.addPiece(new Piece(manager, MID, pos.add(0, -(7 + down * 8), 0), rotation));
-        } else {
-            pieceList.addPiece(new Piece(manager, RUIN, pos.add(0, -(7 + down * 8), 0), rotation));
-        }
-        pieceList.addPiece(new Piece(manager, END, pos.add(-1, -(11 + down * 8), -1), rotation));
+        pieceList.addPiece(new CitadelPieces.Piece(manager, HALL, pos.add(-4, -(7 + down * 8), -4), rotation));
+        pieceList.addPiece(new CitadelPieces.Piece(manager, ROOM, pos.add(-2, -(12 + down * 8), -2), rotation));
     }
 
     public static class Piece extends SimpleStructurePiece {
@@ -94,16 +90,27 @@ public class CitadelPieces  {
             }
         }
         protected void handleMetadata(String function, BlockPos pos, ServerWorldAccess world, Random random, BlockBox sbb) {
+            if (function.startsWith("Random")) {
+                if (ThreadLocalRandom.current().nextInt(10) == 1) {
+                    world.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
+                    if (sbb.contains(pos)) {
+                        LootableInventory.setLootTable(world, random, pos, CitadelLootTables.CITADEL_LOOT);
+                    }
+                } else {
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+                }
+            }
             if (function.startsWith("Chest")) {
-                BlockPos blockpos = pos.down();
-                if (sbb.contains(blockpos)) {
-                    LootableInventory.setLootTable(world, random, blockpos, CitadelLootTables.CITADEL_LOOT);
+                world.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
+                if (sbb.contains(pos)) {
+                    LootableInventory.setLootTable(world, random, pos, CitadelLootTables.CITADEL_LOOT);
                 }
             }
             if (function.startsWith("Shulker")) {
+                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
                 ShulkerEntity shulker = (ShulkerEntity) EntityType.SHULKER.create(world.toServerWorld());
                 if (shulker != null) {
-                    shulker.setPos(pos.getX(), pos.getY() - 1, pos.getZ());
+                    shulker.setPos(pos.getX(), pos.getY(), pos.getZ());
                     world.spawnEntity(shulker);
                 }
             }

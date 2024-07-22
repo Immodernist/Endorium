@@ -15,37 +15,38 @@ import net.minecraft.util.Formatting;
 import java.util.List;
 
 public class UpgradableHoeItem extends HoeItem {
-    private final int sharpness;
-    private final int flexibility;
-    public UpgradableHoeItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+    private final boolean curious;
+    private final boolean mysterious;
+    public UpgradableHoeItem(ToolMaterial material, Item.Settings settings, boolean curious, boolean mysterious) {
         super(material, settings);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
     public Text getName(ItemStack p_41458_) {
         return Text.translatable("item.endreborn.endorium_hoe");
     }
 
     public float getMiningSpeed(ItemStack stack, BlockState state) {
-        if (sharpness == 1){
-            return (state.isIn(BlockTags.HOE_MINEABLE) || state.isIn(BlockTags.ICE)) ? 8.0F : 1.0F;
+        if (curious){
+            return (state.isIn(BlockTags.HOE_MINEABLE) || state.isIn(BlockTags.ICE)) ? this.getMaterial().getMiningSpeedMultiplier(): 1.0F;
         }
         else {
-            return (state.isIn(BlockTags.HOE_MINEABLE)) ? 8.0F : 1.0F;
+            return (state.isIn(BlockTags.HOE_MINEABLE)) ? this.getMaterial().getMiningSpeedMultiplier() : 1.0F;
         }
     }
 
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        if (this.sharpness > 0) {
-            tooltip.add(Text.translatable("tooltip.hoe_sharpness").formatted(Formatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.GRAY));
-            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Text.translatable("tooltip.hoe_curious").formatted(Formatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Text.translatable("tooltip.uni_mysterious").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_mysterious_n").formatted(Formatting.GRAY));
         }
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(2 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
+        stack.damage(this.mysterious ? 1 : 0, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 }

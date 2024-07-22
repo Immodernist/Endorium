@@ -1,6 +1,6 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "endreborn:block/farstone_bricks"
-  }
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "endreborn:block/farstone_bricks"
+    }
 }

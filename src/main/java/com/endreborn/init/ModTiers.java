@@ -14,10 +14,7 @@ public enum ModTiers implements ToolMaterial {
     ENDORIUM(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1453, 8.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     }),
-    CURIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1453, 8.0F, 4.0F, 12, () -> {
-        return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
-    }),
-    MYSTERIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1453, 9.5F, 4.0F, 12, () -> {
+    MYSTERIOUS_ENDORIUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1453, 9.5F, 3.0F, 12, () -> {
         return Ingredient.ofItems(ModItems.ENDORIUM_INGOT);
     });
 

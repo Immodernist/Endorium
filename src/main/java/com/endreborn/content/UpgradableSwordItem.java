@@ -2,6 +2,8 @@ package com.endreborn.content;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ToolComponent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -19,41 +21,34 @@ import java.util.List;
 
 public class UpgradableSwordItem extends SwordItem {
 
-    private final int sharpness;
-    private final int flexibility;
+    private final boolean curious;
+    private final boolean mysterious;
 
-    public UpgradableSwordItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
-        super(material, settings);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+    public UpgradableSwordItem(ToolMaterial material, Item.Settings settings, boolean curious, boolean mysterious) {
+        super(material, settings.component(DataComponentTypes.TOOL, new ToolComponent(List.of(ToolComponent.Rule.ofAlwaysDropping(List.of(Blocks.COBWEB), curious ? 20.0F : 15.0F), ToolComponent.Rule.of(BlockTags.SWORD_EFFICIENT, curious ? 2F : 1.5F)), 1.0F, 2)));
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
     public Text getName(ItemStack p_41458_) {
         return Text.translatable("item.endreborn.endorium_sword");
     }
 
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        if (this.sharpness > 0) {
-            tooltip.add(Text.translatable("tooltip.sword_sharpness").formatted(Formatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Text.translatable("tooltip.sword_flexibility").formatted(Formatting.GRAY));
-            tooltip.add(Text.translatable("tooltip.sword_flexibility_n").formatted(Formatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Text.translatable("tooltip.sword_curious").formatted(Formatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Text.translatable("tooltip.sword_mysterious").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("tooltip.sword_mysterious_n").formatted(Formatting.GRAY));
         }
     }
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
+        stack.damage(this.mysterious ? 1 : 0, attacker, EquipmentSlot.MAINHAND);
         return true;
-    }
-
-    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-        if (state.isOf(Blocks.COBWEB)) {
-            return 15 + this.sharpness*5;
-        } else {
-            return state.isIn(BlockTags.SWORD_EFFICIENT) ? 1.5F + (float) this.sharpness /2: 1.0F;
-        }
     }
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         if (state.getHardness(world, pos) != 0.0F) {
-            stack.damage(2 - this.flexibility, miner, EquipmentSlot.MAINHAND);
+            stack.damage(this.mysterious ? 1 : 2, miner, EquipmentSlot.MAINHAND);
         }
         return true;
     }

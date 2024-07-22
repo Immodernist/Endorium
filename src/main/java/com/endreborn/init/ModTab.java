@@ -46,7 +46,7 @@ public class ModTab {
                     output.add(ModBlocks.FARSTONE_DECORATIVE);
                     output.add(ModBlocks.CRACKED_END_BRICKS);
                     output.add(ModBlocks.FARSTONE_BRICKS);
-                    output.add(ModBlocks.FARSTONE_BRICKS_WALL);
+                    output.add(ModBlocks.FARSTONE_WALL);
                     output.add(ModBlocks.FARSTONE_BRICKS_SLAB);
                     output.add(ModBlocks.FARSTONE_BRICKS_STAIRS);
                     output.add(ModBlocks.CHISELED_END_BRICKS);

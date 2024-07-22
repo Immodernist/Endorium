@@ -26,15 +26,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class UpgradableAxeItem extends AxeItem {
+    private final boolean curious;
+    private final boolean mysterious;
 
-    private final int sharpness;
-    private final int flexibility;
-
-    public UpgradableAxeItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+    public UpgradableAxeItem(ToolMaterial material, Item.Settings settings, boolean curious, boolean mysterious) {
         super(material, settings);
 
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
     public Text getName(ItemStack p_41458_) {
         return Text.translatable("item.endreborn.endorium_axe");
@@ -73,7 +72,7 @@ public class UpgradableAxeItem extends AxeItem {
             world.setBlockState(blockPos, (BlockState)optional4.get(), 11);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, (BlockState)optional4.get()));
             if (playerEntity != null) {
-                itemStack.damage(1 - this.sharpness, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
+                itemStack.damage(this.curious ? 0 : 1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
             }
 
             return ActionResult.success(world.isClient);
@@ -83,16 +82,17 @@ public class UpgradableAxeItem extends AxeItem {
     }
 
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        if (this.sharpness > 0) {
-            tooltip.add(Text.translatable("tooltip.axe_sharpness").formatted(Formatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.GRAY));
-            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Text.translatable("tooltip.axe_curious").formatted(Formatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Text.translatable("tooltip.uni_mysterious").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_mysterious_n").formatted(Formatting.GRAY));
         }
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(2 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
+        stack.damage(this.mysterious ? 1 : 0, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 

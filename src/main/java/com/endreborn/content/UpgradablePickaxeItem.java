@@ -16,35 +16,36 @@ import net.minecraft.util.Formatting;
 import java.util.List;
 
 public class UpgradablePickaxeItem extends PickaxeItem {
-    private final int sharpness;
-    private final int flexibility;
-    public UpgradablePickaxeItem(ToolMaterial material, Item.Settings settings, int sharpness, int flexibility) {
+    private final boolean curious;
+    private final boolean mysterious;
+    public UpgradablePickaxeItem(ToolMaterial material, Item.Settings settings, boolean curious, boolean mysterious) {
         super(material, settings);
-        this.sharpness = sharpness;
-        this.flexibility = flexibility;
+        this.curious = curious;
+        this.mysterious = mysterious;
     }
     public Text getName(ItemStack p_41458_) {
         return Text.translatable("item.endreborn.endorium_pickaxe");
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(2 + this.flexibility, attacker, EquipmentSlot.MAINHAND);
+        stack.damage(this.mysterious ? 1 : 0, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        if (this.sharpness > 0) {
-            tooltip.add(Text.translatable("tooltip.pickaxe_sharpness").formatted(Formatting.GRAY));
-        } else if (this.flexibility > 0){
-            tooltip.add(Text.translatable("tooltip.uni_flexibility").formatted(Formatting.GRAY));
-            tooltip.add(Text.translatable("tooltip.uni_flexibility_n").formatted(Formatting.GRAY));
+        if (this.curious) {
+            tooltip.add(Text.translatable("tooltip.pickaxe_curious").formatted(Formatting.GRAY));
+        }
+        if (this.mysterious){
+            tooltip.add(Text.translatable("tooltip.uni_mysterious").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("tooltip.uni_mysterious_n").formatted(Formatting.GRAY));
         }
     }
     public float getMiningSpeed(ItemStack stack, BlockState state) {
-        if (sharpness > 0) {
-            return state.isIn(BlockTags.PICKAXE_MINEABLE) || state.isOf(Blocks.GRAVEL) || state.isOf(Blocks.SAND) ? 8.0F : 1.0F;
+        if (curious) {
+            return state.isIn(BlockTags.PICKAXE_MINEABLE) || state.isOf(Blocks.GRAVEL) || state.isOf(Blocks.SAND) ? this.getMaterial().getMiningSpeedMultiplier() : 1.0F;
         } else {
-            return state.isIn(BlockTags.PICKAXE_MINEABLE) ? 8.0F : 1.0F;
+            return state.isIn(BlockTags.PICKAXE_MINEABLE) ? this.getMaterial().getMiningSpeedMultiplier() : 1.0F;
         }
     }
 }

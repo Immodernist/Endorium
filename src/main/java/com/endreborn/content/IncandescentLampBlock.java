@@ -23,18 +23,18 @@ import org.jetbrains.annotations.Nullable;
 
 public class IncandescentLampBlock extends WallMountedBlock {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape NORTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 9.0D, 11.0D, 11.0D, 15.0D);
-    protected static final VoxelShape NORTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 15.0D, 11.0D, 11.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 7.0D);
-    protected static final VoxelShape SOUTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 1.0D);
-    protected static final VoxelShape WEST_AABB = Block.createCuboidShape(9.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
-    protected static final VoxelShape WEST_LIT = Block.createCuboidShape(15.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_AABB = Block.createCuboidShape(1.0D, 5.0D, 5.0D, 7.0D, 11.0D, 11.0D);
-    protected static final VoxelShape EAST_LIT = Block.createCuboidShape(0.0D, 5.0D, 5.0D, 1.0D, 11.0D, 11.0D);
-    protected static final VoxelShape UP_AABB = Block.createCuboidShape(5.0D, 1.0D, 5.0D, 11.0D, 7.0D, 11.0D);
-    protected static final VoxelShape UP_LIT = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 1.0D, 11.0D);
-    protected static final VoxelShape DOWN_AABB = Block.createCuboidShape(5.0D, 9.0D, 5.0D, 11.0D, 15.0D, 11.0D);
-    protected static final VoxelShape DOWN_LIT = Block.createCuboidShape(5.0D, 15.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+    protected static final VoxelShape NORTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
+    protected static final VoxelShape NORTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 13.0D, 11.0D, 11.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.createCuboidShape(5.0D, 5.0D, 1.0D, 11.0D, 11.0D, 8.0D);
+    protected static final VoxelShape SOUTH_LIT = Block.createCuboidShape(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 3.0D);
+    protected static final VoxelShape WEST_AABB = Block.createCuboidShape(8.0D, 5.0D, 5.0D, 15.0D, 11.0D, 11.0D);
+    protected static final VoxelShape WEST_LIT = Block.createCuboidShape(13.0D, 5.0D, 5.0D, 16.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_AABB = Block.createCuboidShape(1.0D, 5.0D, 5.0D, 8.0D, 11.0D, 11.0D);
+    protected static final VoxelShape EAST_LIT = Block.createCuboidShape(0.0D, 5.0D, 5.0D, 3.0D, 11.0D, 11.0D);
+    protected static final VoxelShape UP_AABB = Block.createCuboidShape(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D);
+    protected static final VoxelShape UP_LIT = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 3.0D, 11.0D);
+    protected static final VoxelShape DOWN_AABB = Block.createCuboidShape(5.0D, 8.0D, 5.0D, 11.0D, 15.0D, 11.0D);
+    protected static final VoxelShape DOWN_LIT = Block.createCuboidShape(5.0D, 13.0D, 5.0D, 11.0D, 16.0D, 11.0D);
     public IncandescentLampBlock(Settings p_49795_) {
         super(p_49795_);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH).with(LIT, Boolean.valueOf(false)));
