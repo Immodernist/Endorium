@@ -12,6 +12,6 @@ description="Type your text here"
 [[dependencies.endreborn]]
   modId="minecraft"
   mandatory=true
-  versionRange="[1.21,1.22)"
+  versionRange="${minecraft_version_range}"
   ordering="NONE"
   side="BOTH"

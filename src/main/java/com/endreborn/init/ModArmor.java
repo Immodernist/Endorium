@@ -1,74 +1,75 @@
 package com.endreborn.init;
 
 import com.endreborn.EndReborn;
-import net.minecraft.Util;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.LazyValue;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.util.Util;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.function.Supplier;
 
-public class ModArmor {
-    public static final Holder<ArmorMaterial> ENDER = register(
-            "ender",
-            Util.make(new EnumMap<>(ArmorItem.Type.class), p_327101_ -> {
-                p_327101_.put(ArmorItem.Type.BOOTS, 3);
-                p_327101_.put(ArmorItem.Type.LEGGINGS, 1);
-                p_327101_.put(ArmorItem.Type.CHESTPLATE, 1);
-                p_327101_.put(ArmorItem.Type.HELMET, 1);
-                p_327101_.put(ArmorItem.Type.BODY, 1);
-            }),
-            10,
-            SoundEvents.ARMOR_EQUIP_CHAIN,
-            3.0F,
-            0.0F,
-            () -> Ingredient.of(ModItems.ENDORIUM_INGOT.get()));
+public enum ModArmor implements IArmorMaterial {
+    ENDER("ender", 21, new int[]{3, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_CHAIN, 3.0F, 0.0F, () -> {
+        return Ingredient.of(ModItems.ENDORIUM_INGOT.get());
+    });
 
-    public static Holder<ArmorMaterial> bootstrap(Registry<ArmorMaterial> p_332591_) {
-        return ENDER;
+    private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
+    private final String name;
+    private final int durabilityMultiplier;
+    private final int[] slotProtections;
+    private final int enchantmentValue;
+    private final SoundEvent sound;
+    private final float toughness;
+    private final float knockbackResistance;
+    private final LazyValue<Ingredient> repairIngredient;
+
+    private ModArmor(String p_i231593_3_, int durabilityMultiplier, int[] slotProtections, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> p_i231593_10_) {
+        this.name = p_i231593_3_;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.slotProtections = slotProtections;
+        this.enchantmentValue = enchantmentValue;
+        this.sound = sound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = new LazyValue<>(p_i231593_10_);
     }
 
-    private static Holder<ArmorMaterial> register(
-            String p_334359_,
-            EnumMap<ArmorItem.Type, Integer> p_329993_,
-            int p_332696_,
-            Holder<SoundEvent> p_333975_,
-            float p_329381_,
-            float p_334853_,
-            Supplier<Ingredient> p_333678_
-    ) {
-        List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(EndReborn.MODID, p_334359_)));
-        return register(p_334359_, p_329993_, p_332696_, p_333975_, p_329381_, p_334853_, p_333678_, list);
+    public int getDurabilityForSlot(EquipmentSlotType p_200896_1_) {
+        return HEALTH_PER_SLOT[p_200896_1_.getIndex()] * this.durabilityMultiplier;
     }
 
-    private static Holder<ArmorMaterial> register(
-            String p_332406_,
-            EnumMap<ArmorItem.Type, Integer> p_331524_,
-            int p_331490_,
-            Holder<SoundEvent> p_331648_,
-            float p_327988_,
-            float p_328616_,
-            Supplier<Ingredient> p_334412_,
-            List<ArmorMaterial.Layer> p_330855_
-    ) {
-        EnumMap<ArmorItem.Type, Integer> enummap = new EnumMap<>(ArmorItem.Type.class);
+    public int getDefenseForSlot(EquipmentSlotType p_200902_1_) {
+        return this.slotProtections[p_200902_1_.getIndex()];
+    }
 
-        for (ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
-            enummap.put(armoritem$type, p_331524_.get(armoritem$type));
-        }
+    public int getEnchantmentValue() {
+        return this.enchantmentValue;
+    }
 
-        return Registry.registerForHolder(
-                BuiltInRegistries.ARMOR_MATERIAL,
-                ResourceLocation.fromNamespaceAndPath(EndReborn.MODID, p_332406_),
-                new ArmorMaterial(enummap, p_331490_, p_331648_, p_334412_, p_330855_, p_327988_, p_328616_)
-        );
+    public SoundEvent getEquipSound() {
+        return this.sound;
+    }
+
+    public Ingredient getRepairIngredient() {
+        return this.repairIngredient.get();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public String getName() {
+        return EndReborn.MODID + ":" + this.name;
+    }
+
+    public float getToughness() {
+        return this.toughness;
+    }
+
+    public float getKnockbackResistance() {
+        return this.knockbackResistance;
     }
 }

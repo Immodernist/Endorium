@@ -1,0 +1,35 @@
+{
+  "parent": "endreborn:endreborn/relic",
+  "display":{
+    "icon":{
+      "item":"endreborn:endorium_block"
+    },
+    "title":{
+      "translate":"advancements.endreborn.endorium_block.title"
+    },
+    "description":{
+      "translate":"advancements.endreborn.endorium_block.description"
+    },
+    "frame":"goal",
+    "show_toast":false,
+    "announce_to_chat":true,
+    "hidden":false
+  },
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "endreborn:endorium_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

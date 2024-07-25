@@ -1,33 +1,32 @@
 package com.endreborn.content;
 
 import com.endreborn.init.ModBlocks;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BushBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.IBlockReader;
 
-public class MossPlantBlock extends BushBlock{
+public class MossPlantBlock extends BushBlock {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-    public static final MapCodec<MossPlantBlock> f_302232_ = simpleCodec(MossPlantBlock::new);
-
-    public MapCodec<MossPlantBlock> codec() {
-        return f_302232_;
-    }
     public MossPlantBlock(Properties p_51021_) {
         super(p_51021_);
     }
 
-    public VoxelShape getShape(BlockState p_53517_, BlockGetter p_53518_, BlockPos p_53519_, CollisionContext p_53520_) {
-        Vec3 vec3 = p_53517_.getOffset(p_53518_, p_53519_);
+    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+        Vector3d vec3 = p_220053_1_.getOffset(p_220053_2_, p_220053_3_);
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
-    protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
+
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.is(ModBlocks.END_MOSS.get()) || state.is(ModBlocks.END_MOSS_BLOCK.get()) || super.mayPlaceOn(state, worldIn, pos);
+    }
+    public AbstractBlock.OffsetType getOffsetType() {
+        return OffsetType.XZ;
     }
 }
 

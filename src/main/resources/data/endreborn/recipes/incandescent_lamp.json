@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0#0",
+    "0@0"
+  ],
+  "key": {
+    "@": {
+      "item": "minecraft:gold_ingot"
+    },
+    "#": {
+      "item": "endreborn:tungsten_ingot"
+    },
+    "0": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "endreborn:incandescent_lamp"
+  }
+}

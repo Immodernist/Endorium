@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "item": "minecraft:shears"
+                  }
+                }
+              ],
+              "name": "endreborn:ogana_plant"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "endreborn:ogana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

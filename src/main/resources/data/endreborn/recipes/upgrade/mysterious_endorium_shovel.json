@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "endreborn:mysterious_upgrade_template"
+  },
+  "base": {
+    "item": "endreborn:endorium_shovel"
+  },
+  "result": {
+    "item": "endreborn:mysterious_endorium_shovel"
+  }
+}
