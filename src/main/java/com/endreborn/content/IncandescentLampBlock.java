@@ -1,25 +1,30 @@
 package com.endreborn.content;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFaceBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.AttachFace;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class IncandescentLampBlock extends HorizontalFaceBlock {
+public class IncandescentLampBlock extends FaceAttachedHorizontalDirectionalBlock {
 
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 5.0D, 8.0D, 11.0D, 11.0D, 15.0D);
@@ -40,32 +45,22 @@ public class IncandescentLampBlock extends HorizontalFaceBlock {
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACE, AttachFace.FLOOR).setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(false)));
     }
 
-    public VoxelShape getShape(BlockState p_54665_, IBlockReader p_54666_, BlockPos p_54667_, ISelectionContext p_54668_) {
-        boolean flag = p_54665_.getValue(LIT);
-        Direction direction = p_54665_.getValue(FACING);
-        switch((AttachFace)p_54665_.getValue(FACE)) {
-            case FLOOR:
-                return flag ? UP_LIT : UP_AABB;
-            case WALL:
-                switch(direction) {
-                    case EAST:
-                        return flag ? EAST_LIT : EAST_AABB;
-                    case WEST:
-                        return flag ? WEST_LIT : WEST_AABB;
-                    case SOUTH:
-                        return flag ? SOUTH_LIT : SOUTH_AABB;
-                    case NORTH:
-                    default:
-                        return flag ? NORTH_LIT : NORTH_AABB;
-                }
-
-            default:
-                return flag ? DOWN_LIT : DOWN_AABB;
-        }
+    public VoxelShape getShape(BlockState p_54665_, BlockGetter p_54666_, BlockPos p_54667_, CollisionContext p_54668_) {
+        boolean lit = p_54665_.getValue(LIT);
+        return switch ((AttachFace) p_54665_.getValue(FACE)) {
+            case FLOOR -> lit ? UP_LIT : UP_AABB;
+            case WALL -> switch ((Direction) p_54665_.getValue(FACING)) {
+                case EAST -> lit ? EAST_LIT : EAST_AABB;
+                case WEST -> lit ? WEST_LIT : WEST_AABB;
+                case SOUTH -> lit ? SOUTH_LIT : SOUTH_AABB;
+                default -> lit ? NORTH_LIT : NORTH_AABB;
+            };
+            default -> lit ? DOWN_LIT : DOWN_AABB;
+        };
     }
 
     @Nullable
-    public BlockState getStateForPlacement(BlockItemUseContext p_55659_) {
+    public BlockState getStateForPlacement(BlockPlaceContext p_55659_) {
         for(Direction direction : p_55659_.getNearestLookingDirections()) {
             BlockState blockstate;
             if (direction.getAxis() == Direction.Axis.Y) {
@@ -80,29 +75,30 @@ public class IncandescentLampBlock extends HorizontalFaceBlock {
         return null;
     }
 
-    public ActionResultType use(BlockState p_54640_, World p_54641_, BlockPos p_54642_, PlayerEntity p_54643_, Hand p_54644_, BlockRayTraceResult p_54645_) {
+    public InteractionResult use(BlockState p_54640_, Level p_54641_, BlockPos p_54642_, Player p_54643_, InteractionHand p_54644_, BlockHitResult p_54645_) {
         if(p_54641_.hasNeighborSignal(p_54642_)) {
             if (p_54641_.isClientSide) {
-                return ActionResultType.SUCCESS;
+                return InteractionResult.SUCCESS;
             } else {
                 BlockState blockstate = this.pull(p_54640_, p_54641_, p_54642_);
                 float f = blockstate.getValue(LIT) ? 0.6F : 0.5F;
-                p_54641_.playSound((PlayerEntity)null, p_54642_, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, f);
-                return ActionResultType.CONSUME;
+                p_54641_.playSound((Player)null, p_54642_, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 0.3F, f);
+                p_54641_.gameEvent(p_54643_, blockstate.getValue(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, p_54642_);
+                return InteractionResult.CONSUME;
             }
         }
         else {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
     }
 
-    public BlockState pull(BlockState p_54677_, World p_54678_, BlockPos p_54679_) {
+    public BlockState pull(BlockState p_54677_, Level p_54678_, BlockPos p_54679_) {
         p_54677_ = p_54677_.cycle(LIT);
         p_54678_.setBlock(p_54679_, p_54677_, 3);
         return p_54677_;
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_55673_) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_55673_) {
         p_55673_.add(FACE, FACING, LIT);
     }
 }

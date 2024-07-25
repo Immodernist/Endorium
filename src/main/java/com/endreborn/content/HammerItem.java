@@ -1,11 +1,10 @@
 package com.endreborn.content;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
-import java.util.Random;
 
 public class HammerItem extends Item {
     public HammerItem(Properties p_41383_) {
@@ -13,21 +12,25 @@ public class HammerItem extends Item {
     }
 
     @Override
-    public boolean hasContainerItem(ItemStack stack) {
+    public boolean hasCraftingRemainingItem(@Nonnull ItemStack stack) {
         return true;
     }
+
     @Nonnull
     @Override
-    public ItemStack getContainerItem(@Nonnull ItemStack stack)
-    {
+    public ItemStack getCraftingRemainingItem(@Nonnull ItemStack stack) {
         ItemStack container = stack.copy();
-        if(container.hurt(1, new Random(), null))
+        int i = stack.getDamageValue() + 1;
+        if(i >= stack.getMaxDamage()) {
             return ItemStack.EMPTY;
-        else
+        } else {
+            container.setDamageValue(stack.getDamageValue() + 1);
             return container;
+        }
     }
+
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(1, attacker, null);
+        stack.hurtAndBreak(2, attacker, null);
         return true;
     }
 

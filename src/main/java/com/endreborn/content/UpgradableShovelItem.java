@@ -1,48 +1,50 @@
 package com.endreborn.content;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CampfireBlock;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
-
 public class UpgradableShovelItem extends ShovelItem {
     private final boolean curious;
     private final boolean mysterious;
 
-    public UpgradableShovelItem(IItemTier p_43114_, float p_43115_, float p_43116_, Properties p_43117_, boolean curious, boolean mysterious) {
+    public UpgradableShovelItem(Tier p_43114_, float p_43115_, float p_43116_, Properties p_43117_, boolean curious, boolean mysterious) {
         super(p_43114_, p_43115_, p_43116_, p_43117_);
         this.curious = curious;
         this.mysterious = mysterious;
     }
 
-    public TranslationTextComponent getName(ItemStack p_41458_) {
-        return new TranslationTextComponent("item.endreborn.endorium_shovel");
+    public Component getName(ItemStack p_41458_) {
+        return Component.translatable("item.endreborn.endorium_shovel");
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@Nonnull ItemStack stack, World world, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         if (this.curious) {
-            tooltip.add(new TranslationTextComponent("tooltip.shovel_curious").withStyle(TextFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.shovel_curious").withStyle(ChatFormatting.GRAY));
         }
-        if (this.mysterious) {
-            tooltip.add(new TranslationTextComponent("tooltip.uni_mysterious").withStyle(TextFormatting.GRAY));
-            tooltip.add(new TranslationTextComponent("tooltip.uni_mysterious_n").withStyle(TextFormatting.GRAY));
+        if (this.mysterious){
+            tooltip.add(Component.translatable("tooltip.uni_mysterious").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.uni_mysterious_n").withStyle(ChatFormatting.GRAY));
         }
     }
 
@@ -54,41 +56,42 @@ public class UpgradableShovelItem extends ShovelItem {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext p_195939_1_) {
-        World world = p_195939_1_.getLevel();
-        BlockPos blockpos = p_195939_1_.getClickedPos();
-        BlockState blockstate = world.getBlockState(blockpos);
-        if (p_195939_1_.getClickedFace() == Direction.DOWN) {
-            return ActionResultType.PASS;
+    public InteractionResult useOn(UseOnContext p_43119_) {
+        Level level = p_43119_.getLevel();
+        BlockPos blockpos = p_43119_.getClickedPos();
+        BlockState blockstate = level.getBlockState(blockpos);
+        if (p_43119_.getClickedFace() == Direction.DOWN) {
+            return InteractionResult.PASS;
         } else {
-            PlayerEntity playerentity = p_195939_1_.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(world, blockpos, playerentity, p_195939_1_.getItemInHand(), net.minecraftforge.common.ToolType.SHOVEL);
+            Player player = p_43119_.getPlayer();
+            BlockState blockstate1 = blockstate.getToolModifiedState(p_43119_, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
             BlockState blockstate2 = null;
-            if (blockstate1 != null && world.isEmptyBlock(blockpos.above())) {
-                world.playSound(playerentity, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
+                level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
                 blockstate2 = blockstate1;
             } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
-                if (!world.isClientSide()) {
-                    world.levelEvent((PlayerEntity)null, 1009, blockpos, 0);
+                if (!level.isClientSide()) {
+                    level.levelEvent((Player) null, 1009, blockpos, 0);
                 }
 
-                CampfireBlock.dowse(world, blockpos, blockstate);
+                CampfireBlock.dowse(p_43119_.getPlayer(), level, blockpos, blockstate);
                 blockstate2 = blockstate.setValue(CampfireBlock.LIT, Boolean.valueOf(false));
             }
 
             if (blockstate2 != null) {
-                if (!world.isClientSide) {
-                    world.setBlock(blockpos, blockstate2, 11);
-                    if (playerentity != null) {
-                        p_195939_1_.getItemInHand().hurtAndBreak(this.curious ? 0 : 1, playerentity, (p_220041_1_) -> {
-                            p_220041_1_.broadcastBreakEvent(p_195939_1_.getHand());
+                if (!level.isClientSide) {
+                    level.setBlock(blockpos, blockstate2, 11);
+                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
+                    if (player != null) {
+                        p_43119_.getItemInHand().hurtAndBreak(this.curious ? 0 : 1, player, (p_43122_) -> {
+                            p_43122_.broadcastBreakEvent(p_43119_.getHand());
                         });
                     }
                 }
 
-                return ActionResultType.sidedSuccess(world.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide);
             } else {
-                return ActionResultType.PASS;
+                return InteractionResult.PASS;
             }
         }
     }

@@ -15,21 +15,23 @@
     "announce_to_chat":true,
     "hidden":false
   },
-  "criteria": {
-    "item": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+  "criteria":{
+    "endorium_block":{
+      "conditions":{
+        "items":[
           {
-            "item": "endreborn:endorium_block"
+            "items":[
+              "endreborn:endorium_block"
+            ]
           }
         ]
-      }
+      },
+      "trigger":"minecraft:inventory_changed"
     }
   },
-  "requirements": [
+  "requirements":[
     [
-      "item"
+      "endorium_block"
     ]
   ]
 }

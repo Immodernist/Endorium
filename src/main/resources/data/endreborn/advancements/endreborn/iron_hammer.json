@@ -14,21 +14,23 @@
     "announce_to_chat":true,
     "hidden":false
   },
-  "criteria": {
-    "item": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+  "criteria":{
+    "iron_hammer":{
+      "conditions":{
+        "items":[
           {
-            "item": "endreborn:iron_hammer"
+            "items":[
+              "endreborn:iron_hammer"
+            ]
           }
         ]
-      }
+      },
+      "trigger":"minecraft:inventory_changed"
     }
   },
-  "requirements": [
+  "requirements":[
     [
-      "item"
+      "iron_hammer"
     ]
   ]
 }

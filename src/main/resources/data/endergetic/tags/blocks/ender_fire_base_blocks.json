@@ -1,8 +1,7 @@
 {
   "replace": false,
-  "values": [],
-  "optional": [
-    "endreborn:end_moss_block",
+  "values": [
+  "endreborn:end_moss_block",
     "endreborn:end_moss",
     "endreborn:end_stone_smooth",
     "endreborn:chiseled_end_bricks",

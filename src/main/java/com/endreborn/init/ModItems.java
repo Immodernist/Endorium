@@ -2,11 +2,12 @@ package com.endreborn.init;
 
 import com.endreborn.EndReborn;
 import com.endreborn.content.*;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -21,6 +22,7 @@ public class ModItems {
     public static RegistryObject<Item> TUNGSTEN_HAMMER = register(() -> new HammerItem(new Item.Properties().tab(EndReborn.ENDGROUP).defaultDurability(48)), "tungsten_hammer");
     public static RegistryObject<Item> ENDORIUM_SWORD = register(() -> new SwordItem(ModTiers.ENDORIUM, 3, -2.4f, new Item.Properties().tab(EndReborn.ENDGROUP)), "endorium_sword");
     public static RegistryObject<Item> ENDORIUM_AXE = register(() -> new AxeItem(ModTiers.ENDORIUM, 5f, -3.0f, new Item.Properties().tab(EndReborn.ENDGROUP)), "endorium_axe");
+
     public static RegistryObject<Item> ENDORIUM_SHOVEL = register(() -> new ShovelItem(ModTiers.ENDORIUM, 1.5f, -3f, new Item.Properties().tab(EndReborn.ENDGROUP)), "endorium_shovel");
     public static RegistryObject<Item> ENDORIUM_HOE = register(() -> new HoeItem(ModTiers.ENDORIUM, -3, 0f, new Item.Properties().tab(EndReborn.ENDGROUP)), "endorium_hoe");
     public static RegistryObject<Item> ENDORIUM_PICKAXE = register(() -> new PickaxeItem(ModTiers.ENDORIUM, 1, -2.8f, new Item.Properties().tab(EndReborn.ENDGROUP)), "endorium_pickaxe");
@@ -29,7 +31,7 @@ public class ModItems {
     public static RegistryObject<Item> INCANDESCENT_LAMP = register(() -> new BlockItem(ModBlocks.INCANDESCENT_LAMP.get(), new Item.Properties().tab(EndReborn.ENDGROUP)), "incandescent_lamp");
     public static RegistryObject<Item> OGANA_FRUIT = register(() -> new Item(new Item.Properties().tab(EndReborn.ENDGROUP).food(Foods.SWEET_BERRIES)), "ogana");
     public static RegistryObject<Item> OGANA_TORTE = register(() -> new Item(new Item.Properties().tab(EndReborn.ENDGROUP).food(Foods.PUMPKIN_PIE)), "ogana_torte");
-    public static RegistryObject<Item> ENDER_BOOTS = register(() -> new EnderBootsItem(ModArmor.ENDER, EquipmentSlotType.FEET, (new Item.Properties().tab(EndReborn.ENDGROUP))), "ender_boots");
+    public static RegistryObject<Item> ENDER_BOOTS = register(() -> new EnderBootsItem(ModArmor.ENDER, EquipmentSlot.FEET, (new Item.Properties().tab(EndReborn.ENDGROUP))), "ender_boots");
     public static RegistryObject<Item> TRANSMITTER = register(() -> new TransmitterItem(new Item.Properties().tab(EndReborn.ENDGROUP).defaultDurability(24)), "ender_transmitter");
     public static RegistryObject<Item> OBSIDIAN_GLASS_PANE = register(() -> new BlockItem(ModBlocks.OBSIDIAN_GLASS_PANE.get(), new Item.Properties().tab(EndReborn.ENDGROUP)), "obsidian_glass_pane");
     public static RegistryObject<Item> OBSIDIAN_GLASS = register(() -> new BlockItem(ModBlocks.OBSIDIAN_GLASS.get(), new Item.Properties().tab(EndReborn.ENDGROUP)), "obsidian_glass");
@@ -56,17 +58,17 @@ public class ModItems {
     public static RegistryObject<Item> END_MOSS_CARPET = register(() -> new BlockItem(ModBlocks.END_MOSS_CARPET.get(), new Item.Properties().tab(EndReborn.ENDGROUP)), "end_moss_carpet");
 
 
-    public static RegistryObject<Item> CURIOUS_ENDORIUM_SWORD = register(() -> new UpgradableSwordItem(ModTiers.ENDORIUM, 4, -2.4f, new Item.Properties().tab(EndReborn.ENDGROUP), true, false), "curious_endorium_sword");
-    public static RegistryObject<Item> CURIOUS_ENDORIUM_AXE = register(() -> new UpgradableAxeItem(ModTiers.ENDORIUM, 6f, -3.0f, new Item.Properties().tab(EndReborn.ENDGROUP), true, false), "curious_endorium_axe");
-    public static RegistryObject<Item> CURIOUS_ENDORIUM_SHOVEL = register(() -> new UpgradableShovelItem(ModTiers.ENDORIUM, 2.5f, -3f, new Item.Properties().tab(EndReborn.ENDGROUP), true, false), "curious_endorium_shovel");
-    public static RegistryObject<Item> CURIOUS_ENDORIUM_HOE = register(() -> new UpgradableHoeItem(ModTiers.ENDORIUM, -3, 0f, new Item.Properties().tab(EndReborn.ENDGROUP), true, false), "curious_endorium_hoe");
-    public static RegistryObject<Item> CURIOUS_ENDORIUM_PICKAXE = register(() -> new UpgradablePickaxeItem(ModTiers.ENDORIUM, 2, -2.8f, new Item.Properties().tab(EndReborn.ENDGROUP), true, false), "curious_endorium_pickaxe");
+    public static RegistryObject<Item> CURIOUS_ENDORIUM_SWORD = register(() -> new UpgradableSwordItem(ModTiers.ENDORIUM, 4, -2.4f, new Item.Properties(), true, false), "curious_endorium_sword");
+    public static RegistryObject<Item> CURIOUS_ENDORIUM_AXE = register(() -> new UpgradableAxeItem(ModTiers.ENDORIUM, 6f, -3.0f, new Item.Properties(), true, false), "curious_endorium_axe");
+    public static RegistryObject<Item> CURIOUS_ENDORIUM_SHOVEL = register(() -> new UpgradableShovelItem(ModTiers.ENDORIUM, 2.5f, -3f, new Item.Properties(), true, false), "curious_endorium_shovel");
+    public static RegistryObject<Item> CURIOUS_ENDORIUM_HOE = register(() -> new UpgradableHoeItem(ModTiers.ENDORIUM, -3, 0f, new Item.Properties(), true, false), "curious_endorium_hoe");
+    public static RegistryObject<Item> CURIOUS_ENDORIUM_PICKAXE = register(() -> new UpgradablePickaxeItem(ModTiers.ENDORIUM, 2, -2.8f, new Item.Properties(), true, false), "curious_endorium_pickaxe");
 
-   public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SWORD = register(() -> new UpgradableSwordItem(ModTiers.MYSTERIOUS_ENDORIUM, 4, -2.4f, new Item.Properties().tab(EndReborn.ENDGROUP), false, true), "mysterious_endorium_sword");
-    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_AXE = register(() -> new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 6f, -3.0f, new Item.Properties().tab(EndReborn.ENDGROUP), false, true), "mysterious_endorium_axe");
-    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SHOVEL = register(() -> new UpgradableShovelItem(ModTiers.MYSTERIOUS_ENDORIUM, 2.5f, -3f, new Item.Properties().tab(EndReborn.ENDGROUP), false, true), "mysterious_endorium_shovel");
-    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_HOE = register(() -> new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, -3, 0f, new Item.Properties().tab(EndReborn.ENDGROUP), false, true), "mysterious_endorium_hoe");
-    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_PICKAXE = register(() -> new UpgradablePickaxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 2, -2.8f, new Item.Properties().tab(EndReborn.ENDGROUP), false, true), "mysterious_endorium_pickaxe");
+   public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SWORD = register(() -> new UpgradableSwordItem(ModTiers.MYSTERIOUS_ENDORIUM, 4, -2.4f, new Item.Properties(), false, true), "mysterious_endorium_sword");
+    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_AXE = register(() -> new UpgradableAxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 6f, -3.0f, new Item.Properties(), false, true), "mysterious_endorium_axe");
+    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_SHOVEL = register(() -> new UpgradableShovelItem(ModTiers.MYSTERIOUS_ENDORIUM, 2.5f, -3f, new Item.Properties(), false, true), "mysterious_endorium_shovel");
+    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_HOE = register(() -> new UpgradableHoeItem(ModTiers.MYSTERIOUS_ENDORIUM, -3, 0f, new Item.Properties(), false, true), "mysterious_endorium_hoe");
+    public static RegistryObject<Item> MYSTERIOUS_ENDORIUM_PICKAXE = register(() -> new UpgradablePickaxeItem(ModTiers.MYSTERIOUS_ENDORIUM, 2, -2.8f, new Item.Properties(), false, true), "mysterious_endorium_pickaxe");
 
     public static RegistryObject<Item> register(Supplier<Item> builder, String name) {
         return ITEM.register(name, builder);

@@ -2,29 +2,30 @@ package com.endreborn.world;
 
 import com.endreborn.init.ModBlocks;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MossedEndIslandFeature extends Feature<NoFeatureConfig> {
-    public MossedEndIslandFeature(Codec<NoFeatureConfig> p_65701_) {
+public class MossedEndIslandFeature extends Feature<NoneFeatureConfiguration> {
+    public MossedEndIslandFeature(Codec<NoneFeatureConfiguration> p_65701_) {
         super(p_65701_);
     }
 
-    public boolean place(ISeedReader worldIn, ChunkGenerator p_241855_2_, Random p_241855_3_, BlockPos pos, NoFeatureConfig p_241855_5_) {
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> feature) {
+        WorldGenLevel worldIn = feature.level();
+        BlockPos pos = feature.origin();
         boolean chance = ThreadLocalRandom.current().nextDouble() < 0.35D;
 
         float f = (float)ThreadLocalRandom.current().nextInt(3) + 4.0F;
         for(int i = 0; f > 0.5F; --i) {
-            for(int j = MathHelper.floor(-f); j <= MathHelper.ceil(f); ++j) {
-                for(int k = MathHelper.floor(-f); k <= MathHelper.ceil(f); ++k) {
+            for(int j = Mth.floor(-f); j <= Mth.ceil(f); ++j) {
+                for(int k = Mth.floor(-f); k <= Mth.ceil(f); ++k) {
                     if ((float)(j * j + k * k) <= (f + 1.0F) * (f + 1.0F)) {
                         if (i == 0 && chance) {
                             this.setBlock(worldIn, pos.offset(j, i, k), ModBlocks.END_MOSS.get().defaultBlockState());

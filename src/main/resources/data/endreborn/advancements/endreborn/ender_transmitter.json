@@ -15,21 +15,23 @@
     "announce_to_chat":true,
     "hidden":true
   },
-  "criteria": {
-    "item": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+  "criteria":{
+    "ender_transmitter":{
+      "conditions":{
+        "items":[
           {
-            "item": "endreborn:ender_transmitter"
+            "items":[
+              "endreborn:ender_transmitter"
+            ]
           }
         ]
-      }
+      },
+      "trigger":"minecraft:inventory_changed"
     }
   },
-  "requirements": [
+  "requirements":[
     [
-      "item"
+      "ender_transmitter"
     ]
   ]
 }

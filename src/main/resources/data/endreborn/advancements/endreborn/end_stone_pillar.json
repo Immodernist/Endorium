@@ -1,41 +1,47 @@
 {
   "parent": "endreborn:endreborn/endorium_block",
-  "display": {
-    "icon": {
-      "item": "endreborn:end_stone_pillar"
+  "display":{
+    "icon":{
+      "item":"endreborn:end_stone_pillar"
     },
-    "title": {
-      "translate": "advancements.endreborn.end_stone_pillar.title"
+    "title":{
+      "translate":"advancements.endreborn.end_stone_pillar.title"
     },
-    "description": {
-      "translate": "advancements.endreborn.end_stone_pillar.description"
+    "description":{
+      "translate":"advancements.endreborn.end_stone_pillar.description"
     },
-    "frame": "goal",
-    "show_toast": true,
-    "announce_to_chat": false,
-    "hidden": true
+    "frame":"goal",
+    "show_toast":true,
+    "announce_to_chat":true,
+    "hidden":true
   },
-  "criteria": {
-    "item": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+  "criteria":{
+    "end_stone_pillar":{
+      "conditions":{
+        "items":[
           {
-            "item": "endreborn:end_stone_pillar"
+            "items":[
+              "endreborn:end_stone_pillar"
+            ]
           },
           {
-            "item": "minecraft:purpur_pillar"
+            "items":[
+              "minecraft:purpur_pillar"
+            ]
           },
           {
-            "item": "minecraft:quartz_pillar"
+            "items":[
+              "minecraft:quartz_pillar"
+            ]
           }
         ]
-      }
+      },
+      "trigger":"minecraft:inventory_changed"
     }
   },
-  "requirements": [
+  "requirements":[
     [
-      "item"
+      "end_stone_pillar"
     ]
   ]
 }

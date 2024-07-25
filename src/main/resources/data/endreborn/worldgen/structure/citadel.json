@@ -1,0 +1,6 @@
+{
+  "type": "endreborn:citadel",
+  "biomes": "#endreborn:is_outer_end",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

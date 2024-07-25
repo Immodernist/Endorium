@@ -16,118 +16,31 @@
   },
   "criteria": {
     "curious_endorium_sword": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "endreborn:curious_endorium_sword"
+            "items": [
+              "endreborn:curious_endorium_sword",
+              "endreborn:curious_endorium_axe",
+              "endreborn:curious_endorium_shovel",
+              "endreborn:curious_endorium_pickaxe",
+              "endreborn:curious_endorium_hoe",
+              "endreborn:mysterious_endorium_sword",
+              "endreborn:mysterious_endorium_axe",
+              "endreborn:mysterious_endorium_shovel",
+              "endreborn:mysterious_endorium_pickaxe",
+              "endreborn:mysterious_endorium_hoe"
+
+            ]
           }
         ]
-      }
-    },
-    "curious_endorium_axe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:curious_endorium_axe"
-          }
-        ]
-      }
-    },
-    "curious_endorium_shovel": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:curious_endorium_shovel"
-          }
-        ]
-      }
-    },
-    "curious_endorium_pickaxe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:curious_endorium_pickaxe"
-          }
-        ]
-      }
-    },
-    "curious_endorium_hoe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:curious_endorium_hoe"
-          }
-        ]
-      }
-    },
-    "mysterious_endorium_sword": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:mysterious_endorium_sword"
-          }
-        ]
-      }
-    },
-    "mysterious_endorium_axe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:mysterious_endorium_axe"
-          }
-        ]
-      }
-    },
-    "mysterious_endorium_shovel": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:mysterious_endorium_shovel"
-          }
-        ]
-      }
-    },
-    "mysterious_endorium_pickaxe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:mysterious_endorium_pickaxe"
-          }
-        ]
-      }
-    },
-    "mysterious_endorium_hoe": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "endreborn:mysterious_endorium_hoe"
-          }
-        ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
-      "curious_endorium_sword",
-      "curious_endorium_axe",
-      "curious_endorium_shovel",
-      "curious_endorium_pickaxe",
-      "curious_endorium_hoe",
-      "mysterious_endorium_sword",
-      "mysterious_endorium_axe",
-      "mysterious_endorium_shovel",
-      "mysterious_endorium_pickaxe",
-      "mysterious_endorium_hoe"
+      "curious_endorium_sword"
     ]
   ]
 }

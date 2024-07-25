@@ -1,12 +1,12 @@
 package com.endreborn.init;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
 
-public enum ModTiers implements IItemTier {
+public enum ModTiers implements Tier {
     ENDORIUM(3, 1453, 8.0F, 3.0F, 12, () -> {
         return Ingredient.of(ModItems.ENDORIUM_INGOT.get());
     }),
@@ -19,7 +19,7 @@ public enum ModTiers implements IItemTier {
     private final float speed;
     private final float damage;
     private final int enchantmentValue;
-    private final LazyValue<Ingredient> repairIngredient;
+    private final LazyLoadedValue<Ingredient> repairIngredient;
 
     private ModTiers(int p_43332_, int p_43333_, float p_43334_, float p_43335_, int p_43336_, Supplier<Ingredient> p_43337_) {
         this.level = p_43332_;
@@ -27,7 +27,7 @@ public enum ModTiers implements IItemTier {
         this.speed = p_43334_;
         this.damage = p_43335_;
         this.enchantmentValue = p_43336_;
-        this.repairIngredient = new LazyValue<>(p_43337_);
+        this.repairIngredient = new LazyLoadedValue<>(p_43337_);
     }
 
     public int getUses() {
@@ -53,4 +53,5 @@ public enum ModTiers implements IItemTier {
     public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
+
 }
